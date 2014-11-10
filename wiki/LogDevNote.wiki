@@ -1,0 +1,43 @@
+#summary Making best use of AntWorkz Logging Facility
+
+= Introduction =
+
+AntWorkz provides a powerful Logging Facility that gets smarter as 
+each AntWorkz library level becomes available.
+
+
+= Library Level Support =
+
+See the AntWorkzLibraries for an explanation of the support available
+at each of the three Library Levels: *core*, *support*, and *worker*. 
+
+== Core Level ==
+
+=== Base Sub-level ===
+
+At the core library level, 
+the log items reside only in an in-memory queue for the individual process. 
+Log 'forks' can be started to receive text streams of the log items
+as they are processed.
+Only basic message formatting (via QVariant::toString()) is available
+at the BaseLib core library level.
+
+=== Full Sub-level ===
+
+With the full core level library classes are available 
+(in particular, DataLib: Printable and/or Readable classes),
+more sophistication is used in formatting messages.
+And, with DataLib: Streamable and/or VarElement classes,
+stream (binary or text) and XML file outputs become viable.
+
+== Support Level ==
+
+Switch to base configuration.
+Start LogThread.
+...
+
+== Worker Level ==
+
+Worker MessageQueue based logging.
+Push log items to the cloud.
+...

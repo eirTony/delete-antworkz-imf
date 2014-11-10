@@ -1,0 +1,64 @@
+#summary Internal notes for AntWorkz code
+
+= Introduction =
+
+This developer note details some of the internal structure of the
+AntWorkz libraries, classes, and functions.
+
+= BaseLib =
+
+= LogLib =
+
+== Log Macro Types ==
+
+Note: `FUNCTIONINFO` and `FUNCTIONINFO_LINE` are #defined in `base/FunctionInfo.h`.
+
+=== Report ===
+
+{{{
+void Logger::report(item)
+LogItem::ctor(FnInfo, LogLevel, Message, QVarList)
+}}}
+
+=== Dump ===
+
+{{{
+void Logger::dump(item)
+LogItem::ctor(FnInfo, LogLevel, TBD)
+value(0) "%1" QString varName
+value(1) "%2" QVariant value
+value(2) "%3" int bytes|0
++value(3) "%4" QString typeName
++value(4) "%5" QStringList hexDump
+}}}
+
+=== Boolean ===
+
+{{{
+bool Logger::boolean(item) true if expected
+LogItem::ctor(FnInfo, LogLevel, varName, bool expected, bool actual)
+value(0) "%1" QString varName 
+value(1) "%2" bool expected
+value(2) "%3" (bool?) actual
++value(3) "%4" QString actualTypeName
+}}}
+
+=== Compare ===
+
+...
+
+=== Pointer ===
+
+...
+
+=== Alloc ===
+
+...
+
+=== Troll ===
+
+TBD
+
+===ToDo ===
+
+...
