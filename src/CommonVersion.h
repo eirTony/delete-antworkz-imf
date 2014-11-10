@@ -1,10 +1,10 @@
 #ifndef COMMONVERSION_H
 #define COMMONVERSION_H
 
-#define CVER_STRING     "v2.03A"
+#define CVER_STRING     "v2.03A+IB0003-BaselineLogging"
 #define CVER_MAJOR      2
 #define CVER_MINOR      2
-#define CVER_BRANCH     0
+#define CVER_BRANCH     3
 #define CVER_RELEASE    1
 #define CVER_BUILD      1002
 #define CVER_COPYRIGHT  "Copyright (c) 2003-2014, " \
