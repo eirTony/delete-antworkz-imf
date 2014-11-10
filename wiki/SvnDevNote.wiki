@@ -1,41 +1,43 @@
 #summary Subversion repository structure
 
 = Introduction =
-This developer note describes the structure of the AntWorkz Worker Machine Framework project in its Subversion repository.
+This developer note describes the structure of the AntWorkz Image Machine Framework project in its Subversion repository.
 
 
 = Hosting & Access =
 
 The source code for AntWorkz is hoted in a Subversion repository by Google's Code service.
 
-To view the project in progress visit https://code.google.com/p/antworkz via your web browser.
+To view the project in progress visit https://code.google.com/p/antworkz-imf via your web browser.
 
 To download a snapshot of the source code, run a SVN export from ...TBD...
 
 To setup a live Subversion directory on your system, create one from ...TBD.here....
 
-If you are an authorized developer you will need to provide your assigned user name and your selected password at the above link.
+If you are an authorized developer you will need to provide your assigned 
+user name and your selected password at the above link.
 
 = Top Level =
 
 As with most typical Subversion repository, the top level is segregated into three sections:
 
- * *trunk* - Where most of the (stable) action resides. Unlike most Subversion trunks, the AntWorkz trunk is further divided into five sections (as described below).
+ * *trunk* - Where most of the (stable) action resides. 
 
- * *branch* - Where the nitty-gritty work takes place without disturbing code on one of the trunks.
+ * *branch* - Where the nitty-gritty work progresses between these major branches.
+  * *develop* - The near-wild-wild west
+  * *current* - Where "letter" builds land for early testing and evaluation
+  * *release* - Where a potential public release transitions from Alpha to Beta
+to Candidate and hopefully to Final release.
+  * *master* - Public releases.
 
  * *tags* - Snapshots taken from the trunks to preserve sets of source code changes.
-
-= Trunks =
-
-The AntWorkz subversion repository contains the following five trunk sections presented (in decreasing order of volatility) here:
-
- * *develop* - The (semi-)Wild, Wild West of current code under development. This trunk is not so wild, because developers are expected to pass a basic acceptance test--to  make sure they didn't break anything elsewhere--before merging their branch back into this trunk. 
-
- * *current* - Periodic (biweekly-ish) snapshots of stable code from the develop trunk. So-called 'Letter' releases land here. When a develop snapshot is merged into here, the global build number is incremented and a tag is assigned on develop. Preliminary regression and performance (both accuracy and speed) testing is triggered to try to catch problem before they become larger issues at release testing time. Special outside developers are allowed access at this level to have early access to assess any issues as to their use of the framework.
-
- * *testing* - TBD? 
-
- * *release* - Preparation for a public release start here as the source snapshot transitions from 'Letter' releases in the current trunk to Alpha, Beta, Candidate, and Final releases here. All features are frozen here at the Alpha and Beta levels. Only major damage issues are addressed at the Candidate level. If it becomes apparent that a release will not survive a transition from Beta to Candidate level, it should be abandoned, issues added to clear the defiencies, and returned to the Current trunk.  
-
- * *master* - Once a public release is announced, the source code moves here. in a break from normal source code management, the binary deliverable are also archived here.
+  * *dev-build1001* - When codesets transition from develop to current, 
+  the build number is incremented.
+  * *cur-v2.02F* - When a codeset arrives at current, it is assigned the next
+  'letter' version.
+  * *rel-v2.02-Alpha* - As pre-release testing takes place when semi-public 
+  test and evaluation releases take place.
+  * *mast-v2.02-Final* - Master codesets are tagged here. 
+  Typically post-release patches (custom[er]) and hotfixes 
+  branch from here.
+  
