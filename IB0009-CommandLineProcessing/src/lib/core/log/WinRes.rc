@@ -1,3 +1,0 @@
-#include "Version.h"
-#include "../../../CommonVersion.h"
-#include "../../../commonWinRes.rc"
