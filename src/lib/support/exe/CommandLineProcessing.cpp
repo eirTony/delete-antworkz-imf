@@ -2,6 +2,15 @@
  */
 #include "CommandLineProcessing.h"
 
-CommandLineProcessing::CommandLineProcessing(void)
+CommandLineProcessing::CommandLineProcessing(QObject * parent)
+    : QObject(parent)
 {
 }
+
+#if 0
+CommandLineProcessing::CommandLineProcessing(const ExecutableSupport * exe)
+    : QObject(exe)
+    , mpExecutableSupport(exe)
+{
+}
+#endif

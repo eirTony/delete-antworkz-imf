@@ -22,7 +22,8 @@ SOURCES += ExeLib.cpp \
     BaseSerialStream.cpp \
     CommandLineOption.cpp \
     CommandLineProcessing.cpp \
-    CommandLineResult.cpp
+    CommandLineResult.cpp \
+    CommandLineOptions.cpp
 
 HEADERS += ExeLib.h \
     Exe_global.h \
@@ -36,7 +37,8 @@ HEADERS += ExeLib.h \
     BaseSerialStream.h \
     CommandLineOption.h \
     CommandLineProcessing.h \
-    CommandLineResult.h
+    CommandLineResult.h \
+    CommandLineOptions.h
 
 unix {
     target.path = /usr/lib

@@ -7,6 +7,11 @@ BasicName::BasicName(const QString & name)
     set(name);
 }
 
+BasicName::BasicName(const char * psz)
+{
+    set(QString(psz));
+}
+
 bool BasicName::isNull(void) const
 {
     return mName.isEmpty();
