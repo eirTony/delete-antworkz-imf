@@ -18,7 +18,8 @@ SOURCES += ExeLib.cpp \
     SerialExecutable.cpp \
     StandardIO.cpp \
     StandardStream.cpp \
-    BaseSerialStream.cpp
+    BaseSerialStream.cpp \
+    CommandLineOptions.cpp
 
 HEADERS += ExeLib.h \
     Exe_global.h \
@@ -29,7 +30,8 @@ HEADERS += ExeLib.h \
     SerialExecutable.h \
     StandardIO.h \
     StandardStream.h \
-    BaseSerialStream.h
+    BaseSerialStream.h \
+    CommandLineOptions.h
 
 unix {
     target.path = /usr/lib
