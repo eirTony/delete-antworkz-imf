@@ -42,11 +42,16 @@ public:
  *  * Special Option, like Help and TBD
  *
  * @since ExeLib version 2.03
+ *
+ * @todo Change DataType from int to DataLib:DataType when it matures.
  */
 class EXESHARED_EXPORT CommandLineOption
 {
     DECLARE_PARENT_DATAPROPS(COMMANDLINEOPTION_DATAPROPS)
     DECLARE_DATAPROPS(CommandLineOption, CommandLineOptionData)
+
+public:
+    bool isValid(void) const;
 };
 
 #endif // COMMANDLINEOPTION_H

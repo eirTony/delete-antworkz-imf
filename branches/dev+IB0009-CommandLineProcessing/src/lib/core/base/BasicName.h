@@ -14,6 +14,7 @@ public:
 
 public:
     BasicName(const QString & name=QString());
+    BasicName(const char * psz);
     bool isNull(void) const;
     void clear(void);
     void set(const QString & name);
