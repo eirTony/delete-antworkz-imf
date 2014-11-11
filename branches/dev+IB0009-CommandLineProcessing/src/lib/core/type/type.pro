@@ -18,7 +18,9 @@ LIBS *= -leirBase
 SOURCES += TypeLib.cpp \
     MillisecondTime.cpp \
     QQString.cpp \
-    QQRegularExpression.cpp
+    QQRegularExpression.cpp \
+    QQChar.cpp \
+    QQVariant.cpp
 
 HEADERS += TypeLib.h\
         type_global.h \
@@ -27,7 +29,9 @@ HEADERS += TypeLib.h\
         DProperty.h \
     QQString.h \
     QQRegularExpression.h \
-    CharCode.h
+    CharCode.h \
+    QQChar.h \
+    QQVariant.h
 
 unix {
     target.path = /usr/lib
