@@ -23,7 +23,8 @@ SOURCES += ExeLib.cpp \
     CommandLineOption.cpp \
     CommandLineProcessing.cpp \
     CommandLineResult.cpp \
-    CommandLineOptions.cpp
+    CommandLineOptions.cpp \
+    ArgumentSourcePair.cpp
 
 HEADERS += ExeLib.h \
     Exe_global.h \
@@ -38,7 +39,8 @@ HEADERS += ExeLib.h \
     CommandLineOption.h \
     CommandLineProcessing.h \
     CommandLineResult.h \
-    CommandLineOptions.h
+    CommandLineOptions.h \
+    ArgumentSourcePair.h
 
 unix {
     target.path = /usr/lib
