@@ -16,7 +16,7 @@ SOURCES += LogLib.cpp \
     LogItem.cpp \
     LogFork.cpp \
     Logger.cpp \
-    LogLevel.cpp \
+    Severity.cpp \
     ForkOutputBehavior.cpp \
     ItemFormatBehavior.cpp \
     TodoItem.cpp
@@ -27,7 +27,7 @@ HEADERS += LogLib.h \
     LogItem.h \
     LogFork.h \
     Logger.h \
-    LogLevel.h \
+    Severity.h \
     Log.h \
     ForkOutputBehavior.h \
     ItemFormatBehavior.h \

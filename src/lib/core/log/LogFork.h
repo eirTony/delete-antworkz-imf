@@ -35,7 +35,7 @@ private:
     bool mReportPass = false;
     ForkOutputBehavior * mpOutput = 0;
     ItemFormatBehavior * mpFormat = 0;
-    //LogLevelFilter mLevelFilter;
+    //LogSeverityFilter mSeverityFilter;
 };
 
 #endif // LOGFORK_H
