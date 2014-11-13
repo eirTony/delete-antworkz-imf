@@ -8,7 +8,7 @@
 #include <base/BasicName.h>
 #include <type/CharCode.h>
 
-#include "LogLevel.h"
+#include "Severity.h"
 
 class ForkOutputBehavior
 {
@@ -33,7 +33,7 @@ protected:
 
 protected: // pure virtual
     virtual bool open(const QUrl & url) = 0;
-    virtual bool write(const LogLevel level,
+    virtual bool write(const Severity severity,
                        const QString & message) =0;
     virtual bool flush(void) = 0;
     virtual void close(void) = 0;

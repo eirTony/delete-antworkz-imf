@@ -1,14 +1,14 @@
 #include "Logger.h"
 
 #include "LogFork.h"
-#include "LogLevel.h"
+#include "Severity.h"
 #include "TodoItem.h"
 
 Logger::Logger(void)
-    : mMaxLevel(LogLevel::nullLevel)
-    , mQuitLevel(LogLevel::Quit)
-    , mExceptionLevel(LogLevel::Exception)
-    , mSignalLevel(LogLevel::Signal)
+    : mMaxSeverity(Severity::nullLevel)
+    , mQuitSeverity(Severity::Quit)
+    , mExceptionSeverity(Severity::Exception)
+    , mSignalSeverity(Severity::Signal)
 {
 }
 
@@ -27,23 +27,23 @@ void Logger::dump(LogItem item)
     QByteArray ba = item.value(1).toByteArray();
     QString typeName = item.value(1).typeName();
     int bytes = item.value(2).toInt();
-    LogLevel level(item.getLevel());
+    Severity severity(item.getSeverity());
 
-    switch (int(level))
+    switch (int(severity))
     {
-    case LogLevel::DumpVar:
+    case Severity::DumpVar:
         item.setValue(3, typeName);
         item.setMessage("%1 = {%2} %4 %3");
         break;
 
-    case LogLevel::DumpHex:
+    case Severity::DumpHex:
         item.setValue(3, typeName);
         item.setValue(4, hexDump(ba));
         item.setMessage("%1 = %4 %3 %5 %2!");
         break;
 
     default:
-        qWarning("Logger::dump() with wrong level");
+        qWarning("Logger::dump() with wrong severity");
         return;
     }
 
@@ -64,7 +64,7 @@ bool Logger::boolean(LogItem item)
     else if (expected == actual.toBool())
     {
         rtn = true;
-        item.setLevelToPass();
+        item.setSeverityToPass();
         item.setMessage("%1 IS %2 %3!");
     }
     else
@@ -98,13 +98,13 @@ void Logger::troll(const LogItem item)
 void Logger::todo(LogItem item)
 {
     /*
-    LogLevel level(item.getLevel());
+    Severity severity(item.getSeverity());
     TodoItem todo(item.getFileName(),
                   item.getFileLine(),
                   item.values());
     if (mTodoSet.contains(todo))
     {
-        item.setLevel(LogLevel::nullLevel);
+        item.setSeverity(Severity::nullLevel);
     }
     else
     {
@@ -157,8 +157,8 @@ QStringList Logger::hexDump(const QByteArray & ba)
 LogItem::Key Logger::enqueue(LogItem item)
 {
     LogItem::Key key = item.getItemKey();
-    LogLevel level = item.getLevel();
-    if ( ! key || ! level ) return 0;
+    Severity severity = item.getSeverity();
+    if ( ! key || ! severity ) return 0;
 
     /* Stuff happens here */
 
@@ -170,24 +170,24 @@ LogItem::Key Logger::enqueue(LogItem item)
     /* Clean up and save */
     item.clearFormatted();
     mItemQueue.enqueue(item);
-    if (LogLevel::Preamble == LogLevel(level)) mPreambleList.append(item);
+    if (Severity::Preamble == Severity(severity)) mPreambleList.append(item);
     handle(item);
     return key;
 }
 
 void Logger::handle(LogItem item)
 {
-    LogLevel level = LogLevel(item.getLevel());
-    if (level > mMaxLevel) mMaxLevel = level;
+    Severity severity = Severity(item.getSeverity());
+    if (severity > mMaxSeverity) mMaxSeverity = severity;
 
     /* Stuff happens here */
 
     /* Done happening */
 
-    if (level > mSignalLevel)
+    if (severity > mSignalSeverity)
         qFatal(qPrintable("***SIGNAL: " + item.toString()));
-    else if (level > mExceptionLevel)
+    else if (severity > mExceptionSeverity)
         qFatal(qPrintable("***EXEPTION: " + item.toString()));
-    else if (level > mQuitLevel)
+    else if (severity > mQuitSeverity)
         qFatal(qPrintable("***QUIT: " + item.toString()));
 }

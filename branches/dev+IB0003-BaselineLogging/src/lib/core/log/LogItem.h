@@ -14,7 +14,7 @@
     TND(quint64, ItemKey, 0) \
     TND(qint64, TimeStamp, 0) \
     TND(FunctionInfo, Function, FunctionInfo()) \
-    TND(int, Level, 0) \
+    TND(int, Severity, 0) \
     TND(QString, Message, QString()) \
 
 
@@ -47,7 +47,7 @@ public:
     QString toString(void) const;
     QString formatted(const BasicName & name);
     void clearFormatted(void);
-    void setLevelToPass(void);
+    void setSeverityToPass(void);
 
 
 private:

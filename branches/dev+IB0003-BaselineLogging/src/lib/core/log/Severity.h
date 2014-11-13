@@ -1,7 +1,7 @@
-#ifndef LOGLEVEL_H
-#define LOGLEVEL_H
+#ifndef SEVERITY_H
+#define SEVERITY_H
 
-class LogLevel
+class Severity
 {
 public:
     enum Level
@@ -19,14 +19,14 @@ public:
     };
 
 public:
-    LogLevel(const int iLevel=0);
+    Severity(const int iLevel=0);
     operator bool (void) const;
     operator int  (void) const;
-    bool operator == (const LogLevel other) const;
-    bool operator >  (const LogLevel other) const;
+    bool operator == (const Severity other) const;
+    bool operator >  (const Severity other) const;
 
 private:
     int mLevelInt;
 };
 
-#endif // LOGLEVEL_H
+#endif // SEVERITY_H

@@ -7,7 +7,7 @@
 #include <base/FunctionMap.h>
 
 #include "LogItem.h"
-#include "LogLevel.h"
+#include "Severity.h"
 
 class ItemFormatBehavior;
 class LogFork;
@@ -40,10 +40,10 @@ private: // maybe LoggerBehavior later
     void handle(LogItem item);
 
 private:
-    LogLevel mMaxLevel;
-    LogLevel mQuitLevel;
-    LogLevel mExceptionLevel;
-    LogLevel mSignalLevel;
+    Severity mMaxSeverity;
+    Severity mQuitSeverity;
+    Severity mExceptionSeverity;
+    Severity mSignalSeverity;
     LogItem::Queue mItemQueue;
     LogItem::List mPreambleList;
     FileLinePair::Set mFileLineSet;
