@@ -1,5 +1,7 @@
 #include "Logger.h"
 
+#include <base/FunctionInfo.h>
+
 #include "LogFork.h"
 #include "Severity.h"
 #include "TodoItem.h"
@@ -97,20 +99,28 @@ void Logger::troll(const LogItem item)
 
 void Logger::todo(LogItem item)
 {
-    /*
     Severity severity(item.getSeverity());
-    TodoItem todo(item.getFileName(),
-                  item.getFileLine(),
+    FunctionInfo fni = item.getFunction();
+    if ( ! (Severity::Todo == severity
+         || Severity::NeedDo == severity
+         || Severity::MustDo == severity))
+    {
+        qWarning("Logger::todo() with wrong severity");
+        return;
+    }
+
+    TodoItem todo(FileLinePair(fni.getSourceFile(),
+                               fni.getFileLine()),
                   item.values());
-    if (mTodoSet.contains(todo))
+    if (mTodoItemSet.contains(todo))
     {
         item.setSeverity(Severity::nullLevel);
     }
     else
     {
-        mTodoSet.insert(todo);
+        mTodoItemSet.insert(todo);
     }
-    */
+    enqueue(item);
 }
 
 LogItem Logger::take(void)
