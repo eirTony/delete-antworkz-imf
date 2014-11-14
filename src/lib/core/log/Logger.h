@@ -8,6 +8,7 @@
 
 #include "LogItem.h"
 #include "Severity.h"
+#include "TodoItem.h"
 
 class ItemFormatBehavior;
 class LogFork;
@@ -44,6 +45,7 @@ private:
     Severity mQuitSeverity;
     Severity mExceptionSeverity;
     Severity mSignalSeverity;
+    TodoItem::Set mTodoItemSet;
     LogItem::Queue mItemQueue;
     LogItem::List mPreambleList;
     FileLinePair::Set mFileLineSet;

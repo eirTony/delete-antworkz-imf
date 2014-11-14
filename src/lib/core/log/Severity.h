@@ -9,10 +9,13 @@ public:
         nullLevel = 0,
         DumpVar,
         DumpHex,
+        Todo,
         Preamble,
         Info,
         Progress,
+        NeedDo,
         Quit,
+        MustDo,
         Exception,
         Signal,
         sizeLevel
