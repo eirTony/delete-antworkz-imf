@@ -104,27 +104,56 @@ bool Logger::compare(LogItem item)
 
 bool Logger::pointer(LogItem item)
 {
+    Severity severity(item.getSeverity());
+    unsigned voidPtr = item.value(4).toUInt();
+    bool rtn = !! voidPtr;
 
-}
+    QString sevName, passName;
+    switch (int(severity))
+    {
+    case Severity::Alloc:       sevName = "Allocation Failure";
+                                passName = "Allocation Success";    break;
+    case Severity::Pointer:     sevName = "Null Pointer";
+                                passName = "Good Pointer";          break;
+    case Severity::OPointer:    sevName = "Null Object Pointer";
+                                passName = "Good Object Pointer";   break;
 
-bool Logger::alloc(LogItem item)
-{
+    default:
+        qWarning("Logger::pointer() with wrong severity");
+        return false;
+    }
 
+    if (rtn)
+    {
+        item.setSeverityToPass();
+        item.setValue(4, QString::number(voidPtr, 16));
+        item.setMessage(passName+": %1 %2 %3 bytes at 0x%5");
+    }
+    else
+    {
+        item.setMessage(sevName+": %1 %2 %3 bytes %4!");
+    }
+    enqueue(item);
+    return rtn;
 }
 
 void Logger::troll(const LogItem item)
 {
-
+    (void)item;
 }
 
 void Logger::todo(LogItem item)
 {
     Severity severity(item.getSeverity());
     FunctionInfo fni = item.getFunction();
-    if ( ! (Severity::Todo == severity
-         || Severity::NeedDo == severity
-         || Severity::MustDo == severity))
+    QString sevName;
+    switch (int(severity))
     {
+    case Severity::Todo:        sevName = "TODO";   break;
+    case Severity::NeedDo:      sevName = "NEEDDO"; break;
+    case Severity::MustDo:      sevName = "MUSTDO"; break;
+
+    default:
         qWarning("Logger::todo() with wrong severity");
         return;
     }
@@ -139,6 +168,7 @@ void Logger::todo(LogItem item)
     else
     {
         mTodoItemSet.insert(todo);
+        item.setMessage(sevName+": "+fni.getPrettyFunction());
     }
     enqueue(item);
 }
