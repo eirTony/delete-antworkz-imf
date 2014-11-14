@@ -18,6 +18,13 @@ public:
     bool isError(void) const;
     QString errorString(void) const;
 
+public: // pure virtual
+    virtual bool open(const QUrl & url) = 0;
+    virtual bool write(const Severity severity,
+                       const QString & message) =0;
+    virtual bool flush(void) = 0;
+    virtual void close(void) = 0;
+
 private: // static
     static ForkOutputBehavior * forScheme(const BasicName scheme);
 
@@ -31,12 +38,6 @@ protected:
     static void registerSchemes(const EightCCList & schemeEccs,
                                 const BasicName & metaName);
 
-protected: // pure virtual
-    virtual bool open(const QUrl & url) = 0;
-    virtual bool write(const Severity severity,
-                       const QString & message) =0;
-    virtual bool flush(void) = 0;
-    virtual void close(void) = 0;
 
 private:
     BasicNameList mSchemeNames;

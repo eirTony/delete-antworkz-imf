@@ -18,6 +18,8 @@ public:
     void clear(void);
     void set(const QString & name);
     QString sortable(void) const;
+    bool operator == (const BasicName & other) const;
+    bool operator <  (const BasicName & other) const;
 
 private:
     QString mName;

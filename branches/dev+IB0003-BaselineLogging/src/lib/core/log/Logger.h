@@ -22,12 +22,11 @@ public:
     bool boolean(LogItem item);
     bool compare(LogItem item);
     bool pointer(LogItem item);
-    bool alloc(LogItem item);
     void troll(const LogItem item);
     void todo(LogItem item);
 
     LogItem take(void); // one
-    LogItem::List take(const int count=-1); // -1=all
+    LogItem::List take(int count=-1); // -1=all
     LogItem::List preambleItems(void) const;
 
     void clearForks(void);
