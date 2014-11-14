@@ -7,8 +7,11 @@
 #include <QList>
 #include <QQueue>
 
+#include <base/BaseLib.h>
 #include <base/BasicNameHash.h>
 #include <base/FunctionInfo.h>
+
+#include "Severity.h"
 
 #define LOGITEM_DATAPROPS(TND) \
     TND(quint64, ItemKey, 0) \
@@ -55,6 +58,11 @@ public:
     DECLARE_DATAPROPS(LogItem, LogItemData)
 
 public:
+    LogItem(const Severity severity,
+            const QString & typeName,
+            const QString & varName,
+            const int bytes,
+            const VoidPtr voidPtr);
     bool isNull(void) const;
     QVariant value(const int index) const;
     QVariantList values(void) const;

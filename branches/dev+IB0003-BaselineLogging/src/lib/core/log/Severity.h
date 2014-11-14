@@ -16,7 +16,10 @@ public:
         NeedDo,
         Quit,
         MustDo,
+        Pointer,
+        OPointer,
         Exception,
+        Alloc,
         Signal,
         sizeLevel
     };

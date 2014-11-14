@@ -9,6 +9,8 @@
 #include <core/Singleton.h>
 #include "ModuleInfo.h"
 
+typedef void * VoidPtr;
+
 /*! @class BaseLib
  * @brief The BaseLib is the base class in the eirBase library.
  *
