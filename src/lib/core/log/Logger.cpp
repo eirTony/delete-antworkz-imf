@@ -175,33 +175,54 @@ void Logger::todo(LogItem item)
 
 LogItem Logger::take(void)
 {
-
+    return mItemQueue.takeFirst();
 }
 
-LogItem::List Logger::take(const int count)
+LogItem::List Logger::take(int count)
 {
-
+    LogItem::List itemList;
+    if (count <= 0 || count >= mItemQueue.size())
+    {
+        itemList = mItemQueue.toVector().toList();
+        mItemQueue.clear();
+    }
+    else
+    {
+        while (count-- && ! mItemQueue.isEmpty())
+            itemList << mItemQueue.takeFirst();
+    }
+    return itemList;
 }
 
 LogItem::List Logger::preambleItems(void) const
 {
-
+    return mPreambleList;
 }
 
 void Logger::clearForks(void)
 {
-
+    foreach (BasicName name, mNameForkMap.keys())
+        unfork(name);
 }
 
 bool Logger::fork(const BasicName & forkName,
           const QUrl & forkUrl)
 {
-
+    if (mNameForkMap.contains(forkName))
+        unfork(forkName);
+    LogFork * logFork = new LogFork(forkName, forkUrl);
+    mNameForkMap.insert(forkName, logFork);
+    return logFork->isError();
 }
 
 bool Logger::unfork(const BasicName & forkName)
 {
-
+    LogFork * fork = mNameForkMap.value(forkName);
+    if ( ! fork) return false;
+    fork->close();
+    mNameForkMap.remove(forkName);
+    delete fork;
+    return true;
 }
 
 QStringList Logger::hexDump(const QByteArray & ba)

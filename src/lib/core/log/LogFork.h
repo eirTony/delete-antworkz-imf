@@ -5,10 +5,11 @@
 #include <QUrlQuery>
 
 #include <base/BasicName.h>
+#include <base/BasicNameHash.h>
 
 class ForkOutputBehavior;
-class LogItem;
 class ItemFormatBehavior;
+class LogItem;
 
 class LogFork
 {
@@ -19,8 +20,8 @@ public:
     bool isStarted(void) const;
     bool isError(void) const;
     QString errorString(void) const;
-
     void write(LogItem item);
+    void close(void);
 
 private:
     BasicName mName;
