@@ -55,7 +55,6 @@ void Logger::dump(LogItem item)
 bool Logger::boolean(LogItem item)
 {
     bool rtn = false;
-    BasicName varName(item.value(0).toString());
     bool expected = item.value(1).toBool();
     QVariant actual = item.value(2);
     if ( ! actual.canConvert(QVariant::nameToType("bool")))
@@ -79,7 +78,28 @@ bool Logger::boolean(LogItem item)
 
 bool Logger::compare(LogItem item)
 {
+    item.setValue(4, item.value(3).typeName());
+    item.setValue(5, item.value(1).typeName());
+    item.setValue(6, item.relationName());
 
+    if ( ! item.canConvert(1, 3))
+    {
+        item.setMessage("Can't convert %3 (a %5) to %6; expected %2; is %4");
+        return false;
+    }
+
+    bool rtn = item.evaluate(1, 3);
+    if (rtn)
+    {
+        item.setSeverityToPass();
+        item.setMessage("%1 IS %7 to %3 %2!");
+    }
+    else
+    {
+        item.setMessage("%1 %6:(%2) is NOT %7 to %3 %5:(%4)");
+    }
+    enqueue(item);
+    return rtn;
 }
 
 bool Logger::pointer(LogItem item)

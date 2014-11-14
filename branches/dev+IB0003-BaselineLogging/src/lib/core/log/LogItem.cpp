@@ -59,3 +59,20 @@ void LogItem::setSeverityToPass(void)
 {
 
 }
+
+bool LogItem::evaluate(const int expectedIndex,
+                       const int actualIndex) const
+{
+    return false;
+}
+
+bool LogItem::canConvert(const int expectedIndex,
+                         const int actualIndex)
+{
+    return false;
+}
+
+QString LogItem::relationName(void) const
+{
+    return "rel";
+}
