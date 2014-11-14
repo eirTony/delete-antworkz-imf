@@ -71,4 +71,8 @@ TBD
 
 ===ToDo ===
 
-...
+{{{
+void Logger::todo(item)
+LogItem::ctor(FnInfo, Severity, QVariantList=())
+value()s from user; appended to message
+}}}
