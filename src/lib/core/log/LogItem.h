@@ -15,6 +15,7 @@
     TND(qint64, TimeStamp, 0) \
     TND(FunctionInfo, Function, FunctionInfo()) \
     TND(int, Severity, 0) \
+    TND(int, Relation, 0) \
     TND(QString, Message, QString()) \
 
 
@@ -34,6 +35,21 @@ public:
     typedef quint64 Key;
     typedef QList<LogItem> List;
     typedef QQueue<LogItem> Queue;
+    enum Relation
+    {
+        nullRelation=0,
+        Data,
+        Equal,
+        NotEqual,
+        LessThan,
+        LessEqual,
+        MoreThan,
+        MoreEqual,
+        False,
+        True,
+        sizeRelation,
+        Not=0x8000000,
+    };
 
     DECLARE_PARENT_DATAPROPS(LOGITEM_DATAPROPS)
     DECLARE_DATAPROPS(LogItem, LogItemData)
@@ -48,7 +64,11 @@ public:
     QString formatted(const BasicName & name);
     void clearFormatted(void);
     void setSeverityToPass(void);
-
+    bool evaluate(const int expectedIndex,
+                  const int actualIndex) const;
+    bool canConvert(const int expectedIndex,
+                    const int actualIndex);
+    QString relationName(void) const;
 
 private:
     QVariantList mVariantList;
