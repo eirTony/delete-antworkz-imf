@@ -17,14 +17,14 @@ Note: `FUNCTIONINFO` and `FUNCTIONINFO_LINE` are #defined in `base/FunctionInfo.
 
 {{{
 void Logger::report(item)
-LogItem::ctor(FnInfo, LogLevel, Message, QVarList)
+LogItem::ctor(FnInfo, Severity, Message, QVarList)
 }}}
 
 === Dump ===
 
 {{{
 void Logger::dump(item)
-LogItem::ctor(FnInfo, LogLevel, TBD)
+LogItem::ctor(FnInfo, Severity, TBD)
 value(0) "%1" QString varName
 value(1) "%2" QVariant value
 value(2) "%3" int bytes|0
@@ -36,7 +36,7 @@ value(2) "%3" int bytes|0
 
 {{{
 bool Logger::boolean(item) true if expected
-LogItem::ctor(FnInfo, LogLevel, varName, bool expected, bool actual)
+LogItem::ctor(FnInfo, Severity, varName, bool expected, bool actual)
 value(0) "%1" QString varName 
 value(1) "%2" bool expected
 value(2) "%3" (bool?) actual
@@ -45,7 +45,17 @@ value(2) "%3" (bool?) actual
 
 === Compare ===
 
-...
+{{{
+bool Logger::compare(item) true if expected
+LogItem::ctor(FnInfo, Severity, Relation, expName, expected, actName, actual)
+value(0) "%1" QString expName 
+value(1) "%2" QVariant expected
+value(2) "%3" QString actName
+value(3) "%4" QVariant actual
++value(4) "%5" QString actualTypeName
++value(5) "%6" QString expectedTypeName
++value(6) "%7" QString relationName
+}}}
 
 === Pointer ===
 
