@@ -15,6 +15,7 @@ Note: `FUNCTIONINFO` and `FUNCTIONINFO_LINE` are #defined in `base/FunctionInfo.
 
 === Report ===
 
+Handles: Trace, Detail, MoreInfo, Info, Progress
 {{{
 void Logger::report(item)
 LogItem::ctor(FnInfo, Severity, Message, QVarList)
@@ -22,6 +23,7 @@ LogItem::ctor(FnInfo, Severity, Message, QVarList)
 
 === Dump ===
 
+Handles: DumpVar, DumpHex
 {{{
 void Logger::dump(item)
 LogItem::ctor(FnInfo, Severity, TBD)
@@ -34,6 +36,7 @@ value(2) "%3" int bytes|0
 
 === Boolean ===
 
+Handles: Expect, ExpNot, Assert, AssNot, QuitIf?, QuitNot?, Signal, SigNot
 {{{
 bool Logger::boolean(item) true if expected
 LogItem::ctor(FnInfo, Severity, varName, bool expected, bool actual)
@@ -45,6 +48,7 @@ value(2) "%3" (bool?) actual
 
 === Compare ===
 
+Handles: UsuallyNE, ExpectEQ, AssertLT, ExpectLE, UsuallyGT, AssertGE
 {{{
 bool Logger::compare(item) true if expected
 LogItem::ctor(FnInfo, Severity, Relation, expName, expected, actName, actual)
@@ -59,18 +63,26 @@ value(3) "%4" QVariant actual
 
 === Pointer ===
 
-...
-
-=== Alloc ===
-
-...
+Handles: Alloc, Pointer, OPointer
+{{{
+bool Logger::pointer(item) true if pass
+ctor(FnInfo, Severity, typeName, varName, voidPtr)
+value(0) "%1" typeName
+value(1) "%2" varName
+value(2) "%3" byteCount
+value(3) "%4" voidPtr
++value(4) "%5" string voidPtr
+}}}
 
 === Troll ===
+
+Handles: QFatal, QSevere, QWarning, QDebug
 
 TBD
 
 ===ToDo ===
 
+Handles: ToDo, NeedDo, MustDo
 {{{
 void Logger::todo(item)
 LogItem::ctor(FnInfo, Severity, QVariantList=())
