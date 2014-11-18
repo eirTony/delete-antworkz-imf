@@ -13,15 +13,18 @@
 class ForkOutputBehavior
 {
 public:
-    virtual ~ForkOutputBehavior() {}
+    bool setUrlVars(const QUrl & url);
     bool isWritable(void) const;
     bool isError(void) const;
     QString errorString(void) const;
 
+public: // virtual
+    virtual ~ForkOutputBehavior() {}
+
 public: // pure virtual
     virtual bool open(const QUrl & url) = 0;
     virtual bool write(const Severity severity,
-                       const QString & message) =0;
+                       const QString & message) = 0;
     virtual bool flush(void) = 0;
     virtual void close(void) = 0;
 

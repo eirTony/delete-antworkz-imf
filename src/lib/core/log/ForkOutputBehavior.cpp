@@ -7,3 +7,8 @@ ForkOutputBehavior::ForkOutputBehavior(const BasicNameList & schemeName,
     : mWritable(false)
 {
 }
+
+bool setUrlVars(const QUrl & url)
+{
+
+}
