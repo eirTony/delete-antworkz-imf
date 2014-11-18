@@ -37,14 +37,17 @@ protected:
     bool setWritable(const bool writable=true);
     bool setError(const QString & error);
 
-protected:
+protected: // static
     static void registerSchemes(const EightCCList & schemeEccs,
                                 const BasicName & metaName);
 
 
 private:
     BasicNameList mSchemeNames;
-    EightCCList mSchemeEccs;
+    EightCCList mRegisteredEccs;
+    QUrl mUrl;
+    EightCC mSchemeEcc;
+    BasicNameMap<QString> mUrlOptionMap;
     bool mWritable;
     QString mErrorString;
 
