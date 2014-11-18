@@ -1,38 +1,34 @@
 #ifndef SEVERITY_H
 #define SEVERITY_H
 
+#include <base/BasicName.h>
+#include <base/BasicNameMap.h>
+
 class Severity
 {
 public:
-    enum Level
-    {
-        nullLevel = 0,
-        DumpVar,
-        DumpHex,
-        Todo,
-        Preamble,
-        Info,
-        Progress,
-        NeedDo,
-        Quit,
-        MustDo,
-        Pointer,
-        OPointer,
-        Exception,
-        Alloc,
-        Signal,
-        sizeLevel
-    };
 
 public:
     Severity(const int iLevel=0);
-    operator bool (void) const;
+    Severity(const QString & name);
+    BasicName name(void) const;
+//    operator bool (void) const;
     operator int  (void) const;
     bool operator == (const Severity other) const;
     bool operator >  (const Severity other) const;
 
-private:
+private: // static functions
+    static void staticCtor(void);
+
+private: // members
     int mLevelInt;
+
+private: // static members
+    static const int csmInitialValue;
+    static const int csmMaximumValue;
+    static const BasicName::List csmNameList;
+    static BasicNameMap<int> smNameValueMap;
+    static QMap<int, BasicName> smValueNameMap;
 };
 
 #endif // SEVERITY_H

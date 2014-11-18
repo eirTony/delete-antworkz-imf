@@ -11,6 +11,7 @@ class BASESHARED_EXPORT BasicName
 {
 public:
     typedef QList<BasicName> List;
+    // HOWTO: template <class T> typedef QMap<BasicName, T> Map;
 
 public:
     BasicName(const QString & name=QString());
@@ -20,6 +21,7 @@ public:
     QString sortable(void) const;
     bool operator == (const BasicName & other) const;
     bool operator <  (const BasicName & other) const;
+    operator QString (void) const;
 
 private:
     QString mName;

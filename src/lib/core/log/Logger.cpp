@@ -7,10 +7,10 @@
 #include "TodoItem.h"
 
 Logger::Logger(void)
-    : mMaxSeverity(Severity::nullLevel)
-    , mQuitSeverity(Severity::Quit)
-    , mExceptionSeverity(Severity::Exception)
-    , mSignalSeverity(Severity::Signal)
+    : mMaxSeverity(Severity("Null"))
+    , mQuitSeverity(Severity("Quit"))
+    , mExceptionSeverity(Severity("Exception"))
+    , mSignalSeverity(Severity("Signal"))
 {
 }
 
@@ -25,20 +25,39 @@ void Logger::report(const LogItem item)
 
 void Logger::dump(LogItem item)
 {
+    static const int scDumpVar = Severity("DumpVar");
+    static const int scDumpHex = Severity("DumpHex");
     QString varName = item.value(0).toString();
     QByteArray ba = item.value(1).toByteArray();
     QString typeName = item.value(1).typeName();
     int bytes = item.value(2).toInt();
     Severity severity(item.getSeverity());
-
+#if 1
+    if (scDumpVar == severity)
+    {
+        item.setValue(3, typeName);
+        item.setMessage("%1 = {%2} %4 %3");
+    }
+    else if (scDumpHex == severity)
+    {
+        item.setValue(3, typeName);
+        item.setValue(4, hexDump(ba));
+        item.setMessage("%1 = %4 %3 %5 %2!");
+    }
+    else
+    {
+        qWarning("Logger::dump() with wrong severity");
+        item.setSeverity(0); // slight smell
+    }
+#else
     switch (int(severity))
     {
-    case Severity::DumpVar:
+    case scDumpVar:
         item.setValue(3, typeName);
         item.setMessage("%1 = {%2} %4 %3");
         break;
 
-    case Severity::DumpHex:
+    case scDumpHex:
         item.setValue(3, typeName);
         item.setValue(4, hexDump(ba));
         item.setMessage("%1 = %4 %3 %5 %2!");
@@ -48,7 +67,7 @@ void Logger::dump(LogItem item)
         qWarning("Logger::dump() with wrong severity");
         return;
     }
-
+#endif
     enqueue(item);
 }
 
@@ -104,23 +123,33 @@ bool Logger::compare(LogItem item)
 
 bool Logger::pointer(LogItem item)
 {
+    static const int scAlloc = Severity("Alloc");
+    static const int scPointer = Severity("Pointer");
+    static const int scQPointer = Severity("QPointer");
     Severity severity(item.getSeverity());
     unsigned voidPtr = item.value(3).toUInt();
     bool rtn = !! voidPtr;
 
     QString sevName, passName;
-    switch (int(severity))
+    if (scAlloc == severity)
     {
-    case Severity::Alloc:       sevName = "Allocation Failure";
-                                passName = "Allocation Success";    break;
-    case Severity::Pointer:     sevName = "Null Pointer";
-                                passName = "Good Pointer";          break;
-    case Severity::OPointer:    sevName = "Null Object Pointer";
-                                passName = "Good Object Pointer";   break;
-
-    default:
+        sevName =  "Allocation Failure";
+        passName = "Allocation Success";
+    }
+    else if (scPointer == severity)
+    {
+        sevName = "Null Pointer";
+        passName = "Good Pointer";
+    }
+    else if (scQPointer == severity)
+    {
+        sevName = "Null QObject Pointer";
+        passName = "Good QObject Pointer";
+    }
+    else
+    {
         qWarning("Logger::pointer() with wrong severity");
-        return false;
+        item.setSeverity(0);
     }
 
     if (rtn)
@@ -146,29 +175,25 @@ void Logger::todo(LogItem item)
 {
     Severity severity(item.getSeverity());
     FunctionInfo fni = item.getFunction();
-    QString sevName;
-    switch (int(severity))
-    {
-    case Severity::Todo:        sevName = "TODO";   break;
-    case Severity::NeedDo:      sevName = "NEEDDO"; break;
-    case Severity::MustDo:      sevName = "MUSTDO"; break;
-
-    default:
-        qWarning("Logger::todo() with wrong severity");
-        return;
-    }
+    BasicName sevName(severity.name());
 
     TodoItem todo(FileLinePair(fni.getSourceFile(),
                                fni.getFileLine()),
                   item.values());
     if (mTodoItemSet.contains(todo))
     {
-        item.setSeverity(Severity::nullLevel);
+        item.setSeverity(0);
     }
     else
     {
         mTodoItemSet.insert(todo);
-        item.setMessage(sevName+": "+fni.getPrettyFunction());
+#if 0
+        QString message(fni.getPrettyFunction());
+        message.prepend(": ");
+        message.prepend(sevName.toUpper());
+        item.setMessage(message);
+#endif
+        item.setMessage(QString(sevName)+": "+fni.getPrettyFunction());
     }
     enqueue(item);
 }
@@ -251,7 +276,7 @@ LogItem::Key Logger::enqueue(LogItem item)
     /* Clean up and save */
     item.clearFormatted();
     mItemQueue.enqueue(item);
-    if (Severity::Preamble == Severity(severity)) mPreambleList.append(item);
+    //if (Severity::Preamble == Severity(severity)) mPreambleList.append(item);
     handle(item);
     return key;
 }

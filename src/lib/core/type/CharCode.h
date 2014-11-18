@@ -36,12 +36,13 @@ public:
 #else
 #warning Need to support Q_BIG_ENDIAN
 #endif
-
+    CharCode(const QString & s) : u(0) { set(s); }
     /** @fn     CharCode(const TCC & other)
       * @brief  copy constructor
       */
     CharCode(const CharCode & other) : u(other.u) {}
 
+    void set(const QString & s) { const char * c = qPrintable(s); u = *(UINT *)c; }
     /** @fn     isNull(void) const
       * @brief  returns /ret true if character code is null
       */
