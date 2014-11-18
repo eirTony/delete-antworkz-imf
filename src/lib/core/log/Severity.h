@@ -17,10 +17,10 @@ public:
     bool operator == (const Severity other) const;
     bool operator >  (const Severity other) const;
 
-private: // static functions
+public: // static functions
     static void staticCtor(void);
 
-private: // members
+private:
     int mLevelInt;
 
 private: // static members

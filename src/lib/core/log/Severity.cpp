@@ -52,6 +52,17 @@ BasicNameMap<int> Severity::smNameValueMap;
 
 QMap<int, BasicName> Severity::smValueNameMap;
 
+void Severity::staticCtor(void)
+{
+    int value = csmInitialValue;
+    foreach (BasicName name, csmNameList)
+    {
+        smNameValueMap.insert(name, value);
+        smValueNameMap.insert(value, name);
+        ++value;
+    }
+}
+
 Severity::Severity(const int iLevel)
     : mLevelInt((mLevelInt < csmInitialValue
                  || mLevelInt > csmMaximumValue)
