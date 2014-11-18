@@ -19,7 +19,9 @@ SOURCES += LogLib.cpp \
     Severity.cpp \
     ForkOutputBehavior.cpp \
     ItemFormatBehavior.cpp \
-    TodoItem.cpp
+    TodoItem.cpp \
+    BuiltinOutputBehavior.cpp \
+    BuiltinFormatBehavior.cpp
 
 HEADERS += LogLib.h \
     Version.h \
@@ -31,7 +33,9 @@ HEADERS += LogLib.h \
     Log.h \
     ForkOutputBehavior.h \
     ItemFormatBehavior.h \
-    TodoItem.h
+    TodoItem.h \
+    BuiltinOutputBehavior.h \
+    BuiltinFormatBehavior.h
 
 unix {
     target.path = /usr/lib

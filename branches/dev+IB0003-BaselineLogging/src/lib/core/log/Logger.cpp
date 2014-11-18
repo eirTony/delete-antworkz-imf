@@ -105,7 +105,7 @@ bool Logger::compare(LogItem item)
 bool Logger::pointer(LogItem item)
 {
     Severity severity(item.getSeverity());
-    unsigned voidPtr = item.value(4).toUInt();
+    unsigned voidPtr = item.value(3).toUInt();
     bool rtn = !! voidPtr;
 
     QString sevName, passName;
