@@ -44,7 +44,7 @@ public:
     Logger(void);
 ...
 }
-/*! @class Logger
+/*! @class Logger Logger.h <log/Logger.h>
  * @brief Engine for Logging Facility
  * @ingroup LogLib
  *
@@ -61,7 +61,8 @@ public:
 
 The following elements are considered to provide minimal Doxygen support:
  * `@file` for every .cpp and .h source code file
- * `@class` for every class with basic usage and including these tags
+ * `@defgroup` for the .h file for each library class file
+ * `@class ClassName.h <dir/ClassName.h>` for every class with basic usage and including these tags
   * `@ingroup`
   * `@since` and `@date` for timeline important documentation
   * `@bug` as needed to document suspected bugs or point to a tracked issue
