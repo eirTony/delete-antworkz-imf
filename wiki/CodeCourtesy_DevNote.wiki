@@ -2,12 +2,83 @@
 
 = Introduction =
 
-Add your content here.
+...
 
 
-= Details =
+= Etiquette =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+...
+
+== First Rule ==
+
+...
+
+== Check-in Standards ==
+
+...
+
+= Documentation =
+
+...
+
+== Doxygen ==
+
+...
+
+=== Block Comment Format ===
+
+Use `/*!` Doxygen trigger in the first column 
+and close with ` *\` (the star in the same column as the trigger).
+The ` * ` in subsequent lines is optional, 
+but it is easier to keep it in QtCreator editor.
+The block comment should touch the bottom of the entity that it relates to,
+but a blank line below.
+If it is a stand alone block comment it should have a blank line top and bottom.
+{{{
+/*! @file Logger.h LogLib Logger class definitions
+ */
+#include "LogLib.h"
+class Logger
+{
+public:
+    Logger(void);
+...
+}
+/*! @class Logger
+ * @brief Engine for Logging Facility
+ * @ingroup LogLib
+ *
+ * Detailed description ...
+ *
+ */
+}}}
+
+=== Lineend Comment Format ===
+
+...
+
+=== Minimum ===
+
+The following elements are considered to provide minimal Doxygen support:
+ * `@file` for every .cpp and .h source code file
+ * `@class` for every class with basic usage and including these tags
+  * `@ingroup`
+  * `@since` and `@date` for timeline important documentaion
+  * `@bug` as needed to document suspected bugs or point to a tracked issue
+
+
+
+
+=== Secondary ===
+
+...
+
+=== Fully ===
+
+...
+
+== Wiki ==
+
+...
+
+= Style =
