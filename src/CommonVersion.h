@@ -1,11 +1,12 @@
 #ifndef COMMONVERSION_H
 #define COMMONVERSION_H
 
-#define CVER_STRING     "v2.02"
+#define CVER_STRING     "v2.03A+IB0009-CommandLineProcessing"
 #define CVER_MAJOR      2
 #define CVER_MINOR      2
-#define CVER_BRANCH     0
-#define CVER_RELEASE    0xF0
+#define CVER_BRANCH     3
+#define CVER_RELEASE    1
+#define CVER_BUILD      1002
 #define CVER_COPYRIGHT  "Copyright (c) 2003-2014, " \
                         "Eclipse Identity Recognition Corporation. " \
                         "All rights reserved worldwide."
