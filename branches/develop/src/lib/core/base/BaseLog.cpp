@@ -1,6 +1,6 @@
-/*! @file BaseLog.h Definitions for BaseLog class
-*
-*/
+/*! @file   BaseLog.cpp BaseLib BaseLog class definitions
+ */
+
 #include "BaseLog.h"
 #include <QSharedData>
 
