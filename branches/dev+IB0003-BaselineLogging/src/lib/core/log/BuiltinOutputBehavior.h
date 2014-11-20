@@ -7,17 +7,22 @@
 class LOGSHARED_EXPORT BuiltinOutputBehavior : public ForkOutputBehavior
 {
 public:
-    BuiltinOutputBehavior(const QUrl & url=QUrl());
+    BuiltinOutputBehavior(void);
     bool setUrl(const QUrl & url);
 
 public: // virtual
 
 public: // pure virtual implementations
-    virtual bool open(const QUrl & url);
+    virtual bool open(void);
     virtual bool write(const Severity severity,
                        const QString & message);
     virtual bool flush(void);
     virtual void close(void);
+
+public: // static
+    const static BasicNameList mSchemeNames;
+    const static EightCCList mRegisteredEccs;
+    const static BasicName csmMetaName;
 
 };
 

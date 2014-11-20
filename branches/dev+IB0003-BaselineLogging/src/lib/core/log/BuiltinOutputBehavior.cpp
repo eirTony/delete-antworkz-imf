@@ -1,23 +1,28 @@
 #include "BuiltinOutputBehavior.h"
 
 #include <base/BasicName.h>
-
-BuiltinOutputBehavior::BuiltinOutputBehavior(const QUrl & url)
-    : ForkOutputBehavior(BasicName::List()
+/*
+BasicName::List()
                          << BasicName("troll")
                          << BasicName("txtfile")
                          << BasicName("stdout")
                          << BasicName("stderr"),
-                         BasicName("BuiltinOutputBehavior"))
+                         BasicName("BuiltinOutputBehavior")
+*/
+BuiltinOutputBehavior::BuiltinOutputBehavior(void)
 {
 }
 
 bool setUrl(const QUrl & url)
 {
+    if ( ! url.isValid()) return false;
 
+    // DOIT
+
+    return false;
 }
 
-bool BuiltinOutputBehavior::open(const QUrl & url)
+bool BuiltinOutputBehavior::open(void)
 {
     return false;
 }
