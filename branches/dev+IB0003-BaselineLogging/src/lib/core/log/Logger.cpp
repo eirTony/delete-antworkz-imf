@@ -231,11 +231,12 @@ void Logger::clearForks(void)
 }
 
 bool Logger::fork(const BasicName & forkName,
-          const QUrl & forkUrl)
+                  const QUrl & forkUrl)
 {
     if (mNameForkMap.contains(forkName))
         unfork(forkName);
     LogFork * logFork = new LogFork(forkName, forkUrl);
+    if ( ! logFork) return false;
     mNameForkMap.insert(forkName, logFork);
     return logFork->isError();
 }
