@@ -6,9 +6,12 @@
 
 LogFork::LogFork(const BasicName &name,
                  const QUrl &url)
-    : mName(name)
+    : mForkName(name)
     , mUrl(url)
+    , mSchemeEcc(url.scheme())
+    , mQuery(url.query())
 {
+    parseUrl(mUrl);
 }
 
 bool LogFork::isError(void) const
@@ -30,12 +33,9 @@ void LogFork::close(void)
 bool LogFork::parseUrl(const QUrl & url)
 {
     if ( ! url.isValid()) return false;
-    mUrl = url;
-    mSchemeEcc = EightCC(url.scheme());
     //ASSERT(mRegisteredEccs.contains(mSchemeEcc));
-    const QUrlQuery query(url);
     typedef QPair<QString, QString> QStringPair;
-    const QList<QStringPair> items(query.queryItems());
+    const QList<QStringPair> items(mQuery.queryItems());
     foreach (QStringPair item, items)
     {
         BasicName name(item.first);

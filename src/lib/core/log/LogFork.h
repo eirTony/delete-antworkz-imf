@@ -33,7 +33,7 @@ private:
     QString mErrorString;
     bool mWritable = false;
 
-    BasicName mName;
+    BasicName mForkName;
     EightCC mSchemeEcc;
     QUrl mUrl;
     QUrlQuery mQuery;
@@ -45,8 +45,10 @@ private:
     ForkOutputBehavior * mpOutput = 0;
     ItemFormatBehavior * mpFormat = 0;
     //LogSeverityFilter mSeverityFilter;
-
-
 };
+/*! @class LogFork "LogFork.h" <log/LogFork.h>
+ * @todo LogSeverityFilter
+ * @since Started in v2.03
+ */
 
 #endif // LOGFORK_H

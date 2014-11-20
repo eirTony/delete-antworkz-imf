@@ -28,8 +28,9 @@ public: // pure virtual
     virtual bool flush(void) = 0;
     virtual void close(void) = 0;
 
-private: // static
-    static ForkOutputBehavior * forScheme(const EightCC schemeEcc);
+public: // static
+    static ForkOutputBehavior * forScheme(const EightCC schemeEcc,
+                                          const LogFork * const fork);
 
 protected:
     ForkOutputBehavior(void);
@@ -53,6 +54,5 @@ private:
 
 private: // static
     static QHash<EightCC, BasicName> smEccMetaHash;
-
 };
 #endif // FORKOUTPUTBEHAVIOR_H
