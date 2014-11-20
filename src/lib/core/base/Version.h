@@ -1,5 +1,4 @@
-/*! @file   base/Version.h   Version info for eirBase library
-*
+/*! @file   base/Version.h   Version info specific to BaseLib
 */
 
 #ifndef VERSION_H
