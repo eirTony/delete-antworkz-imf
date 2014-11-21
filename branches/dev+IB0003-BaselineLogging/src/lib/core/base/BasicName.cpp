@@ -2,12 +2,24 @@
 
 #include <QtDebug>
 
+BasicName::BasicName(void) {}
+
 BasicName::BasicName(const QString & name)
 {
     set(name);
 }
 
+BasicName::BasicName(const char * const chars)
+{
+    set(QString::fromLatin1(chars));
+}
+
 bool BasicName::isNull(void) const
+{
+    return mName.isNull();
+}
+
+bool BasicName::isEmpty(void) const
 {
     return mName.isEmpty();
 }

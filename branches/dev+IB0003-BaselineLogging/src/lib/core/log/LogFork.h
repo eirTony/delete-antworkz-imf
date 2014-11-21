@@ -8,6 +8,8 @@
 #include <base/BasicNameHash.h>
 #include <type/CharCode.h>
 
+#include "Severity.h"
+
 class ForkOutputBehavior;
 class ItemFormatBehavior;
 class LogItem;
@@ -27,24 +29,33 @@ public:
 
 private:
     bool parseUrl(const QUrl & url);
+    QVariant urlOption(const BasicName & name);
+    QString parseLineend(const QString & option);
 
 private:
-    bool mIsStarted = false;
     QString mErrorString;
+    bool mIsStarted = false;
     bool mWritable = false;
-
     BasicName mForkName;
+
+    // url
     EightCC mSchemeEcc;
     QUrl mUrl;
     QUrlQuery mQuery;
     BasicNameHash<QString> mUrlOptionMap;
 
+    // query results
     BasicName mFormatName;
+    Severity mMinSeverity = Severity("Info");
+    Severity mMaxSeverity = Severity("Maximum");
+    //LogSeverityFilter mSeverityFilter;
     bool mAutoFlush = false;
     bool mReportPass = false;
+    QString mLineendString;
+
+    // helpers
     ForkOutputBehavior * mpOutput = 0;
     ItemFormatBehavior * mpFormat = 0;
-    //LogSeverityFilter mSeverityFilter;
 };
 /*! @class LogFork "LogFork.h" <log/LogFork.h>
  * @todo LogSeverityFilter
