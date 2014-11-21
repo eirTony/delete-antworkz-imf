@@ -43,5 +43,33 @@ bool LogFork::parseUrl(const QUrl & url)
         mUrlOptionMap.insert(name, value);
     }
 
+    // Interpret Query Values
+    QVariant varFormat = urlOption("Format");
+    QVariant varMinSeverity = urlOption("MinSeverity");
+    QVariant varMaxSeverity = urlOption("MinSeverity");
+    //mSeverityFilter "Filter"
+    QVariant varAutoFlush = urlOption("MaxSeverity");
+    QVariant varReportPass = urlOption("ReportPass");
+    if ( ! varFormat.isNull())
+        mFormatName = varFormat.toString();
+    if ( ! varMinSeverity.isNull())
+        mMinSeverity = Severity(varMinSeverity.toString());
+    if ( ! varMaxSeverity.isNull())
+        mMaxSeverity = Severity(varMaxSeverity.toString());
+    if ( ! varAutoFlush.isNull())
+        mAutoFlush = varAutoFlush.toBool();
+    if ( ! varReportPass.isNull())
+        mReportPass = varReportPass.toBool();
+
     return true;
+}
+
+QVariant LogFork::urlOption(const BasicName & name)
+{
+    return QVariant();
+}
+
+QString LogFork::parseLineend(const QString & option)
+{
+    return QString();
 }

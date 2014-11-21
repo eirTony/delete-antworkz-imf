@@ -14,8 +14,11 @@ public:
     // HOWTO: template <class T> typedef QMap<BasicName, T> Map;
 
 public:
-    BasicName(const QString & name=QString());
+    BasicName(void);
+    BasicName(const QString & name);
+    BasicName(const char * const chars);
     bool isNull(void) const;
+    bool isEmpty(void) const;
     void clear(void);
     void set(const QString & name);
     QString sortable(void) const;
