@@ -24,6 +24,7 @@ public:
     QString sortable(void) const;
     bool operator == (const BasicName & other) const;
     bool operator <  (const BasicName & other) const;
+    QString operator () (void) const;
     operator QString (void) const;
 
 private:

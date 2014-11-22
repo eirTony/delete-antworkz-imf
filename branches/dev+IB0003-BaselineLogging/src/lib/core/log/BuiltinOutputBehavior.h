@@ -22,7 +22,7 @@ public: // pure virtual implementations
 public: // static
     const static BasicNameList mSchemeNames;
     const static EightCCList mRegisteredEccs;
-    const static BasicName csmMetaName;
+    const static QByteArray csmMetaName;
 
 };
 

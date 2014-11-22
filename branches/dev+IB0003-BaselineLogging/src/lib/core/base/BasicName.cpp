@@ -50,6 +50,12 @@ bool BasicName::operator <  (const BasicName & other) const
 {
     return sortable() <  other.sortable();
 }
+
+QString BasicName::operator () (void) const
+{
+    return mName;
+}
+
 BasicName::operator QString (void) const
 {
     return mName;

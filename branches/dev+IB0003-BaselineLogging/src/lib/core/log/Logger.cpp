@@ -27,12 +27,9 @@ void Logger::dump(LogItem item)
 {
     static const int scDumpVar = Severity("DumpVar");
     static const int scDumpHex = Severity("DumpHex");
-    QString varName = item.value(0).toString();
     QByteArray ba = item.value(1).toByteArray();
     QString typeName = item.value(1).typeName();
-    int bytes = item.value(2).toInt();
     Severity severity(item.getSeverity());
-#if 1
     if (scDumpVar == severity)
     {
         item.setValue(3, typeName);
@@ -47,27 +44,8 @@ void Logger::dump(LogItem item)
     else
     {
         qWarning("Logger::dump() with wrong severity");
-        item.setSeverity(0); // slight smell
+        item.setSeverity(0);
     }
-#else
-    switch (int(severity))
-    {
-    case scDumpVar:
-        item.setValue(3, typeName);
-        item.setMessage("%1 = {%2} %4 %3");
-        break;
-
-    case scDumpHex:
-        item.setValue(3, typeName);
-        item.setValue(4, hexDump(ba));
-        item.setMessage("%1 = %4 %3 %5 %2!");
-        break;
-
-    default:
-        qWarning("Logger::dump() with wrong severity");
-        return;
-    }
-#endif
     enqueue(item);
 }
 
@@ -187,13 +165,7 @@ void Logger::todo(LogItem item)
     else
     {
         mTodoItemSet.insert(todo);
-#if 0
-        QString message(fni.getPrettyFunction());
-        message.prepend(": ");
-        message.prepend(sevName.toUpper());
-        item.setMessage(message);
-#endif
-        item.setMessage(QString(sevName)+": "+fni.getPrettyFunction());
+        item.setMessage(sevName()+": "+fni.getPrettyFunction());
     }
     enqueue(item);
 }
@@ -235,10 +207,10 @@ bool Logger::fork(const BasicName & forkName,
 {
     if (mNameForkMap.contains(forkName))
         unfork(forkName);
-    LogFork * logFork = new LogFork(forkName, forkUrl);
-    if ( ! logFork) return false;
-    mNameForkMap.insert(forkName, logFork);
-    return logFork->isError();
+    LogFork * fork = new LogFork(forkName, forkUrl);
+    if ( ! fork) return false;
+    mNameForkMap.insert(forkName, fork);
+    return fork->isError();
 }
 
 bool Logger::unfork(const BasicName & forkName)
