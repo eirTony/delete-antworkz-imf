@@ -12,6 +12,10 @@ LogFork::LogFork(const BasicName &name,
     , mQuery(url.query())
 {
     parseUrl(mUrl);
+    mpOutput = ForkOutputBehavior::forScheme(mSchemeEcc, this);
+    mpOutput->setFork(this);
+    mpOutput->setScheme(mSchemeEcc);
+    mpOutput->setUrl(mUrl);
 }
 
 bool LogFork::isError(void) const
@@ -64,6 +68,12 @@ bool LogFork::parseUrl(const QUrl & url)
     return true;
 }
 
+void LogFork::setup(const LogFork * const fork,
+                               const EightCC schemeEcc)
+{
+    // todo
+}
+
 QVariant LogFork::urlOption(const BasicName & name)
 {
     return QVariant();
@@ -72,4 +82,9 @@ QVariant LogFork::urlOption(const BasicName & name)
 QString LogFork::parseLineend(const QString & option)
 {
     return QString();
+}
+
+QUrl LogFork::url(void) const
+{
+    return mUrl;
 }

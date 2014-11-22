@@ -17,6 +17,9 @@ public:
     bool isWritable(void) const;
     bool isError(void) const;
     QString errorString(void) const;
+    void setFork(const LogFork * const fork);
+    void setUrl(const QUrl & url);
+    void setScheme(const EightCC scheme);
 
 public: // virtual
     virtual ~ForkOutputBehavior() {}
@@ -34,8 +37,6 @@ public: // static
 
 protected:
     ForkOutputBehavior(void);
-    void setup(const LogFork * const fork,
-               const EightCC schemeEcc);
     bool setWritable(const bool writable=true);
     bool setError(const QString & error=QString());
 
@@ -53,6 +54,6 @@ private:
     QUrl mUrl;
 
 private: // static
-    static QHash<EightCC, BasicName> smEccMetaHash;
+    static QHash<EightCC, QByteArray> smEccMetaHash;
 };
 #endif // FORKOUTPUTBEHAVIOR_H

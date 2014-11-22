@@ -26,10 +26,13 @@ public:
     QString errorString(void) const;
     void write(LogItem item);
     void close(void);
+    QVariant urlOption(const BasicName & name);
+    QUrl url(void) const;
 
 private:
     bool parseUrl(const QUrl & url);
-    QVariant urlOption(const BasicName & name);
+    void setup(const LogFork * const fork,
+               const EightCC schemeEcc);
     QString parseLineend(const QString & option);
 
 private:
