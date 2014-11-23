@@ -34,6 +34,9 @@ public:
               const QUrl & forkUrl);
     bool unfork(const BasicName & forkName);
 
+public: // static
+    static void staticCtor(void);
+
 private: // maybe LoggerBehavior later
     QStringList hexDump(const QByteArray & ba);
     LogItem::Key enqueue(LogItem item);

@@ -29,6 +29,8 @@ public:
     QVariant urlOption(const BasicName & name);
     QUrl url(void) const;
 
+    bool setError(const QString & message=QString());
+
 private:
     bool parseUrl(const QUrl & url);
     void setup(const LogFork * const fork,
@@ -54,7 +56,8 @@ private:
     //LogSeverityFilter mSeverityFilter;
     bool mAutoFlush = false;
     bool mReportPass = false;
-    QString mLineendString;
+    QString mLineendString = (QChar(QChar::CarriageReturn)
+                              + QChar(QChar::LineFeed));
 
     // helpers
     ForkOutputBehavior * mpOutput = 0;

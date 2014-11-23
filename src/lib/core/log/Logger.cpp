@@ -3,6 +3,8 @@
 #include <base/FunctionInfo.h>
 
 #include "LogFork.h"
+#include "ForkOutputBehavior.h"
+#include "BuiltinOutputBehavior.h"
 #include "Severity.h"
 #include "TodoItem.h"
 
@@ -269,4 +271,10 @@ void Logger::handle(LogItem item)
         qFatal(qPrintable("***EXEPTION: " + item.toString()));
     else if (severity > mQuitSeverity)
         qFatal(qPrintable("***QUIT: " + item.toString()));
+}
+
+void Logger::staticCtor(void)
+{
+    ForkOutputBehavior::registerSchemes(BuiltinOutputBehavior::csmRegisteredEccs,
+                                        BuiltinOutputBehavior::csmMetaName);
 }

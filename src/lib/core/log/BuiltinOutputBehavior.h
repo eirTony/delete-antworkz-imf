@@ -10,8 +10,6 @@ public:
     BuiltinOutputBehavior(void);
     bool setUrl(const QUrl & url);
 
-public: // virtual
-
 public: // pure virtual implementations
     virtual bool open(void);
     virtual bool write(const Severity severity,
@@ -20,10 +18,12 @@ public: // pure virtual implementations
     virtual void close(void);
 
 public: // static
-    const static BasicNameList mSchemeNames;
-    const static EightCCList mRegisteredEccs;
+    const static EightCC csmStdout;
+    const static EightCC csmStderr;
+    const static EightCC csmTxtFile;
+    const static EightCC csmTroll;
+    const static EightCCList csmRegisteredEccs;
     const static QByteArray csmMetaName;
-
 };
 
 #endif // BUILTINOUTPUTBEHAVIOR_H
