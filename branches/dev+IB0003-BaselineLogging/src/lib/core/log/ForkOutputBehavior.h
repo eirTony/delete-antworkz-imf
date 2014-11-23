@@ -14,10 +14,7 @@ class LogFork;
 class ForkOutputBehavior
 {
 public:
-    bool isWritable(void) const;
-    bool isError(void) const;
-    QString errorString(void) const;
-    void setFork(const LogFork * const fork);
+    void setFork(LogFork * const fork);
     void setUrl(const QUrl & url);
     void setScheme(const EightCC scheme);
 
@@ -32,21 +29,12 @@ public: // pure virtual
     virtual void close(void) = 0;
 
 public: // static
-    static ForkOutputBehavior * forScheme(const EightCC schemeEcc,
-                                          const LogFork * const fork);
+    static void registerSchemes(const EightCCList & schemeEccs,
+                                const QByteArray & metaName);
+    static ForkOutputBehavior * forScheme(const EightCC schemeEcc);
 
 protected:
     ForkOutputBehavior(void);
-    bool setWritable(const bool writable=true);
-    bool setError(const QString & error=QString());
-
-protected:
-    QString mLineEndString = (QChar(QChar::CarriageReturn)
-                              + QChar(QChar::LineFeed));
-
-protected: // static
-    static void registerSchemes(const EightCCList & schemeEccs,
-                                const BasicName & metaName);
 
 private:
     LogFork * mpFork;

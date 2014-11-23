@@ -7,15 +7,22 @@
 LogFork::LogFork(const BasicName &name,
                  const QUrl &url)
     : mForkName(name)
-    , mUrl(url)
     , mSchemeEcc(url.scheme())
+    , mUrl(url)
     , mQuery(url.query())
 {
     parseUrl(mUrl);
-    mpOutput = ForkOutputBehavior::forScheme(mSchemeEcc, this);
-    mpOutput->setFork(this);
-    mpOutput->setScheme(mSchemeEcc);
-    mpOutput->setUrl(mUrl);
+    mpOutput = ForkOutputBehavior::forScheme(mSchemeEcc);
+    if (mpOutput)
+    {
+        mpOutput->setFork(this);
+        mpOutput->setScheme(mSchemeEcc);
+        mpOutput->setUrl(mUrl);
+    }
+    else
+    {
+        setError("Unable to create output");
+    }
 }
 
 bool LogFork::isError(void) const
@@ -33,6 +40,13 @@ void LogFork::close(void)
 {
     mpOutput->close();
 }
+
+bool LogFork::setError(const QString & message)
+{
+    mErrorString = message;
+    return mErrorString.isEmpty();
+}
+
 
 bool LogFork::parseUrl(const QUrl & url)
 {

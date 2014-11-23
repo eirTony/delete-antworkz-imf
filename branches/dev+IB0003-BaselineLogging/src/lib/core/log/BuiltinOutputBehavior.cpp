@@ -1,14 +1,18 @@
 #include "BuiltinOutputBehavior.h"
 
 #include <base/BasicName.h>
-/*
-BasicName::List()
-                         << BasicName("troll")
-                         << BasicName("txtfile")
-                         << BasicName("stdout")
-                         << BasicName("stderr"),
-                         BasicName("BuiltinOutputBehavior")
-*/
+
+const QByteArray BuiltinOutputBehavior::csmMetaName("BuiltinOutputBehavior");
+const EightCC BuiltinOutputBehavior::csmStdout("stdout");
+const EightCC BuiltinOutputBehavior::csmStderr("stderr");
+const EightCC BuiltinOutputBehavior::csmTxtFile("txtfile");
+const EightCC BuiltinOutputBehavior::csmTroll("troll");
+const EightCCList BuiltinOutputBehavior::csmRegisteredEccs
+                            = EightCCList()     << csmStdout
+                                                << csmStderr
+                                                << csmTxtFile
+                                                << csmTroll;
+
 BuiltinOutputBehavior::BuiltinOutputBehavior(void)
 {
 }
