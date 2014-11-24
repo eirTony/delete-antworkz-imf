@@ -19,7 +19,6 @@ class LogFork
 public:
     LogFork(const BasicName & name,
             const QUrl & url);
-    bool isWritable(void) const;
     bool start(void);
     bool isStarted(void) const;
     bool isError(void) const;
@@ -29,18 +28,17 @@ public:
     QVariant urlOption(const BasicName & name);
     QUrl url(void) const;
 
+    bool setStarted(const bool yes=true);
     bool setError(const QString & message=QString());
+    bool isNotMinMax(const Severity severity);
 
 private:
     bool parseUrl(const QUrl & url);
-    void setup(const LogFork * const fork,
-               const EightCC schemeEcc);
     QString parseLineend(const QString & option);
 
 private:
     QString mErrorString;
     bool mIsStarted = false;
-    bool mWritable = false;
     BasicName mForkName;
 
     // url

@@ -6,7 +6,7 @@
 
 #include "LogFork.h"
 
-QHash<EightCC, QByteArray> ForkOutputBehavior::smEccMetaHash;
+QHash<EightCC::Uint, QByteArray> ForkOutputBehavior::smEccMetaHash;
 
 ForkOutputBehavior::ForkOutputBehavior(void)
 {
@@ -30,7 +30,7 @@ void ForkOutputBehavior::setScheme(const EightCC scheme)
 void ForkOutputBehavior::registerSchemes(const EightCCList & schemeEccs,
                                          const QByteArray & metaName) // [static]
 {
-    foreach (EightCC ecc, schemeEccs)
+    foreach (EightCC::Uint ecc, schemeEccs)
         smEccMetaHash.insert(ecc, metaName);
 }
 
