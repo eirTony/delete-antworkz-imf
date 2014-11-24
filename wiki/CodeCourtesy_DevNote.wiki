@@ -27,9 +27,9 @@
 
 === Block Comment Format ===
 
-Use `/*!` Doxygen trigger in the first column 
+Use `/*!` Doxygen trigger in the first column
 and close with ` *\` (the star in the same column as the trigger).
-The ` * ` in subsequent lines is optional, 
+The ` * ` in subsequent lines is optional,
 but it is easier to keep it in QtCreator editor.
 The block comment should touch the bottom of the entity that it relates to,
 but a blank line below.
@@ -83,3 +83,26 @@ The following elements are considered to provide minimal Doxygen support:
 ...
 
 = Style =
+
+== Classes ==
+
+=== Friends ===
+
+We allow use of friend classes and functions, within reason.
+
+Friends should usually be defined in the same file
+so that the reader does not have to look in another file to find
+uses of the private members of a class.
+A common use of friend is to have a FooBuilder class be a friend of Foo
+so that it can construct the inner state of Foo correctly,
+without exposing this state to the world.
+In some cases it may be useful to make a unittest class
+a friend of the class it tests.
+
+Friends extend, but do not break, the encapsulation boundary of a class.
+In some cases this is better than making a member public
+when you want to give only one other class access to it.
+However, most classes should interact with other classes solely
+through their public members.
+
+_Blatently stolen from Google C++ Style Guide._
