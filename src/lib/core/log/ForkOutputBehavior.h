@@ -36,12 +36,12 @@ public: // static
 protected:
     ForkOutputBehavior(void);
 
-private:
+protected:
     LogFork * mpFork;
     EightCC mSchemeEcc;
     QUrl mUrl;
 
 private: // static
-    static QHash<EightCC, QByteArray> smEccMetaHash;
+    static QHash<EightCC::Uint, QByteArray> smEccMetaHash;
 };
 #endif // FORKOUTPUTBEHAVIOR_H

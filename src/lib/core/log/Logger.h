@@ -55,5 +55,25 @@ private:
     BasicNameHash<ItemFormatBehavior *> mFormatNameBehaviorHash;
     BasicNameMap<LogFork *> mNameForkMap;
 };
-
+/*! @class Logger "Logger.h" <log/Logger.h>
+ * @brief The Logger class provides the engine of the Logging Facility
+ * @since Started in v2.03
+ *
+ * A Singleton instance of the Logger class provides the plumbing
+ * for the Logging Facility by creating, processing, and queueing
+ * LogItem instances.
+ *
+ * A series of functions--report, dump, boolean, compare, pointer,
+ * troll, and todo--create LogItem instances then process them while
+ * they are being enqueued.
+ * However, these functions are rarely called directly by other
+ * AntWorkz libraries or users;
+ * instead they are called indirectly via both internal
+ * and external MACROs.
+ *
+ * At LogLib's initial library level, configuation values are
+ * not yet available.
+ * Hence, the initial log "forks" are initiated by environment variables.
+ * Once under programmatic controls forks can be opened, closed, or modified.
+ */
 #endif // LOGGER_H

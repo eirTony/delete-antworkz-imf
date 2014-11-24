@@ -15,6 +15,9 @@
 template <class UINT> class CharCode
 {
 public:
+    typedef UINT Uint;
+
+public:
     /** @fn     CharCode(void)
       * @brief  constructs a null character code
       */
@@ -63,10 +66,13 @@ public:
     bool operator <  (const CharCode & other) const
     { return network() <  other.network(); }
 
+    operator const UINT (void) const { return u; }
+    UINT operator () (void) const { return u; }
+
     /** @fn     operator QString(void) const
       * @brief  returns character code's characters as a QString
       */
-    operator QString(void) const
+    operator QString (void) const
     {
         char c[sizeof(UINT) + 1];
         c[sizeof(UINT)] = 0;

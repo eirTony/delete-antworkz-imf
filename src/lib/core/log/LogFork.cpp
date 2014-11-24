@@ -25,9 +25,24 @@ LogFork::LogFork(const BasicName &name,
     }
 }
 
+bool LogFork::start(void)
+{
+    return setStarted(mpOutput->open());
+}
+
+bool LogFork::isStarted(void) const
+{
+    return mIsStarted;
+}
+
 bool LogFork::isError(void) const
 {
     return ! mErrorString.isEmpty();
+}
+
+QString LogFork::errorString(void) const
+{
+    return mErrorString;
 }
 
 void LogFork::write(LogItem item)
@@ -45,6 +60,16 @@ bool LogFork::setError(const QString & message)
 {
     mErrorString = message;
     return mErrorString.isEmpty();
+}
+
+bool LogFork::isNotMinMax(const Severity severity)
+{
+    return severity > mMaxSeverity || severity < mMinSeverity;
+}
+
+bool LogFork::setStarted(const bool started)
+{
+    return mIsStarted = started;
 }
 
 
@@ -82,12 +107,6 @@ bool LogFork::parseUrl(const QUrl & url)
     return true;
 }
 
-void LogFork::setup(const LogFork * const fork,
-                               const EightCC schemeEcc)
-{
-    // todo
-}
-
 QVariant LogFork::urlOption(const BasicName & name)
 {
     return QVariant();
@@ -95,7 +114,7 @@ QVariant LogFork::urlOption(const BasicName & name)
 
 QString LogFork::parseLineend(const QString & option)
 {
-    return QString();
+    return QChar(QChar::CarriageReturn) + QChar(QChar::LineFeed);
 }
 
 QUrl LogFork::url(void) const
