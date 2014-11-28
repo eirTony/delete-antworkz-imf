@@ -1,4 +1,4 @@
-/*! @file   BaseLib.cpp EclipseIR BaseLib definitions
+/*! @file   BaseLib.cpp BaseLib library class definitions
  */
 #include "BaseLib.h"
 #include "Version.h"
