@@ -57,7 +57,7 @@ void LogItem::clearFormatted(void)
 
 void LogItem::setSeverityToPass(void)
 {
-
+    setSeverity(Severity(getSeverity()).pass());
 }
 
 bool LogItem::evaluate(const int expectedIndex,
