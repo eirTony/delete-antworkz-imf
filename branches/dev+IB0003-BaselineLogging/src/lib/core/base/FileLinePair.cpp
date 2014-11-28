@@ -1,3 +1,6 @@
+/*! @file   FileLinePair.cpp BaseLib FileLinePair class definitions
+ */
+
 #include "FileLinePair.h"
 
 FileLinePair::FileLinePair(void) {}

@@ -1,3 +1,5 @@
+/*! @file   FunctionInfo.h   BaseLib FunctionInfo class declaration
+ */
 #ifndef FUNCTIONINFO_H
 #define FUNCTIONINFO_H
 #include "BaseLib.h"

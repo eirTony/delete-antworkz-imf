@@ -1,3 +1,5 @@
+/*! @file   FileLinePair.h   BaseLib FileLinePair class declaration
+ */
 #ifndef FILELINE_H
 #define FILELINE_H
 #include "BaseLib.h"
