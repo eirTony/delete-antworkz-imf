@@ -22,6 +22,10 @@ public:
     LogOutputPlugin(const BasicName & name,
                     LogFork * fork,
                     QObject * parent=0);
+    LogOutputPlugin * instance(void) const;
+    LogOutputPlugin * operator () (void) const;
+    bool isWritable(void) const;
+
     virtual bool open(void) {}
     virtual bool write(const Severity & sev,
                        const QString & message) {}
@@ -33,6 +37,11 @@ signals:
 
 public slots:
 
+protected:
+    void setWritable(const bool is=true);
+
+private:
+    bool mWritable = false;
 };
 
 #endif // LOGOUTPUTPLUGIN_H
