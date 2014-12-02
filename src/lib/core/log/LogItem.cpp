@@ -16,7 +16,7 @@ void LogItem::dtor(void) {}
 
 bool LogItem::isNull(void) const
 {
-    return !! getSeverity();
+    return !! getLevel();
 }
 
 QVariant LogItem::value(const int index) const
@@ -45,7 +45,8 @@ QString LogItem::toString(void) const
 
 void LogItem::setLevelToPass(void)
 {
-
+}
+/*
 bool LogItem::evaluate(const int expectedIndex,
                        const int actualIndex) const
 {
@@ -64,3 +65,4 @@ QString LogItem::relationName(void) const
 {
     return "rel";
 }
+*/

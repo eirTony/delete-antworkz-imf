@@ -165,7 +165,7 @@ LogItem::Key Logger::enqueue(LogItem item)
     /* Done happening */
 
     /* Output to Forks */
-    foreach(LogFork * fork, mNameForkMap.values()) fork->write(item);
+    //foreach(LogFork * fork, mNameForkMap.values()) fork->write(item);
 
     /* Save */
     mItemQueue.enqueue(item);
