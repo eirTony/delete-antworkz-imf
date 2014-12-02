@@ -17,6 +17,8 @@ public:
                        LogOutputPlugin * plugin,
                        QObject * parent=0);
     virtual ~LogOutputInterface() {}
+
+public: // pure virtual
     virtual bool open(void) = 0;
     virtual bool write(const Severity & sev,
                        const QString & message) = 0;
@@ -28,6 +30,9 @@ signals:
 
 public slots:
 
+private:
+    LogFork * mpFork = 0;
+    LogOutputPlugin * mpPlugin = 0;
 };
 
 #endif // LOGOUTPUTINTERFACE_H
