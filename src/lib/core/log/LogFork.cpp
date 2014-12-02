@@ -11,9 +11,4 @@ LogFork::LogFork(const BasicName &name,
 /*
 void LogFork::write(LogItem item)
 {
-    QString s = mpFormat
-            ? mpFormat->formatItem(mFormatName, item)
-            : item.toString();
-    mpOutput->write(item.getSeverity(), s);
-}
 */
