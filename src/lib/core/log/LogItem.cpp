@@ -45,19 +45,7 @@ QString LogItem::toString(void) const
     return defaultBehavior.formatItem(BasicName("default"), *this);
 }
 
-QString LogItem::formatted(const BasicName & name)
-{
-}
-/*
-}
-
-void LogItem::clearFormatted(void)
-{
-
-}
-
 void LogItem::setLevelToPass(void)
 {
 
 }
-*/
