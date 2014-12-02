@@ -16,7 +16,7 @@ void LogItem::dtor(void) {}
 
 bool LogItem::isNull(void) const
 {
-    return !! getSeverity();
+    return getLevel();
 }
 
 QVariant LogItem::value(const int index) const
@@ -34,33 +34,30 @@ QVariantList LogItem::values(void) const
 void LogItem::setValue(const int index,
               const QVariant & var)
 {
+    /* while (mVariantList.size() <= index)
+        mVariantList.append(QVariant()); */
     mVariantList[index] = var;
 }
 
 QString LogItem::toString(void) const
 {
     static ItemFormatBehavior defaultBehavior;
-    return defaultBehavior.formatItem(BasicName(), *this);
+    return defaultBehavior.formatItem(BasicName("default"), *this);
+}
+
+QString LogItem::formatted(const BasicName & name)
+{
+}
+/*
+}
+
+void LogItem::clearFormatted(void)
+{
+
 }
 
 void LogItem::setLevelToPass(void)
 {
 
-bool LogItem::evaluate(const int expectedIndex,
-                       const int actualIndex) const
-{
-    QVariant expected = value(expectedIndex);
-    QVariant actual = value(actualIndex).convert(expected.type());
-    return expected == actual;
 }
-
-bool LogItem::canConvert(const int expectedIndex,
-                         const int actualIndex)
-{
-    return value(expectedIndex).canConvert(value(actualIndex).type());
-}
-
-QString LogItem::relationName(void) const
-{
-    return "rel";
-}
+*/
