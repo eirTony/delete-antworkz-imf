@@ -8,7 +8,7 @@ LogFork::LogFork(const BasicName &name,
     , mUrl(url)
 {
 }
-
+/*
 void LogFork::write(LogItem item)
 {
     QString s = mpFormat
@@ -16,5 +16,4 @@ void LogFork::write(LogItem item)
             : item.toString();
     mpOutput->write(item.getSeverity(), s);
 }
-
-}
+*/
