@@ -26,7 +26,8 @@ SOURCES += BaseLib.cpp \
     FunctionMap.cpp \
     FileLinePair.cpp \
     PluginObject.cpp \
-    AbstractPlugin.cpp
+    AbstractPlugin.cpp \
+    BasicId.cpp
 
 HEADERS += BaseLib.h\
         base_global.h \
@@ -44,7 +45,8 @@ HEADERS += BaseLib.h\
     BasicNameMap.h \
     BasicNameHash.h \
     PluginObject.h \
-    AbstractPlugin.h
+    AbstractPlugin.h \
+    BasicId.h
 
 unix {
     target.path = /usr/lib
