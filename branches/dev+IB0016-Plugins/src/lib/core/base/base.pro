@@ -27,7 +27,8 @@ SOURCES += BaseLib.cpp \
     FileLinePair.cpp \
     PluginObject.cpp \
     AbstractPlugin.cpp \
-    BasicId.cpp
+    BasicId.cpp \
+    MetaName.cpp
 
 HEADERS += BaseLib.h\
         base_global.h \
@@ -46,7 +47,8 @@ HEADERS += BaseLib.h\
     BasicNameHash.h \
     PluginObject.h \
     AbstractPlugin.h \
-    BasicId.h
+    BasicId.h \
+    MetaName.h
 
 unix {
     target.path = /usr/lib
