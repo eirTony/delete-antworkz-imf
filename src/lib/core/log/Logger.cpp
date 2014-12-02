@@ -167,8 +167,7 @@ LogItem::Key Logger::enqueue(LogItem item)
     /* Output to Forks */
     foreach(LogFork * fork, mNameForkMap.values()) fork->write(item);
 
-    /* Clean up and save */
-    item.clearFormatted();
+    /* Save */
     mItemQueue.enqueue(item);
     if (LogLevel::Preamble == LogLevel(level)) mPreambleList.append(item);
     handle(item);
