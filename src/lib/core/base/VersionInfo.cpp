@@ -1,3 +1,6 @@
+/*! @file   VersionInfo.cpp BaseLib VersionInfo class definitions
+ */
+
 #include "VersionInfo.h"
 
 #include <QStringList>
