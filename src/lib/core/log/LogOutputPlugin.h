@@ -16,7 +16,7 @@ class LOGSHARED_EXPORT LogOutputPlugin
     Q_OBJECT
 public:
     LogOutputPlugin(const BasicName & name,
-                    const BasicNameList &aliases,
+                    const EightCCList &schemata,
                     LogFork * fork,
                     QObject * parent=0);
     LogOutputPlugin(const BasicName & name,
