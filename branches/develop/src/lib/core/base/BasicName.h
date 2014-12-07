@@ -13,6 +13,7 @@ class BASESHARED_EXPORT BasicName
 {
 public:
     typedef QList<BasicName> List;
+    typedef QMap<BasicName, QVariant> VariantMap;
 
 public:
     BasicName(const QString & name=QString());

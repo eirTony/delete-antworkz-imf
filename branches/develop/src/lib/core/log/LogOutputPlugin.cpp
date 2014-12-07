@@ -6,10 +6,10 @@
 #include "LogFork.h"
 
 LogOutputPlugin::LogOutputPlugin(const BasicName & name,
-                                 const BasicNameList & aliases,
+                                 const EightCCList & schemata,
                                  LogFork * fork,
                                  QObject * parent)
     : LogOutputInterface(fork, this, parent)
-    , AbstractPlugin("LogOutput", name, aliases)
+    , AbstractPlugin("LogOutput", name, schemata, "LogOutputPlugin")
 {
 }
