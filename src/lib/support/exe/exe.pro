@@ -26,7 +26,8 @@ SOURCES += ExeLib.cpp \
     CommandLineOptions.cpp \
     ArgumentSourcePair.cpp \
     BaseSerialStream.cpp \
-    PluginManager.cpp
+    PluginManager.cpp \
+    ArgumentElement.cpp
 
 HEADERS += ExeLib.h \
     Exe_global.h \
@@ -44,7 +45,8 @@ HEADERS += ExeLib.h \
     CommandLineOptions.h \
     ArgumentSourcePair.h \
     BaseSerialStream.h \
-    PluginManager.h
+    PluginManager.h \
+    ArgumentElement.h
 
 unix {
     target.path = /usr/lib
