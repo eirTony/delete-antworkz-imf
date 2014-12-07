@@ -24,7 +24,6 @@ SOURCES += TypeLib.cpp \
     QQStringList.cpp \
     StringPair.cpp \
     QQList.cpp \
-    QQRegularExpression.cpp \
     QQDir.cpp
 
 HEADERS += TypeLib.h\
