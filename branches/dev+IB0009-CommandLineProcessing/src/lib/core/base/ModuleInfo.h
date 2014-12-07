@@ -1,5 +1,4 @@
-/*! @file ModuleInfo.h Declarations for ModuleInfo class
-*
+/*! @file ModuleInfo.h  BaseLib ModuleInfo class declarations
 */
 #ifndef MODULE_H
 #define MODULE_H

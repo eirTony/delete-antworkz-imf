@@ -45,14 +45,11 @@ public:
     void setValue(const int index,
                   const QVariant & var);
     QString toString(void) const;
-    QString formatted(const BasicName & name);
-    void clearFormatted(void);
     void setLevelToPass(void);
 
 
 private:
     QVariantList mVariantList;
-    BasicNameHash<QString> formattedHash;
 };
 
 #endif // LOGITEM_H

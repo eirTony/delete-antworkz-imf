@@ -1,3 +1,6 @@
+/*! @file   BasicName.cpp BaseLib BasicName class definitions
+ */
+
 #include "BasicName.h"
 
 #include <QtDebug>

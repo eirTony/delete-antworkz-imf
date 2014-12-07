@@ -19,7 +19,9 @@ SOURCES += LogLib.cpp \
     LogLevel.cpp \
     ForkOutputBehavior.cpp \
     ItemFormatBehavior.cpp \
-    TodoItem.cpp
+    TodoItem.cpp \
+    LogOutputPlugin.cpp \
+    LogOutputInterface.cpp
 
 HEADERS += LogLib.h \
     Version.h \
@@ -31,7 +33,9 @@ HEADERS += LogLib.h \
     Log.h \
     ForkOutputBehavior.h \
     ItemFormatBehavior.h \
-    TodoItem.h
+    TodoItem.h \
+    LogOutputPlugin.h \
+    LogOutputInterface.h
 
 unix {
     target.path = /usr/lib

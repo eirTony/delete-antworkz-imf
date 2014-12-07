@@ -8,8 +8,7 @@ LogFork::LogFork(const BasicName &name,
     , mUrl(url)
 {
 }
-
+/*
 void LogFork::write(LogItem item)
 {
-
-}
+*/
