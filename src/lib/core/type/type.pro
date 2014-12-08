@@ -24,7 +24,8 @@ SOURCES += TypeLib.cpp \
     QQStringList.cpp \
     StringPair.cpp \
     QQList.cpp \
-    QQDir.cpp
+    QQDir.cpp \
+    QQUrl.cpp
 
 HEADERS += TypeLib.h\
         type_global.h \
@@ -41,7 +42,9 @@ HEADERS += TypeLib.h\
     QQPair.h \
     QQList.h \
     CharCode.h \
-    QQDir.h
+    QQDir.h \
+    Unsigned.h \
+    QQUrl.h
 
 unix {
     target.path = /usr/lib

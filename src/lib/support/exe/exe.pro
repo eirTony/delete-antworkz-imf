@@ -12,6 +12,7 @@ win32:RC_FILE = WinRes.rc
 
 LIBS *= -leirBase
 LIBS *= -leirType
+LIBS *= -leirKid
 
 SOURCES += ExeLib.cpp \
     ConsoleApplication.cpp \
@@ -25,7 +26,6 @@ SOURCES += ExeLib.cpp \
     CommandLineResult.cpp \
     CommandLineOptions.cpp \
     ArgumentSourcePair.cpp \
-    BaseSerialStream.cpp \
     PluginManager.cpp \
     ArgumentElement.cpp
 
@@ -44,7 +44,6 @@ HEADERS += ExeLib.h \
     CommandLineResult.h \
     CommandLineOptions.h \
     ArgumentSourcePair.h \
-    BaseSerialStream.h \
     PluginManager.h \
     ArgumentElement.h
 

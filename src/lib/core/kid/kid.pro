@@ -15,14 +15,16 @@ LIBS *= -leirBase
 SOURCES += KidLib.cpp \
     AbstractId.cpp \
     AbstractName.cpp \
-    BaseNameIdBehavior.cpp
+    BaseNameIdBehavior.cpp \
+    UniversalKey.cpp
 
 HEADERS += KidLib.h \
     Version.h \
     ../../../CommonVersion.h \
     AbstractId.h \
     AbstractName.h \
-    BaseNameIdBehavior.h
+    BaseNameIdBehavior.h \
+    UniversalKey.h
 
 unix {
     target.path = /usr/lib
