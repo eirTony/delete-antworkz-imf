@@ -19,7 +19,11 @@ SOURCES += TypeLib.cpp \
     MillisecondTime.cpp \
     QQString.cpp \
     QQRegularExpression.cpp \
-    QQDir.cpp
+    QQDir.cpp \
+    QQFile.cpp \
+    QQDataStream.cpp \
+    QQTextStream.cpp \
+    QQFileInfo.cpp
 
 HEADERS += TypeLib.h\
         type_global.h \
@@ -29,7 +33,11 @@ HEADERS += TypeLib.h\
     QQString.h \
     QQRegularExpression.h \
     CharCode.h \
-    QQDir.h
+    QQDir.h \
+    QQFile.h \
+    QQDataStream.h \
+    QQTextStream.h \
+    QQFileInfo.h
 
 unix {
     target.path = /usr/lib
