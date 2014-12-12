@@ -17,10 +17,14 @@ public:
 
 public:
     BasicName(const QString & name=QString());
+    BasicName(const char * const name);
     bool isNull(void) const;
     void clear(void);
     void set(const QString & name);
     QString sortable(void) const;
+    operator QString (void) const;
+    bool operator == (const BasicName & other) const;
+    bool operator <  (const BasicName & other) const;
 
 private:
     QString mName;

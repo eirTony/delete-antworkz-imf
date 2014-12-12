@@ -2,12 +2,15 @@
 #define SEVERITY_H
 #include "LogLib.h"
 
+#include <QList>
+
 #include <base/BasicName.h>
 #include <base/BasicNameMap.h>
 
 class LOGSHARED_EXPORT Severity
 {
 public:
+    typedef QList<Severity> List;
 
 public:
     Severity(const int iLevel=0);

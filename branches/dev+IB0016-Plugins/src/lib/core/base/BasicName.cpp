@@ -10,6 +10,11 @@ BasicName::BasicName(const QString & name)
     set(name);
 }
 
+BasicName::BasicName(const char * const name)
+{
+    set(QString::fromLocal8Bit(name));
+}
+
 bool BasicName::isNull(void) const
 {
     return mName.isEmpty();
@@ -30,4 +35,19 @@ void BasicName::set(const QString & name)
 QString BasicName::sortable(void) const
 {
     return mName.toLower();
+}
+
+BasicName::operator QString (void) const
+{
+    return mName;
+}
+
+bool BasicName::operator == (const BasicName & other) const
+{
+    return sortable() == other.sortable();
+}
+
+bool BasicName::operator <  (const BasicName & other) const
+{
+    return sortable() <  other.sortable();
 }
