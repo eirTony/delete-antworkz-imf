@@ -21,7 +21,10 @@ SOURCES += LogLib.cpp \
     ItemFormatBehavior.cpp \
     TodoItem.cpp \
     LogOutputPlugin.cpp \
-    LogOutputInterface.cpp
+    LogOutputInterface.cpp \
+    DatastreamLogOutput.cpp \
+    ReadableLogOutput.cpp \
+    Severity.cpp
 
 HEADERS += LogLib.h \
     Version.h \
@@ -35,7 +38,10 @@ HEADERS += LogLib.h \
     ItemFormatBehavior.h \
     TodoItem.h \
     LogOutputPlugin.h \
-    LogOutputInterface.h
+    LogOutputInterface.h \
+    DatastreamLogOutput.h \
+    ReadableLogOutput.h \
+    Severity.h
 
 unix {
     target.path = /usr/lib
