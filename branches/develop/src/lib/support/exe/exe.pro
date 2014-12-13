@@ -11,6 +11,8 @@ include (../common.pri)
 win32:RC_FILE = WinRes.rc
 
 LIBS *= -leirBase
+LIBS *= -leirType
+LIBS *= -leirKid
 
 SOURCES += ExeLib.cpp \
     ConsoleApplication.cpp \
@@ -19,7 +21,13 @@ SOURCES += ExeLib.cpp \
     StandardIO.cpp \
     StandardStream.cpp \
     BaseSerialStream.cpp \
-    PluginManager.cpp
+    CommandLineOption.cpp \
+    CommandLineProcessing.cpp \
+    CommandLineResult.cpp \
+    CommandLineOptions.cpp \
+    ArgumentSourcePair.cpp \
+    PluginManager.cpp \
+    ArgumentElement.cpp
 
 HEADERS += ExeLib.h \
     Exe_global.h \
@@ -31,7 +39,13 @@ HEADERS += ExeLib.h \
     StandardIO.h \
     StandardStream.h \
     BaseSerialStream.h \
-    PluginManager.h
+    CommandLineOption.h \
+    CommandLineProcessing.h \
+    CommandLineResult.h \
+    CommandLineOptions.h \
+    ArgumentSourcePair.h \
+    PluginManager.h \
+    ArgumentElement.h
 
 unix {
     target.path = /usr/lib
