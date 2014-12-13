@@ -1,10 +1,10 @@
 #ifndef COMMONVERSION_H
 #define COMMONVERSION_H
 
-#define CVER_STRING     "v2.03A+IB0016-Plugins"
+#define CVER_STRING     "v2.03A"
 #define CVER_MAJOR      2
 #define CVER_MINOR      2
-#define CVER_BRANCH     16
+#define CVER_BRANCH     0
 #define CVER_RELEASE    1
 #define CVER_BUILD      1002
 #define CVER_COPYRIGHT  "Copyright (c) 2003-2014, " \
