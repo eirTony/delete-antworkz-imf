@@ -42,7 +42,6 @@ HEADERS += TypeLib.h\
     QQPair.h \
     QQList.h \
     CharCode.h \
-    QQDir.h \
     Unsigned.h \
     QQUrl.h
 
