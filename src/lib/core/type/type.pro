@@ -19,6 +19,12 @@ SOURCES += TypeLib.cpp \
     MillisecondTime.cpp \
     QQString.cpp \
     QQRegularExpression.cpp \
+    QQChar.cpp \
+    QQVariant.cpp \
+    QQStringList.cpp \
+    StringPair.cpp \
+    QQList.cpp \
+    QQUrl.cpp \
     QQDir.cpp \
     QQFile.cpp \
     QQDataStream.cpp \
@@ -26,13 +32,22 @@ SOURCES += TypeLib.cpp \
     QQFileInfo.cpp
 
 HEADERS += TypeLib.h\
-        type_global.h \
+    type_global.h \
     MillisecondTime.h \
-        CProperty.h \
-        DProperty.h \
+    CProperty.h \
+    DProperty.h \
     QQString.h \
     QQRegularExpression.h \
     CharCode.h \
+    QQChar.h \
+    QQVariant.h \
+    QQStringList.h \
+    StringPair.h \
+    QQPair.h \
+    QQList.h \
+    CharCode.h \
+    Unsigned.h \
+    QQUrl.h \
     QQDir.h \
     QQFile.h \
     QQDataStream.h \
