@@ -5,6 +5,8 @@
 
 #include <QtDebug>
 
+BasicName::BasicName(void) {}
+
 BasicName::BasicName(const QString & name)
 {
     set(name);
@@ -16,6 +18,11 @@ BasicName::BasicName(const char * const name)
 }
 
 bool BasicName::isNull(void) const
+{
+    return mName.isNull();
+}
+
+bool BasicName::isEmpty(void) const
 {
     return mName.isEmpty();
 }
@@ -37,11 +44,6 @@ QString BasicName::sortable(void) const
     return mName.toLower();
 }
 
-BasicName::operator QString (void) const
-{
-    return mName;
-}
-
 bool BasicName::operator == (const BasicName & other) const
 {
     return sortable() == other.sortable();
@@ -50,4 +52,14 @@ bool BasicName::operator == (const BasicName & other) const
 bool BasicName::operator <  (const BasicName & other) const
 {
     return sortable() <  other.sortable();
+}
+
+QString BasicName::operator () (void) const
+{
+    return mName;
+}
+
+BasicName::operator QString (void) const
+{
+    return mName;
 }

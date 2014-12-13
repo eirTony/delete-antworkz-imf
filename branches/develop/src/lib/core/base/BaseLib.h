@@ -15,6 +15,15 @@
 #include <core/Singleton.h>
 #include "ModuleInfo.h"
 
+typedef void * VoidPtr;
+
+/*! @class BaseLib
+ * @brief The BaseLib is the base class in the eirBase library.
+ *
+ * The BaseLib contains any classes that would cause a
+ * circular dependency in the foundations libraries above.
+ *
+ */
 class BASESHARED_EXPORT BaseLib : public ModuleInfo
 {
 public:
@@ -39,6 +48,7 @@ private:
 
 typedef Singleton<BaseLib> Base;
 /*! @typedef Base
+ *
  * @brief Is the Singleton instance of BaseLib
  */
 

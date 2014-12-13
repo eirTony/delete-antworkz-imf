@@ -16,7 +16,7 @@ SOURCES += LogLib.cpp \
     LogItem.cpp \
     LogFork.cpp \
     Logger.cpp \
-    LogLevel.cpp \
+    Severity.cpp \
     ForkOutputBehavior.cpp \
     ItemFormatBehavior.cpp \
     TodoItem.cpp \
@@ -24,7 +24,7 @@ SOURCES += LogLib.cpp \
     LogOutputInterface.cpp \
     DatastreamLogOutput.cpp \
     ReadableLogOutput.cpp \
-    Severity.cpp
+    BuiltinOutputBehavior.cpp
 
 HEADERS += LogLib.h \
     Version.h \
@@ -32,7 +32,7 @@ HEADERS += LogLib.h \
     LogItem.h \
     LogFork.h \
     Logger.h \
-    LogLevel.h \
+    Severity.h \
     Log.h \
     ForkOutputBehavior.h \
     ItemFormatBehavior.h \
@@ -41,7 +41,8 @@ HEADERS += LogLib.h \
     LogOutputInterface.h \
     DatastreamLogOutput.h \
     ReadableLogOutput.h \
-    Severity.h
+    BuiltinOutputBehavior.h \
+    BuiltinFormatBehavior.h
 
 unix {
     target.path = /usr/lib
