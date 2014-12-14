@@ -7,7 +7,7 @@
 class TYPESHARED_EXPORT QQUrl : public QUrl
 {
 public:
-    QQUrl();
+    QQUrl(void);
 };
 
 #endif // QQURL_H

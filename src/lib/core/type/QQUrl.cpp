@@ -1,5 +1,5 @@
 #include "QQUrl.h"
 
-QQUrl::QQUrl()
+QQUrl::QQUrl(void)
 {
 }
