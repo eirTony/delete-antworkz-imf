@@ -24,14 +24,18 @@ SOURCES += TypeLib.cpp \
     QQStringList.cpp \
     StringPair.cpp \
     QQList.cpp \
+    QQUrl.cpp \
     QQDir.cpp \
-    QQUrl.cpp
+    QQFile.cpp \
+    QQDataStream.cpp \
+    QQTextStream.cpp \
+    QQFileInfo.cpp
 
 HEADERS += TypeLib.h\
-        type_global.h \
+    type_global.h \
     MillisecondTime.h \
-        CProperty.h \
-        DProperty.h \
+    CProperty.h \
+    DProperty.h \
     QQString.h \
     QQRegularExpression.h \
     CharCode.h \
@@ -43,7 +47,12 @@ HEADERS += TypeLib.h\
     QQList.h \
     CharCode.h \
     Unsigned.h \
-    QQUrl.h
+    QQUrl.h \
+    QQDir.h \
+    QQFile.h \
+    QQDataStream.h \
+    QQTextStream.h \
+    QQFileInfo.h
 
 unix {
     target.path = /usr/lib

@@ -6,6 +6,9 @@
 
 #include <QtDebug>
 
+#include "Logger.h"
+#include "Severity.h"
+
 LogLib * gpLog = &(Log::instance());
 
 /*! @fn LogLib::LogLib(void)
@@ -16,6 +19,8 @@ LogLib::LogLib(void)
     : ModuleInfo(MODULE_NAME)
 {
     setVersion();
+    Logger::staticCtor();
+    Severity::staticCtor();
 }
 
 #if 0
