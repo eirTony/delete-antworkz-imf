@@ -1,3 +1,5 @@
+/*! @file   FunctionMap.h   BaseLib FunctionMap class declaration
+ */
 #ifndef FUNCTIONMAP_H
 #define FUNCTIONMAP_H
 #include "BaseLib.h"

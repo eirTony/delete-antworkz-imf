@@ -1,9 +1,10 @@
 #ifndef QQSTRING_H
 #define QQSTRING_H
+#include "TypeLib.h"
 
 #include <QString>
 
-class QQString : public QString
+class TYPESHARED_EXPORT QQString : public QString
 {
 public:
     enum Squeeze

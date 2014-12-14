@@ -1,3 +1,5 @@
+/*! @file   base_global.h   Qt-supplied Globals
+ */
 #ifndef BASE_GLOBAL_H
 #define BASE_GLOBAL_H
 
