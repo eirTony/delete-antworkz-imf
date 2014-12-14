@@ -1,3 +1,6 @@
+/*! @file   FunctionInfo.cpp BaseLib FunctionInfo class definitions
+ */
+
 #include "FunctionInfo.h"
 
 #include <QtDebug>

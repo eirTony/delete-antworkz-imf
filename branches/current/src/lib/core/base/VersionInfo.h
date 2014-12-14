@@ -1,5 +1,4 @@
-/*! @file   VersionInfo.h   VersionInfo class declarations
-*
+/*! @file   VersionInfo.h   BaseLib VersionInfo class declarations
 */
 #ifndef VERSIONINFO_H
 #define VERSIONINFO_H
