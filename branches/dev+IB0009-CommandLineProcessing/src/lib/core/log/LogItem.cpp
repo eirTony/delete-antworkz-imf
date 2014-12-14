@@ -3,7 +3,7 @@
 #include <QDateTime>
 
 #include "ItemFormatBehavior.h"
-#include "LogLevel.h"
+#include "Severity.h"
 
 DEFINE_DATAPROPS(LogItem, LogItemData)
 
@@ -16,7 +16,7 @@ void LogItem::dtor(void) {}
 
 bool LogItem::isNull(void) const
 {
-    return getLevel();
+    return getSeverity();
 }
 
 QVariant LogItem::value(const int index) const
@@ -45,7 +45,24 @@ QString LogItem::toString(void) const
     return defaultBehavior.formatItem(BasicName("default"), *this);
 }
 
-void LogItem::setLevelToPass(void)
+void LogItem::setSeverityToPass(void)
 {
+    setSeverity(Severity(getSeverity()).pass());
+}
 
+bool LogItem::evaluate(const int expectedIndex,
+                       const int actualIndex) const
+{
+    return false;
+}
+
+bool LogItem::canConvert(const int expectedIndex,
+                         const int actualIndex)
+{
+    return false;
+}
+
+QString LogItem::relationName(void) const
+{
+    return "rel";
 }

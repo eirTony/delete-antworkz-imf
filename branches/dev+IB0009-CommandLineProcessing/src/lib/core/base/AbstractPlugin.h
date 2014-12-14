@@ -61,7 +61,7 @@ private:
 private: // static
     friend class PluginManager;
     static QList<BasicId> smPrefixIdList;
-    static QMap<EightCCList, BasicId> smSchemaPluginIdMap;
+    static QMap<EightCC, BasicId> smSchemaPluginIdMap;
     static QMap<BasicId, QFileInfo> smPluginIdFileInfoMap;
     static QMap<BasicId, MetaName> smPluginIdMetaNameMap;
 };

@@ -14,14 +14,21 @@ class BASESHARED_EXPORT BasicName
 public:
     typedef QList<BasicName> List;
     typedef QMap<BasicName, QVariant> VariantMap;
+    // HOWTO: template <class T> typedef QMap<BasicName, T> Map;
 
 public:
-    BasicName(const QString & name=QString());
-    BasicName(const char * psz);
+    BasicName(void);
+    BasicName(const QString & name);
+    BasicName(const char * const chars);
     bool isNull(void) const;
+    bool isEmpty(void) const;
     void clear(void);
     void set(const QString & name);
     QString sortable(void) const;
+    bool operator == (const BasicName & other) const;
+    bool operator <  (const BasicName & other) const;
+    QString operator () (void) const;
+    operator QString (void) const;
 
 private:
     QString mName;
