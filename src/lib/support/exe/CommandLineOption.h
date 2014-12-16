@@ -9,18 +9,18 @@
 #include <type/QQChar.h>
 #include <type/QQString.h>
 #include <type/QQVariant.h>
+#include <data/DataType.h>
 
 #define COMMANDLINEOPTION_DATAPROPS(TND) \
-    TND(BasicName, OptionName, BasicName()) \
-    TND(int, OptionType, 0) \
-    TND(QQChar, SingleChar, QChar()) \
-    TND(BasicNameList, NameList, BasicNameList()) \
-    TND(QQString, Description, QQString()) \
-    TND(QQVariant, DefaultValue, QQVariant()) \
-    TND(int, DataType, 0) \
-    TND(QQString, Syntax, QQString()) \
-    TND(int, Position, -1) \
-    TND(QQVariant, Value, QQVariant()) \
+    TND(BasicName,      OptionName,     BasicName()) \
+    TND(QQChar,         SingleChar,     QQChar()) \
+    TND(BasicNameList,  NameList,       BasicNameList()) \
+    TND(QQString,       Description,    QQString()) \
+    TND(QQVariant,      DefaultValue,   QQVariant()) \
+    TND(int,            DataType,       0) \
+    TND(QQString,       Syntax,         QQString()) \
+    TND(int,            Position,       0) \
+    TND(QQVariant,      Value,          QQVariant()) \
 
 class CommandLineOptionData : public QSharedData
 {
@@ -31,27 +31,46 @@ public:
         DEFINE_DATAPROPS_CTORS(COMMANDLINEOPTION_DATAPROPS)
     }
 };
+/*! @class CommandLineOptionData CommandLineOption.h "exe/CommandLineOption.h"
+ * @internal
+ */
 
-/*! @class CommandLineOption
+class EXESHARED_EXPORT CommandLineOption
+{
+public:
+    DECLARE_PARENT_DATAPROPS(COMMANDLINEOPTION_DATAPROPS)
+    DECLARE_DATAPROPS(CommandLineOption, CommandLineOptionData)
+
+public:
+    void Positional(const DataType dt,
+                    const BasicName & argName,
+                    const QQString & syntax,
+                    const QQString & description=QQString());
+    void Option(const DataType dt,
+                const QQChar singleChar,
+                const BasicNameList &optNames,
+                const QQString & description=QQString(),
+                const BasicName & valueName=BasicName(),
+                const QQVariant & defaultValue=QQVariant());
+    void Option(const DataType dt,
+                const BasicName & optName,
+                const QQString & description=QQString(),
+                const BasicName & valueName=BasicName(),
+                const QQVariant & defaultValue=QQVariant());
+    bool isValid(void) const;
+};
+/*! @class CommandLineOption CommandLineOption.h "exe/CommandLineOption.h"
  * @breif The CommandLineOption class contains each for CommandLineProcessing
+ * @todo Change DataType from int to DataLib:DataType when it matures.
+ * @since ExeLib version 2.03
  *
  * Each item can represent one of:
  *  * Positional Argument
  *  * Named Argument
  *  * Command Line Option with optional single char or multiple name options
- *  * Special Option, like Help and TBD
+ *  * Special Option, like Help and Version
  *
- * @since ExeLib version 2.03
  *
- * @todo Change DataType from int to DataLib:DataType when it matures.
  */
-class EXESHARED_EXPORT CommandLineOption
-{
-    DECLARE_PARENT_DATAPROPS(COMMANDLINEOPTION_DATAPROPS)
-    DECLARE_DATAPROPS(CommandLineOption, CommandLineOptionData)
-
-public:
-    bool isValid(void) const;
-};
 
 #endif // COMMANDLINEOPTION_H

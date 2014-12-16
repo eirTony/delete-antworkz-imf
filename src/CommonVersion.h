@@ -1,7 +1,7 @@
 #ifndef COMMONVERSION_H
 #define COMMONVERSION_H
 
-#define CVER_STRING     "v2.03B"
+#define CVER_STRING     "v2.03B+IB0009-CommandLine"
 #define CVER_MAJOR      2
 #define CVER_MINOR      3
 #define CVER_BRANCH     0
