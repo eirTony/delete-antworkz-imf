@@ -5,6 +5,8 @@
 #define MODULE_NAME "eirMsg"
 #include "Msg_global.h"
 
+#include <QVariantMap>
+
 #include <base/ModuleInfo.h>
 #include <core/Singleton.h>
 
@@ -28,4 +30,5 @@ public:
  */
 typedef Singleton<MsgLib> Msg;
 
+typedef QVariantMap EclipseMessage;
 #endif // MsgLib_H
