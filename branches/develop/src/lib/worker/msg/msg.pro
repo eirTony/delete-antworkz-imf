@@ -10,7 +10,7 @@ include (../common.pri)
 
 win32:RC_FILE = WinRes.rc
 
-LIBS *= -leirQuick
+#LIBS *= -leirQuick
 LIBS *= -leirBase
 
 SOURCES += MsgLib.cpp

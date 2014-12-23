@@ -1,24 +1,24 @@
 
 QT       -= gui
 
-TARGET = eirEmpty
+TARGET = eirState
 TEMPLATE = lib
 
-DEFINES += EMPTY_LIBRARY
+DEFINES += STATE_LIBRARY
 
 include (../common.pri)
 
 win32:RC_FILE = WinRes.rc
 
-LIBS *= -leirQuick
+#LIBS *= -leirQuick
 LIBS *= -leirBase
 
-SOURCES += EmptyLib.cpp
+SOURCES += StateLib.cpp
 
-HEADERS += EmptyLib.h \
+HEADERS += StateLib.h \
     Version.h \
     ../../../CommonVersion.h \
-    empty_global.h
+    state_global.h
 
 unix {
     target.path = /usr/lib
