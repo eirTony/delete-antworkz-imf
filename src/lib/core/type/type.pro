@@ -29,7 +29,8 @@ SOURCES += TypeLib.cpp \
     QQFile.cpp \
     QQDataStream.cpp \
     QQTextStream.cpp \
-    QQFileInfo.cpp
+    QQFileInfo.cpp \
+    QQQueue.cpp
 
 HEADERS += TypeLib.h\
     type_global.h \
@@ -52,7 +53,8 @@ HEADERS += TypeLib.h\
     QQFile.h \
     QQDataStream.h \
     QQTextStream.h \
-    QQFileInfo.h
+    QQFileInfo.h \
+    QQQueue.h
 
 unix {
     target.path = /usr/lib
