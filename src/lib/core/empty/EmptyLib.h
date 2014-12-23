@@ -6,7 +6,7 @@
 #include "empty_global.h"
 
 #include <base/ModuleInfo.h>
-#include <type/Singleton.h>
+#include <core/Singleton.h>
 
 /*! @class EmptyLib
  * @brief The EmptyLib is the base class in the eirEmpty library.

@@ -6,7 +6,7 @@
 #include "Msg_global.h"
 
 #include <base/ModuleInfo.h>
-#include <type/Singleton.h>
+#include <core/Singleton.h>
 
 /*! @class MsgLib
  * @brief The MsgLib is the base class in the eirMsg library.
@@ -19,7 +19,7 @@ class MSGSHARED_EXPORT MsgLib : public ModuleInfo
 {
 public:
     MsgLib(void);
-    virtual void executeUnitTest(void);
+//    virtual void executeUnitTest(void);
 };
 
 /*! @typedef Msg
