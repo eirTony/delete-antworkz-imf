@@ -9,6 +9,7 @@
 #define MODULE_NAME "AntzConsole"
 
 #include <msg/EclipseMessageQueue.h>
+#include <state/EclipseStateMachine.h>
 
 class AntzConsole : public ConsoleApplication
                   , public ModuleInfo
