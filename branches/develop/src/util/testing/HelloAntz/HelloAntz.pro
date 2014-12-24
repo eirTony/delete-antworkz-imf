@@ -20,6 +20,7 @@ TEMPLATE = app
 LIBS    *= -leirBase
 LIBS    *= -leirExe
 LIBS    *= -leirMsg
+LIBS    *= -leirState
 
 SOURCES += main.cpp \
     AntzConsole.cpp

@@ -19,11 +19,11 @@ void AntzConsole::doStart(void)
             msgQ, SLOT(incoming(const EclipseMessage &)));
     connect(msgQ, SIGNAL(outgoing(const EclipseMessage &)),
             this, SLOT(receive(const EclipseMessage &)));
-
     msg.insert("Message", "This is a message.");
 
+    EclipseStateMachine * sm = new EclipseStateMachine(this);
+
     SerialExecutable::writeLine("Hello Antz!");
-    qDebug("emit send(msg);");
     emit send(msg);
     SerialExecutable::writeError("This may be an error?!");
     QTimer::singleShot(5000, this, SLOT(quit()));
@@ -31,8 +31,5 @@ void AntzConsole::doStart(void)
 
 void AntzConsole::receive(const EclipseMessage & msg)
 {
-    qDebug("in AntzConsole::receive(const EclipseMessage & msg)");
-    qDebug(qPrintable("with msg="+msg["Message"].toString()));
-
     SerialExecutable::writeLine(msg["Message"].toString());
 }

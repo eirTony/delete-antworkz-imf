@@ -12,13 +12,19 @@ win32:RC_FILE = WinRes.rc
 
 #LIBS *= -leirQuick
 LIBS *= -leirBase
+LIBS *= -leirVar
+LIBS *= -leirCfg
 
-SOURCES += StateLib.cpp
+SOURCES += StateLib.cpp \
+    EclipseStateMachine.cpp \
+    StateMachineConfiguration.cpp
 
 HEADERS += StateLib.h \
     Version.h \
     ../../../CommonVersion.h \
-    state_global.h
+    state_global.h \
+    EclipseStateMachine.h \
+    StateMachineConfiguration.h
 
 unix {
     target.path = /usr/lib
