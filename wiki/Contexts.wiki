@@ -18,7 +18,7 @@ contexts noting each one's characteristic.
 
 = Characteristics =
 
-|| CharCode || Name || Description ||
+|| *CharCode* || *Name* || *Description* ||
 || FixedRO || Fixed Read Only || Will not change during the life of machine ||
 || SubRO || Subscriber Read Only || Worker will not change; machine may change based upon message from Publisher ||
 || PubWO || Publisher Write Only || TBD whether these will be contexts ||
@@ -30,7 +30,7 @@ contexts noting each one's characteristic.
 
 == INDI 2nd Generation ==
 
-|| CharCode || Description || Characteristic CharCode ||
+|| *CharCode* || *Description* || *Characteristic CharCode* ||
 || Vectors || Vector sets for face matching || SubRO ||
 || EnrIBase || Enrollment keys and INDIbase write cache (Note 2) || PubWO ||
 || EnrIMage || Image keys and INDIbase write cache (Note 2 also) || PubWO ||
