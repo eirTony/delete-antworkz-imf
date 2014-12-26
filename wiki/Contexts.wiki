@@ -41,7 +41,10 @@ contexts noting each one's characteristic.
 = Notes =
 
 1. Example for Update contexts: Gathering frame performance statistics.
-
+At machine start, context retrieves current totals and averages.
+When a worker finishes, its results are accumulated.
+On a periodic timer, the machine sends the collected results, updates its totals from the publisher, and zeros its collected stats.
+On machine shutdown, any last collected stats are sent to the publisher.
 
 2. Multiple databases machines can write to the same database by segmenting 
 the keys allocated to each writer machine.
