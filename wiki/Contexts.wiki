@@ -1,0 +1,33 @@
+#summary Work Contexts provide persistent data needed for workers
+#labels Phase-Implementation
+
+= Introduction =
+
+Worker classes derived from WorkLib:AbstractWorker
+have a short lifespan.
+They are created, provided with a current configuration
+and input data and are expected to provide results
+then fizzle into history. 
+
+The worker machine maintains work contexts for use
+by its workers.
+They are basically read only, but a few circumstances
+call for writing to a context.
+These will be discussed below followed by example
+contexts noting each one's characteristic.
+
+= Characteristics =
+
+|| CharCode || Name || Description ||
+|| Fixed || Fixed Read Only || Will not change during the life of machine ||
+|| SubRO || Subscriber Read Only || Worker will not change; machine may change based upon message from Publisher ||
+|| PublWO || Publisher Write Only || TBD whether these will be contexts ||
+|| Mirror || Publisher's Mirror ||  TBD whether these will be contexts ||
+|| Update || Periodic Update Read/Write || Statistics collector (See Note 1 for example) ||
+
+= Contexts =
+
+== INDI 2nd Generation ==
+
+
+= Notes =
