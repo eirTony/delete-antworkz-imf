@@ -30,10 +30,31 @@ In theory any worker machine on the network
 should be able to handle any work message that comes along.
 In reality we would like to already have any needed contexts
 loaded in the machine handling the messages.
-
 So, the Dispatchers keep track of what machines 
 have what contexts loaded already 
 as well as the machine's current work load.
+
+Normally, the Dispatchers would send the work message
+to the machine that has the needed contexts with the 
+lightest work load.
+If no suitable machine is available, the Dispatcher will
+tell the least loaded machine to load the needed context.
+If a machine is approaching a memory crisis, 
+it can drop one or more loaded contexts,
+weighing factors including:
+ * the amount of memory that would be freed
+ * the difficulty of reloading the context
+ * which context was first used last
+
+If a Dispatcher finds that it is consistently blocking
+on a context, it can ask The Cloud to assign another
+droplet for a new Machine pre-loaded with the Context.
+Conversely, if a dispatcher finds it has a lot of idle hands,
+Machines can be shutdown and their droplets returned to The Cloud.
+This system should eventually be self balancing,
+yet responsive to ebbs and flows of incoming work
+while making judicious use of droplets.
+ 
 
 = Characteristics =
 
