@@ -1,4 +1,4 @@
-#summary Work Contexts provide persistent data needed for workers
+#summary Worker Contexts provide persistent data needed for workers
 #labels Phase-Implementation
 
 = Introduction =
@@ -13,8 +13,27 @@ The worker machine maintains in-memory work contexts for use
 by its workers.
 They are basically read only, but a few circumstances
 call for writing to a context.
-These will be discussed below followed by example
+These will be discussed below *(Characteristics)* followed by example
 contexts noting each one's characteristic.
+
+In theory a worker only needs configuration values and input data
+to compute and output its results.
+Sometimes practically gets in the way of theory.
+This is where the worker context concept comes to the rescue.
+
+A worker context is a chunk of data that requires a lot of 
+resources, either too large to pass with each message 
+or computationally complex to be recalculated for each unit of work.
+
+Back to theory v. reality: 
+In theory any worker machine on the network 
+should be able to handle any work message that comes along.
+In reality we would like to already have any needed contexts
+loaded in the machine handling the messages.
+
+So, the Dispatchers keep track of what machines 
+have what contexts loaded already 
+as well as the machine's current work load.
 
 = Characteristics =
 
