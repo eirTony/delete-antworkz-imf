@@ -20,6 +20,7 @@ else {
 }
 INCLUDEPATH *= ../../../lib/core
 INCLUDEPATH *= ../../../lib/support
+INCLUDEPATH *= ../../../lib/worker
 INCLUDEPATH *= ../../..
 DEFINES *= QT_USE_QSTRINGBUILDER
 QMAKE_CXXFLAGS *= -std=c++11

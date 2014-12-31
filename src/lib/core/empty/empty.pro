@@ -17,7 +17,8 @@ SOURCES += EmptyLib.cpp
 
 HEADERS += EmptyLib.h \
     Version.h \
-    ../../../CommonVersion.h
+    ../../../CommonVersion.h \
+    empty_global.h
 
 unix {
     target.path = /usr/lib

@@ -1,5 +1,8 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-	core \
-	support \
+        core \
+        support \
+        worker
+
+

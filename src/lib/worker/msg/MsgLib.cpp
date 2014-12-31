@@ -6,9 +6,9 @@
 
 #include <QtDebug>
 
-#include <quick/QuickUnitTest.h>
+//#include <quick/QuickUnitTest.h>
 
-MsgLib * gpMsg = Msg::instance();
+//MsgLib * gpMsg = Msg::instance();
 /*! @fn void executeUnitTest(void)
  *
  * @brief The executeUnitTest() function is global to MsgLib
@@ -16,11 +16,12 @@ MsgLib * gpMsg = Msg::instance();
  * This global extern "C" function can be resolved and executed
  * after being loaded via QLibrary.
  */
+/*
 extern "C" MSGSHARED_EXPORT void executeUnitTest(void)
 {
     Msg::instance()->executeUnitTest();
 }
-
+*/
 
 /*! @fn MsgLib::MsgLib(void)
  *
@@ -36,9 +37,11 @@ MsgLib::MsgLib(void)
  *
  * @internal
  */
+/*
 void MsgLib::executeUnitTest(void)
 {
     QUT_FUNCTION();
     QUT_EXPECTEQ(VER_MAJOR, Msg::instance()->version().getMajor());
     //QUT_INSTANCE(AnyOtherClasses);
 }
+*/

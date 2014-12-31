@@ -1,7 +1,6 @@
 /*! @file   var/Version.h   Version info for eirVar library
 *
 */
-
 #ifndef VERSION_H
 #define VERSION_H
 
