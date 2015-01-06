@@ -14,9 +14,12 @@ public:
 
 signals:
     void outgoing(const EclipseMessage & msg);
+    void received(const EclipseMessage & msg);
+    void announce(const EclipseMessage & msg);
 
 public slots:
     void incoming(const EclipseMessage & msg);
+    void send(const EclipseMessage & msg);
 
 private:
     QQQueue<EclipseMessage> mQueue;
