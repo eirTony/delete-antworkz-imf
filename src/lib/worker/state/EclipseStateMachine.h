@@ -20,12 +20,16 @@ public:
 
 signals:
     void active(void);
+    void terminating(void);
     void terminated(void);
 
 public slots:
-    void start(void) {}
-    void terminate(void) {}
-    void terminate(const int exitCode) {}
+    void start(void);
+    void terminate(void);
+    void terminate(const int exitCode);
+
+private slots:
+    void enterFinal(void);
 
 private:
     int mExitCode = 0;
