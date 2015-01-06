@@ -1,10 +1,10 @@
 
 QT       -= gui
 
-TARGET = eirEmpty
+TARGET = eirWork
 TEMPLATE = lib
 
-DEFINES += EMPTY_LIBRARY
+DEFINES += WORK_LIBRARY
 
 include (../common.pri)
 
@@ -13,12 +13,12 @@ win32:RC_FILE = WinRes.rc
 LIBS *= -leirQuick
 LIBS *= -leirBase
 
-SOURCES += EmptyLib.cpp
+SOURCES += WorkLib.cpp
 
-HEADERS += EmptyLib.h \
+HEADERS += WorkLib.h \
     Version.h \
     ../../../CommonVersion.h \
-    empty_global.h
+    work_global.h
 
 unix {
     target.path = /usr/lib
