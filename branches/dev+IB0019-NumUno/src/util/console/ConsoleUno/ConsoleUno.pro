@@ -22,6 +22,7 @@ LIBS *= -leirBase
 LIBS *= -leirExe
 LIBS *= -leirMsg
 LIBS *= -leirState
+LIBS *= -leirWork
 
 SOURCES += main.cpp \
     ConsoleUno.cpp \
