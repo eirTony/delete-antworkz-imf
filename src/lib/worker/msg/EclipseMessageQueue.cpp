@@ -1,5 +1,7 @@
 #include "EclipseMessageQueue.h"
 
+#include "EclipseMessage.h"
+
 EclipseMessageQueue::EclipseMessageQueue(QObject * parent)
     : QObject(parent)
 {

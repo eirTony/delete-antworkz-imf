@@ -1,11 +1,12 @@
 #ifndef ECLIPSEWORKMESSAGEMACHINE_H
 #define ECLIPSEWORKMESSAGEMACHINE_H
+#include "WorkLib.h"
 
 #include <QObject>
 
 #include <base/BasicName.h>
 
-class EclipseWorkMessageMachine : public QObject
+class WORKSHARED_EXPORT EclipseWorkMessageMachine : public QObject
 {
     Q_OBJECT
 public:

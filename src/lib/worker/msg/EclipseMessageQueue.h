@@ -6,6 +6,8 @@
 
 #include <type/QQQueue.h>
 
+#include "EclipseMessage.h"
+
 class MSGSHARED_EXPORT EclipseMessageQueue : public QObject
 {
     Q_OBJECT
