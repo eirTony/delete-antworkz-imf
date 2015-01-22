@@ -1,0 +1,53 @@
+#summary Checklist for promoting a source code release.
+
+= Introduction =
+
+This note will provide a series of steps to promote a source code-base
+from a development branch to the develop branch, from develop to current,
+from current to release, and finally from release to trunk (master).
+
+= Top Level Branches =
+
+== develop ==
+
+...
+
+== current ==
+
+...
+
+== release ==
+
+...
+
+== trunk ==
+
+...
+
+= Steps =
+
+...
+
+== To develop ==
+
+   # For each active development branch (or a specific if desired):
+
+     # SVN switch to the development branch, ensure it compiles and tests at the start in release mode.
+
+    # SVN merge develop into the development branch
+
+    # Attempt to edit all conflicts to resolve them
+
+    # Make develop+branch rebuild compile and test correctly.
+
+
+ # SVN merge develop into branch. Test. Fix.
+
+ # SVN merge the branch into develop branch. [Note: Do not commit at this point.]
+
+  * If the merge, compile, or test errors become too difficult SVN revert back to the current develop branch.
+
+[Note: If at this point you are reverting more than committing, 
+consider abandoning this release.]
+ 
+ # SVN commit the develop changes from this branch.
