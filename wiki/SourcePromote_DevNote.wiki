@@ -10,7 +10,28 @@ from current to release, and finally from release to trunk (master).
 
 == develop ==
 
-...
+The `develop` branch is the active branch shared by
+the entire development team. 
+The bulk of active development takes place in issue
+branches from this branch.
+Development branches are named starting with `dev+`... ,
+for example `SVN/branches/dev+IB0019-NumUno` 
+is a branch from `develop` to implement Issue #19
+with a short decription of the issue "Console Numero Uno".
+
+It is expcted that updates to the shared `develop` branch
+will be merged into longer issue branches and therefor 
+merged back into `develop` periodically (weekly)
+while recognizing that merges into develop must
+rebuild without incident and pass basic unit 
+and acceptance tests.
+
+Changes that occur directly in develop branch 
+also must pass develop-level testing 
+and are generaly considered minor in nature, such as:
+  * updates to internal doxygen documentation
+  * cosmetic changes to source code structure or string coonstants
+  * low risk quick fixes while reintegrating multiple developmental branches
 
 == current ==
 
