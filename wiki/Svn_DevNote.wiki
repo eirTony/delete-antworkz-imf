@@ -23,7 +23,7 @@ As with most typical Subversion repository, the top level is segregated into thr
 
  * *trunk* - Where most of the (stable) action resides. 
 
- * *branch* - Where the nitty-gritty work progresses between these major branches.
+ * *branches* - Where the nitty-gritty work progresses between these major branches.
   * *develop* - The near-wild-wild west
   * *current* - Where "letter" builds land for early testing and evaluation
   * *release* - Where a potential public release transitions from Alpha to Beta
@@ -31,13 +31,13 @@ to Candidate and hopefully to Final release.
   * *master* - Public releases.
 
  * *tags* - Snapshots taken from the trunks to preserve sets of source code changes.
-  * *dev-build1001* - When codesets transition from develop to current, 
+  * *dev+build1001* - When codesets transition from develop to current, 
   the build number is incremented.
-  * *cur-v2.02F* - When a codeset arrives at current, it is assigned the next
+  * *cur+v2.02F* - When a codeset arrives at current, it is assigned the next
   'letter' version.
-  * *rel-v2.02-Alpha* - As pre-release testing takes place when semi-public 
+  * *rel+v2.02-Alpha* - As pre-release testing takes place when semi-public 
   test and evaluation releases take place.
-  * *mast-v2.02-Final* - Master codesets are tagged here. 
+  * *mst+v2.02-Final* - Master codesets are tagged here. 
   Typically post-release patches (custom[er]) and hotfixes 
   branch from here.
   
