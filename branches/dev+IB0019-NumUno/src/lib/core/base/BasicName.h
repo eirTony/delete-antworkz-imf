@@ -37,6 +37,7 @@ private:
  * @brief The BasicName class supports names that mirror programming variable names
  * @ingroup BaseLib
  * @since BasicName was started in v2.03
+ * @sa BasicId
  * @todo { Investigate whether a variable name consisting of an initial underscore
  * and only numbers following should be valid. }
  *
