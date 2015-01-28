@@ -8,11 +8,18 @@ EclipseMessageQueue::EclipseMessageQueue(QObject * parent)
     setObjectName("EclipseMessageQueue");
 }
 
+bool EclipseMessageQueue::initialize(const BasicName::VariantMap init)
+{
+    return false;
+}
+
+bool EclipseMessageQueue::configure(const BasicId::VariantMap config)
+{
+    return false;
+}
+
 void EclipseMessageQueue::incoming(const EclipseMessage & msg)
 {
-    qDebug("EclipseMessageQueue::incoming(const EclipseMessage & msg)");
-    qDebug(qPrintable("with msg="+msg["Message"].toString()));
-
     mpCurrentSenderObject = QObject::sender();
     mCurrentMessage = msg;
     emit outgoing(msg);
@@ -20,8 +27,6 @@ void EclipseMessageQueue::incoming(const EclipseMessage & msg)
 
 void EclipseMessageQueue::send(const EclipseMessage & msg)
 {
-    qDebug(qPrintable("EclipseMessageQueue::send(msg) with msg="
-                      +msg["Message"].toString()));
     mpCurrentSenderObject = QObject::sender();
     mCurrentMessage = msg;
 }

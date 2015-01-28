@@ -15,15 +15,16 @@ bool EclipseStateMachine::initialize(const BasicName::VariantMap init)
     activeState->setObjectName("activeState");
     QFinalState * finalState = new QFinalState(this);
     finalState->setObjectName("finalState");
-    addTransition(activeState, SIGNAL(terminating()), finalState);
+    addTransition(this, SIGNAL(terminating()), finalState);
     setInitialState(activeState);
-    connect(finalState, SIGNAL(Entering()), this, SLOT(enterFinal()));
+    connect(finalState, SIGNAL(entered()), this, SLOT(enterFinal()));
     return true;
 }
 
-bool EclipseStateMachine::configure(const StateMachineConfiguration config)
+bool EclipseStateMachine::configure(const BasicId::VariantMap config)
 {
-    return false;
+    (void)config;
+    return true;
 }
 
 void EclipseStateMachine::setExitCode(const int code)
@@ -31,21 +32,20 @@ void EclipseStateMachine::setExitCode(const int code)
     mExitCode = code;
 }
 
-
 void EclipseStateMachine::start(void) // [slot]
 {
     QStateMachine::start();
-}
-
-void EclipseStateMachine::terminate(void) // [slot]
-{
-    emit terminating();
 }
 
 void EclipseStateMachine::terminate(const int exitCode) // [slot]
 {
     mExitCode = exitCode;
     terminate();
+}
+
+void EclipseStateMachine::terminate(void) // [slot]
+{
+    emit terminating();
 }
 
 void EclipseStateMachine::enterFinal(void) // [slot]

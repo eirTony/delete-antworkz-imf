@@ -4,6 +4,8 @@
 
 #include <QObject>
 
+#include <base/BasicId.h>
+#include <base/BasicName.h>
 #include <type/QQQueue.h>
 
 #include "EclipseMessage.h"
@@ -13,6 +15,9 @@ class MSGSHARED_EXPORT EclipseMessageQueue : public QObject
     Q_OBJECT
 public:
     explicit EclipseMessageQueue(QObject * parent=0);
+    bool initialize(const BasicName::VariantMap init=BasicName::VariantMap());
+    bool configure(const BasicId::VariantMap config
+                                =BasicId::VariantMap());
 
 signals:
     void outgoing(const EclipseMessage & msg);

@@ -16,18 +16,23 @@
 ConsoleUno::ConsoleUno(void)
     : mpEWMM(new EclipseWorkMessageMachine(this))
 {
+    Q_ASSERT(mpEWMM);
     setVersion();
     QObject::setObjectName("ConsoleUno");
 }
 
 void ConsoleUno::doInitialize(BasicName::VariantMap init)
 {
-
+    Q_ASSERT(mpEWMM->initialize(init));
+    connect(this, SIGNAL(send(const EclipseMessage &)),
+            mpEWMM->queue(), SLOT(incoming(const EclipseMessage &)));
+    connect(mpEWMM->queue(), SIGNAL(outgoing(const EclipseMessage &)),
+            this, SLOT(receive(const EclipseMessage &)));
 }
 
 void ConsoleUno::doSetup(BasicId::VariantMap config)
 {
-
+    Q_ASSERT(mpEWMM->configure(config));
 }
 
 void ConsoleUno::doStart(void)
@@ -35,15 +40,8 @@ void ConsoleUno::doStart(void)
     SerialExecutable::writeLine("Hello from ConsoleUno!");
 
     EclipseMessage msg;
-    EclipseMessageQueue * msgQ = new EclipseMessageQueue(this);
-    connect(this, SIGNAL(send(const EclipseMessage &)),
-            msgQ, SLOT(incoming(const EclipseMessage &)));
-    connect(msgQ, SIGNAL(outgoing(const EclipseMessage &)),
-            this, SLOT(receive(const EclipseMessage &)));
     msg.insert("Message", "This is a message.");
     emit send(msg);
-
-    EclipseStateMachine * sm = new EclipseStateMachine(this);
 
     QTimer::singleShot(5000, this, SLOT(quit()));
 }

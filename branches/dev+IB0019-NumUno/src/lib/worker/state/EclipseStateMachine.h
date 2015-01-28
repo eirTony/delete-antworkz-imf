@@ -4,6 +4,7 @@
 
 #include <QStateMachine>
 
+#include <base/BasicId.h>
 #include <base/BasicName.h>
 
 #include "StateMachineConfiguration.h"
@@ -13,9 +14,10 @@ class STATESHARED_EXPORT EclipseStateMachine : public QStateMachine
     Q_OBJECT
 public:
     explicit EclipseStateMachine(QObject * parent=0);
-    bool initialize(const BasicName::VariantMap init=BasicName::VariantMap());
-    bool configure(const StateMachineConfiguration config
-                                =StateMachineConfiguration());
+    bool initialize(const BasicName::VariantMap init
+                                =BasicName::VariantMap());
+    bool configure(const BasicId::VariantMap config
+                                =BasicId::VariantMap());
     void setExitCode(const int code);
 
 signals:
