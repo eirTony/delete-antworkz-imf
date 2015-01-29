@@ -3,6 +3,7 @@
 #include "ExeLib.h"
 
 #include <QObject>
+#include <base/ModuleInfo.h>
 
 #include <QFileInfo>
 #include <QStringList>
@@ -11,7 +12,8 @@ class QGuiApplication;
 class QCoreApplication;
 
 
-class EXESHARED_EXPORT ExecutableSupport : public QObject
+class EXESHARED_EXPORT ExecutableSupport
+        : public QObject, public ModuleInfo
 {
     Q_OBJECT
 public:
