@@ -12,5 +12,10 @@ public:
     MetaName(const QString & string);
     MetaName(const char * chars);
 };
+/*! @class MetaName MetaName.h <base/MetaName.h>
+ * @brief MetaName contains a name in the QMetaObject facility
+ * @since MetaName was introduced in v2.03
+ * @ingroup BaseLib
+ */
 
 #endif // METANAME_H

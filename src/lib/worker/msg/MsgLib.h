@@ -30,5 +30,4 @@ public:
  */
 typedef Singleton<MsgLib> Msg;
 
-typedef QVariantMap EclipseMessage;
 #endif // MsgLib_H
