@@ -12,6 +12,7 @@ class EXESHARED_EXPORT SerialExecutable : public ExecutableSupport
 public:
     void setStream(BaseSerialStream * textStream);
     BaseSerialStream * stream(void);
+    QChar readChar(void);
     QString readLine(void);
     bool writeLine(const QString & line);
     bool writeError(const QString & error);
@@ -23,7 +24,7 @@ public slots:
     void start(void);
 
 protected:
-    SerialExecutable(BaseSerialStream *textStream=0);
+    SerialExecutable(BaseSerialStream * textStream=0);
 
 private:
     BaseSerialStream * mpSerialStream = 0;

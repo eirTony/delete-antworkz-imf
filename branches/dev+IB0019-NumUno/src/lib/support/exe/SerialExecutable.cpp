@@ -18,6 +18,11 @@ BaseSerialStream *SerialExecutable::stream(void)
     return mpSerialStream;
 }
 
+QChar SerialExecutable::readChar(void)
+{
+    return mpSerialStream ? mpSerialStream->readChar() : QChar();
+}
+
 QString SerialExecutable::readLine(void)
 {
     return mpSerialStream ? mpSerialStream->readLine() : QString();

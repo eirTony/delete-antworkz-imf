@@ -26,6 +26,7 @@ signals:
 
 public slots:
     void start(void);
+    void terminate(void);
 
 private:
     EclipseStateMachine * mpMachine = 0;
