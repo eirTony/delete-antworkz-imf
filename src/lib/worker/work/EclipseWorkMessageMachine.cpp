@@ -42,3 +42,8 @@ void EclipseWorkMessageMachine::start(void)
 {
     mpMachine->start();
 }
+
+void EclipseWorkMessageMachine::terminate(void)
+{
+    mpMachine->terminate();
+}

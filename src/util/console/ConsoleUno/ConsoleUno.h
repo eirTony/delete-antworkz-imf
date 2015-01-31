@@ -14,6 +14,7 @@ public:
     void processChar(const QChar c);
     void processMessage(const EclipseMessage & msg);
     void processTerminate(const int exitCode);
+    void enquiry(void);
 
 signals:
 
@@ -28,7 +29,10 @@ signals:
     void send(const EclipseMessage & msg);
 
 public slots:
+    void onActive(void);
     void receive(const EclipseMessage & msg);
+    void onCharReady(void);
+    void onTerminated(void);
 
 private:
     EclipseWorkMessageMachine * mpEWMM = 0;

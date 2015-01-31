@@ -12,6 +12,7 @@ public:
     explicit BaseSerialStream(QObject * parent=0);
     virtual bool open(const QIODevice::OpenMode mode=QIODevice::ReadWrite
                                                    | QIODevice::Text) {}
+    virtual QChar readChar(void) { return QChar(); }
     virtual QString readLine(void) { return QString(); }
     virtual bool writeLine(const QString & line) { return false; }
     virtual bool writeError(const QString & error) { return false;}

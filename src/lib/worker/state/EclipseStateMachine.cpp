@@ -35,6 +35,7 @@ void EclipseStateMachine::setExitCode(const int code)
 void EclipseStateMachine::start(void) // [slot]
 {
     QStateMachine::start();
+    emit active();
 }
 
 void EclipseStateMachine::terminate(const int exitCode) // [slot]
