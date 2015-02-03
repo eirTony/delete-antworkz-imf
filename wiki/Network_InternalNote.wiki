@@ -1,0 +1,32 @@
+#summary Documents the internal RadNet.
+
+= Introduction =
+
+This TechNote will document the internal 
+Research and Development intranet (AKA RadNet).
+
+= Physical Hosts =
+
+== Emmetts ==
+
+...
+
+== Firestone ==
+
+...
+
+= Virtual Hosts =
+
+Virtualization will be a major part of the use of RadNet.
+We currently use the VirtualBox system from Oracle.
+
+== Creating VBox Clients ==
+
+  * Starting *VirtualBox Manager*
+    * For Linux/BSD physical hosts you may be able to install a VirtualBox-4.3.20 package
+    * If necessary, download from https://www.virtualbox.org/wiki/Downloads
+    * Install and start the Manager
+    * Set its default path to [Windows] V:\ or [Linux/BSD] /home/vboxlive
+  * Create a new Virtual Machine by one of the following:
+    * Select _New_ action 
+    * _Clone_ or _Import_ an appropriate -Base machine
