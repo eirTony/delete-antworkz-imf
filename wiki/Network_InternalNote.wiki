@@ -59,6 +59,7 @@ We currently use the Oracle VM  system: VirtualBox.
     * Install VBox Guest Additions
     * Use the appropriate update facility 
       * Repeat until it wont update any more, restart as required
+      * [Windows] Also Windows Defender definitions
     * Add users
       
   * Install software based upon use (except -Bare)
