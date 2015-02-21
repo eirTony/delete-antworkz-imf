@@ -11,10 +11,7 @@ class ConsoleUno : public ConsoleApplication
     Q_OBJECT
 public:
     explicit ConsoleUno(void);
-    void processChar(const QChar c);
     void processMessage(const EclipseMessage & msg);
-    void processTerminate(const int exitCode);
-    void enquiry(void);
 
 signals:
 
@@ -31,7 +28,6 @@ signals:
 public slots:
     void onActive(void);
     void receive(const EclipseMessage & msg);
-    void onCharReady(void);
     void onTerminated(void);
 
 private:
