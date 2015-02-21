@@ -4,6 +4,8 @@ QT       -= gui
 TARGET = eirExe
 TEMPLATE = lib
 
+CONFIG *= console
+
 DEFINES += EXE_LIBRARY
 
 include (../common.pri)

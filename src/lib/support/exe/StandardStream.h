@@ -1,7 +1,10 @@
 #ifndef STANDARDSTREAM_H
 #define STANDARDSTREAM_H
 
+#include <QChar>
+#include <QQueue>
 class QTextStream;
+
 
 #include "BaseSerialStream.h"
 
@@ -27,6 +30,7 @@ private:
     QTextStream * mpStdinStream  = 0;
     QTextStream * mpStdoutStream = 0;
     QTextStream * mpStderrStream = 0;
+    QQueue<QChar> mReadQueue;
 };
 
 #endif // STANDARDSTREAM_H
