@@ -22,38 +22,19 @@ ConsoleUno::ConsoleUno(void)
     QObject::setObjectName("ConsoleUno");
 }
 
-void ConsoleUno::processChar(const QChar c)
-{
-    if (false)
-        ;
-    else if ('e' == c)
-        enquiry();
-    else if ('q' == c)
-        processTerminate(0);
-    else
-        writeLine("Huh?");
-}
-
 void ConsoleUno::processMessage(const EclipseMessage & msg)
 {
     QString command = msg["Command"].toString();
     SerialExecutable::writeLine("cmd>" + command);
     if (false)
         ;
+    else if ("Enquiry" == command)
+        SerialExecutable::writeLine("Version: "+VersionInfo().toString(true));
     else if ("Quit" == command)
         QTimer::singleShot(10, this, SLOT(quit()));
+    else
+        SerialExecutable::writeError("Command not recognized.");
 
-
-}
-
-void ConsoleUno::processTerminate(const int exitCode)
-{
-    mpEWMM->terminate();
-}
-
-void ConsoleUno::enquiry(void)
-{
-    SerialExecutable::writeLine("Version: "+VersionInfo().toString(true));
 }
 
 void ConsoleUno::doInitialize(BasicName::VariantMap init)
@@ -107,11 +88,6 @@ void ConsoleUno::receive(const EclipseMessage & msg)
 void ConsoleUno::onActive(void)
 {
     SerialExecutable::writeLine("Hello from ConsoleUno!");
-}
-
-void ConsoleUno::onCharReady(void)
-{
-    processChar(SerialExecutable::readChar());
 }
 
 void ConsoleUno::onTerminated(void)
