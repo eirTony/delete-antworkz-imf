@@ -5,19 +5,19 @@
 StandardStream::StandardStream(QObject * parent)
     : BaseSerialStream(parent)
 {
-    mpStdinStream  = new QTextStream(stdin,  QIODevice::ReadOnly);
-    mpStdoutStream = new QTextStream(stdout, QIODevice::WriteOnly);
-    mpStderrStream = new QTextStream(stderr, QIODevice::WriteOnly);
+    mpStdinStream  = new QTextStream(stdin);
+    mpStdoutStream = new QTextStream(stdout);
+    mpStderrStream = new QTextStream(stderr);
 
-    connect(mpStdinStream->device(), SIGNAL(readyRead()),
-            this, SLOT(streamReadyRead()));
+    Q_ASSERT(QTextStream::Ok == mpStdinStream->status());
+
+    Q_ASSERT(connect(mpStdinStream->device(), SIGNAL(readyRead()),
+                     this, SLOT(streamReadyRead())));
 }
 
 QChar StandardStream::readChar(void)
 {
-    if ( ! mpStdinStream)   return QChar();
-    QString s = mpStdinStream->read(1);
-    return s.isEmpty() ? QChar() : s[0];
+    return mReadQueue.isEmpty() ? QChar() : mReadQueue.dequeue();
 }
 
 QString StandardStream::readLine(void)
@@ -41,5 +41,12 @@ bool StandardStream::writeError(const QString & error)
 
 void StandardStream::streamReadyRead(void)
 {
+    Q_ASSERT(mpStdinStream);
+    QChar c;
+    while ( ! mpStdinStream->atEnd())
+    {
+        *mpStdinStream >> c;
+        mReadQueue.enqueue(c);
+    }
     emit readyRead();
 }

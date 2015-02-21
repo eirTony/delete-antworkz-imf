@@ -6,6 +6,7 @@
 #endif
 #define MODULE_NAME "ConsoleUno"
 
+#include <QCoreApplication>
 #include <QTimer>
 
 #include <msg/EclipseMessage.h>
@@ -35,6 +36,13 @@ void ConsoleUno::processChar(const QChar c)
 
 void ConsoleUno::processMessage(const EclipseMessage & msg)
 {
+    QString command = msg["Command"].toString();
+    SerialExecutable::writeLine("cmd>" + command);
+    if (false)
+        ;
+    else if ("Quit" == command)
+        QTimer::singleShot(10, this, SLOT(quit()));
+
 
 }
 
@@ -68,14 +76,32 @@ void ConsoleUno::doSetup(BasicId::VariantMap config)
 
 void ConsoleUno::doStart(void)
 {
+    QStringList args = qApp->arguments();
+
     EclipseMessage msg;
-    msg.insert("Message", "This is a message.");
+    msg.insert("Message",
+               QString("Welcome to ConsoleUno at %1").arg(args.takeFirst()));
     emit send(msg);
+
+    foreach (QString arg, args)
+    {
+        EclipseMessage command;
+        command.insert("Command", arg);
+        emit send(command);
+    }
+
+    EclipseMessage quit;
+    quit.insert("Command", "Quit");
+    emit send(quit);
 }
 
 void ConsoleUno::receive(const EclipseMessage & msg)
 {
-    SerialExecutable::writeLine(msg["Message"].toString());
+    QString display = msg["Message"].toString();
+    if (display.isEmpty())
+        processMessage(msg);
+    else
+        SerialExecutable::writeLine(msg["Message"].toString());
 }
 
 void ConsoleUno::onActive(void)
