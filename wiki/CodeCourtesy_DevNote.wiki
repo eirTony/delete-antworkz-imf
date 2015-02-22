@@ -106,3 +106,30 @@ However, most classes should interact with other classes solely
 through their public members.
 
 _Blatently stolen from Google C++ Style Guide._
+
+== Qt Specific
+
+=== Q_OBJECT
+
+_In all QObject derived classes, use the Q_OBJECT directive_.
+
+Myth holds that you only need it to support signal/slot 
+and/or properties (via Q_PROPERTY).
+Even if this was true, it would pay to automatically include
+the directive, so that you don't forget to add it when
+you later decide to add signal/slot mechanism.
+
+However, the key benefit of including Q_OBJECT is that
+your class automatically becomes a part of the Qt MetaData ecosystem.
+
+=== Subclassing Qt Classes
+
+When subclassing Qt classes, you should have the goal of extending
+the capability or improving usability or consistency with your
+other classes. Strive for a truly _drop-in replacement_.
+
+  * Be prepared to provide all of the constructors that are provided by Qt. 
+(You don't have to code all of them up front.)
+
+  * Don't change known behavior.
+  
