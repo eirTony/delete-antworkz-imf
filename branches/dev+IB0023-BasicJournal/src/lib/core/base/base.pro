@@ -28,7 +28,9 @@ SOURCES += BaseLib.cpp \
     PluginObject.cpp \
     AbstractPlugin.cpp \
     BasicId.cpp \
-    MetaName.cpp
+    MetaName.cpp \
+    BasicJournalQueue.cpp \
+    BasicJournalWriter.cpp
 
 HEADERS += BaseLib.h\
         base_global.h \
@@ -48,7 +50,10 @@ HEADERS += BaseLib.h\
     PluginObject.h \
     AbstractPlugin.h \
     BasicId.h \
-    MetaName.h
+    MetaName.h \
+    BasicJournalQueue.h \
+    BasicJournalWriter.h \
+    BasicJournal.h
 
 unix {
     target.path = /usr/lib

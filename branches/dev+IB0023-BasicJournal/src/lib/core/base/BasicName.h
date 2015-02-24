@@ -13,6 +13,7 @@ class BASESHARED_EXPORT BasicName
 {
 public:
     typedef QList<BasicName> List;
+    typedef QPair<BasicName, QVariant> VariantPair;
     typedef QMap<BasicName, QVariant> VariantMap;
     // HOWTO: template <class T> typedef QMap<BasicName, T> Map;
 
