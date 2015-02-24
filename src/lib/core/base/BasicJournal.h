@@ -1,0 +1,4 @@
+#ifndef BASICJOURNAL_H
+#define BASICJOURNAL_H
+
+#endif // BASICJOURNAL_H
