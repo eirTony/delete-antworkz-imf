@@ -1,20 +1,17 @@
 #ifndef ANTZCONSOLE_H
 #define ANTZCONSOLE_H
 
-#include <base/ModuleInfo.h>
 #include <exe/ConsoleApplication.h>
-#ifdef MODULE_NAME
-# undef MODULE_NAME
-#endif
-#define MODULE_NAME "AntzConsole"
 
 class AntzConsole : public ConsoleApplication
-                  , public ModuleInfo
 {
+    Q_OBJECT
 public:
     AntzConsole(void);
-    virtual void doInitialize(void) {}
-    virtual void doSetup(void) {}
+    virtual void doInitialize(BasicName::VariantMap init
+                              =BasicName::VariantMap()) {}
+    virtual void doSetup(BasicId::VariantMap config
+                         =BasicId::VariantMap()) {}
     virtual void doStart(void);
 };
 

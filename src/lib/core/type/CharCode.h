@@ -15,6 +15,9 @@
 template <class UINT> class CharCode
 {
 public:
+    typedef UINT Uint;
+
+public:
     /** @fn     CharCode(void)
       * @brief  constructs a null character code
       */
@@ -36,12 +39,13 @@ public:
 #else
 #warning Need to support Q_BIG_ENDIAN
 #endif
-
+    CharCode(const QString & s) : u(0) { set(s); }
     /** @fn     CharCode(const TCC & other)
       * @brief  copy constructor
       */
     CharCode(const CharCode & other) : u(other.u) {}
 
+    void set(const QString & s) { const char * c = qPrintable(s); u = *(UINT *)c; }
     /** @fn     isNull(void) const
       * @brief  returns /ret true if character code is null
       */
@@ -62,10 +66,13 @@ public:
     bool operator <  (const CharCode & other) const
     { return network() <  other.network(); }
 
+    operator const UINT (void) const { return u; }
+    UINT operator () (void) const { return u; }
+
     /** @fn     operator QString(void) const
       * @brief  returns character code's characters as a QString
       */
-    operator QString(void) const
+    operator QString (void) const
     {
         char c[sizeof(UINT) + 1];
         c[sizeof(UINT)] = 0;

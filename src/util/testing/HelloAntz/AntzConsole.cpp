@@ -1,13 +1,17 @@
 #include "AntzConsole.h"
+#ifdef MODULE_NAME
+# undef MODULE_NAME
+#endif
+#define MODULE_NAME "AntzConsole"
 #include "Version.h"
 #include <CommonVersion.h>
 
 #include <QTimer>
 
 AntzConsole::AntzConsole(void)
-    : ModuleInfo(MODULE_NAME)
 {
-    setVersion();
+    ModuleInfo::setVersion();
+    QObject::setObjectName("AntzConsole");
 }
 
 void AntzConsole::doStart(void)
