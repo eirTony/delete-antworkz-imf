@@ -4,16 +4,12 @@
 #include <QObject>
 
 #include <QList.h>
+#include <QQueue>
 class QFile;
 class QUrl;
 
-#include "BasicName.h"
-#include "BasicNameMap.h"
+#include "BasicJournal.h"
 class BasicJournalWriter;
-
-typedef BasicName::VariantPair BasicJournalItem;
-typedef BasicName::VariantMap BasicJournalEntry;
-typedef QList<BasicJournalEntry> BasicJournalEntryList;
 
 class BasicJournalQueue : public QObject // Singleton
 {
@@ -26,15 +22,16 @@ public:
     QFile * startupFile(void) const;
     void endStartup(void);
 
-    void append(const BasicJournalEntry & entry);
+    void enqueue(const BasicJournalEntry & entry);
     BasicJournalEntry dequeue(void);
-    BasicJournalEntryList dequeue(const int count=-1);
+    BasicJournalEntryList dequeue(const int count=0);
     BasicJournalEntryList dequeueAll(void);
 
 signals:
     void enqueued(void);
     void enqueued(BasicJournalEntry);
     void queueSize(int);
+    void empty(void);
 
 public slots:
 
@@ -44,7 +41,8 @@ private slots:
 
 private:
     BasicJournalWriter * mpWriter = 0;
-
+    QQueue<BasicJournalEntry> mEntryQueue;
+    QStringList mOldFileNameList; // or Queue?
 };
 
 #endif // BASICJOURNALQUEUE_H
