@@ -41,6 +41,8 @@ void BasicName::set(const QString & name)
 
 QString BasicName::sortable(void) const
 {
+    // Future:  refactor op== op< with CaseInsensitive .compare()
+    //          and/or class InsensitiveString
     return mName.toLower();
 }
 
