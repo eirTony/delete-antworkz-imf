@@ -58,6 +58,7 @@ BasicJournalEntry BasicJournalQueue::dequeue(void)
     emit queueSize(mEntryQueue.size());
     if (mEntryQueue.isEmpty())
         emit empty();
+    return entry;
 }
 
 BasicJournalEntryList BasicJournalQueue::dequeue(const int count)
@@ -76,9 +77,27 @@ BasicJournalEntryList BasicJournalQueue::dequeue(const int count)
     emit queueSize(mEntryQueue.size());
     if (mEntryQueue.isEmpty())
         emit empty();
+    return list;
 }
 
 BasicJournalEntryList BasicJournalQueue::dequeueAll(void)
 {
     return dequeue(0);
+}
+
+BasicJournalQueue::Category
+        BasicJournalQueue::parseCategory(const BasicName & s) // static
+{
+    Category rtn = nullCategory;
+    if (false)
+        ;
+    else if (BasicName("Debug") == s)
+        rtn = Debug;
+    else if (BasicName("Warning") == s)
+        rtn = Warning;
+    else if (BasicName("Critical") == s)
+        rtn = Critical;
+    else if (BasicName("Fatal") == s)
+        rtn = Fatal;
+    return rtn;
 }

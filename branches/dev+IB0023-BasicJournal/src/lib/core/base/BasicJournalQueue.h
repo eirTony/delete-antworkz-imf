@@ -15,6 +15,23 @@ class BasicJournalQueue : public QObject // Singleton
 {
     Q_OBJECT
 public:
+    enum Category // for now until Qt5.4 QMessageLogger understood
+    {
+        nullCategory = 0,
+        Debug,
+        Warning,
+        Critical,
+        Fatal,
+        sizeCategory
+    };
+    enum MacroName
+    {
+        nullMacroName = 0,
+        BTrace,
+        sizeMacroName
+    };
+
+public:
     explicit BasicJournalQueue(QObject * parent=0);
     BasicJournalQueue(const QUrl & url, QObject * parent=0);
     void startup(const QUrl & url);
@@ -26,6 +43,9 @@ public:
     BasicJournalEntry dequeue(void);
     BasicJournalEntryList dequeue(const int count=0);
     BasicJournalEntryList dequeueAll(void);
+
+public: // static
+    static Category parseCategory(const BasicName & s);
 
 signals:
     void enqueued(void);

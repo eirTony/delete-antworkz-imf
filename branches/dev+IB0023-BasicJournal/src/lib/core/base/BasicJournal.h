@@ -4,6 +4,7 @@
 #include "BasicName.h"
 #include "BasicNameMap.h"
 
+
 typedef BasicName::VariantPair BasicJournalItem;
 typedef BasicName::VariantMap BasicJournalEntry;
 typedef QList<BasicJournalEntry> BasicJournalEntryList;
