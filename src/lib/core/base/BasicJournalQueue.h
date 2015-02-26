@@ -28,6 +28,20 @@ public:
     {
         nullMacroName = 0,
         BTrace,
+        BDump,
+        BTodo,
+        BWarnIf,
+        BWarnNot,
+        BWarn,
+        BErrorIf,
+        BErrorNot,
+        BError,
+        BMustDo,
+        BFatalIf,
+        BFatalNot,
+        BObjPtr,
+        BNulPtr,
+        BFatal,
         sizeMacroName
     };
 
@@ -46,6 +60,7 @@ public:
 
 public: // static
     static Category parseCategory(const BasicName & s);
+    static MacroName parseMacroName(const BasicName & s);
 
 signals:
     void enqueued(void);

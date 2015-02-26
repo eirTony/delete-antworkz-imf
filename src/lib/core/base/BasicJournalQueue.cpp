@@ -101,3 +101,20 @@ BasicJournalQueue::Category
         rtn = Fatal;
     return rtn;
 }
+
+BasicJournalQueue::MacroName
+        BasicJournalQueue::parseMacroName(const BasicName & s) // static
+{
+    MacroName rtn = nullMacroName;
+    if (false)
+        ;
+    else if (BasicName("BTrace") == s)
+        rtn = BTrace;
+    else if (BasicName("BDump") == s)
+        rtn = BDump;
+    else if (BasicName("BTodo") == s)
+        rtn = BTodo;
+    else if (BasicName("BWarnIf") == s)
+        rtn = BWarnIf;
+    return rtn;
+}

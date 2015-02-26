@@ -4,6 +4,7 @@
 #include <QUrl>
 #include <QUrlQuery>
 class QFile;
+class QTextStream;
 
 #include "BasicJournal.h"
 #include "BasicJournalQueue.h"
@@ -42,6 +43,7 @@ private:
     int mKeepFiles = 0;
     int mKeepDays = 0;
     QFile * mpFile = 0;
+    QTextStream * mpStream = 0;
 };
 
 #endif // BASICJOURNALWRITER_H
