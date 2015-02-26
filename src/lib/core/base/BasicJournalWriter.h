@@ -6,6 +6,7 @@
 class QFile;
 
 #include "BasicJournal.h"
+#include "BasicJournalQueue.h"
 
 class BasicJournalWriter
 {
@@ -19,15 +20,6 @@ private:
         Tsv,
         sizeFormat
     };
-    enum Category // for now until Qt5.4 QMessageLogger understood
-    {
-        nullCategory = 0,
-        Debug,
-        Warning,
-        Critical,
-        Fatal,
-        sizeCategory
-    };
 
 public:
     explicit BasicJournalWriter(const QUrl & url);
@@ -37,12 +29,18 @@ public:
 
 private:
     bool parseUrl(const QUrl & url);
+    Format parseFormat(const BasicName s);
+    BasicJournalQueue::Category parseMinSev(const BasicName s);
+    bool openFile(void);
 
 private:
     QUrl mUrl;
     QUrlQuery mQuery;
+    QString mPath;
     Format mFormat;
-    Category mMinSeverity;
+    BasicJournalQueue::Category mMinSeverity;
+    int mKeepFiles = 0;
+    int mKeepDays = 0;
     QFile * mpFile = 0;
 };
 
