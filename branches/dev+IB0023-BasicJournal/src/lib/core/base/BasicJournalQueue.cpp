@@ -2,7 +2,7 @@
 
 #include <QTimer>
 
-#include "BasicJournalWriter.h"
+#include "private/BasicJournalWriter.h"
 
 BasicJournalQueue::BasicJournalQueue(QObject * parent)
     : QObject(parent)
@@ -112,8 +112,8 @@ BasicJournalQueue::MacroName
         rtn = BTrace;
     else if (BasicName("BDump") == s)
         rtn = BDump;
-    else if (BasicName("BTodo") == s)
-        rtn = BTodo;
+    else if (BasicName("BToDo") == s)
+        rtn = BToDo;
     else if (BasicName("BWarnIf") == s)
         rtn = BWarnIf;
     return rtn;

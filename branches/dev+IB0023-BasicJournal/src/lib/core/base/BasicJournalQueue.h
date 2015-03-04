@@ -8,7 +8,7 @@
 class QFile;
 class QUrl;
 
-#include "BasicJournal.h"
+#include "BasicJournalInternal.h"
 class BasicJournalWriter;
 
 class BasicJournalQueue : public QObject // Singleton
@@ -29,7 +29,7 @@ public:
         nullMacroName = 0,
         BTrace,
         BDump,
-        BTodo,
+        BToDo,
         BWarnIf,
         BWarnNot,
         BWarn,

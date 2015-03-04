@@ -1,9 +1,9 @@
 #ifndef PARSEDENTRY_H
 #define PARSEDENTRY_H
 
-#include "../BasicJournal.h"
+#include "../BasicJournalInternal.h"
 #include "../BasicJournalQueue.h"
-#include "../BasicJournalWriter.h"
+#include "BasicJournalWriter.h"
 
 class ParsedEntry
 {
@@ -18,10 +18,14 @@ public: // access
     const QString message;
     const QString expression;
     const QString objectName;
+    const QVariant value;
     const QVariant var1;
     const QVariant var2;
     const QVariant var3;
     const QVariant var4;
+    const QString prettyFunction;
+    const QString sourceFileName;
+    const int sourceFileLine;
 };
 
 #endif // PARSEDENTRY_H

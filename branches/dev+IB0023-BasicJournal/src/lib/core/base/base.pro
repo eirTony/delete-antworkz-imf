@@ -30,7 +30,7 @@ SOURCES += BaseLib.cpp \
     BasicId.cpp \
     MetaName.cpp \
     BasicJournalQueue.cpp \
-    BasicJournalWriter.cpp \
+    private/BasicJournalWriter.cpp \
     private/ParsedEntry.cpp
 
 HEADERS += BaseLib.h\
@@ -53,9 +53,10 @@ HEADERS += BaseLib.h\
     BasicId.h \
     MetaName.h \
     BasicJournalQueue.h \
-    BasicJournalWriter.h \
-    BasicJournal.h \
-    private/ParsedEntry.h
+    private/BasicJournalWriter.h \
+    BasicJournalInternal.h \
+    private/ParsedEntry.h \
+    BasicJournal.h
 
 unix {
     target.path = /usr/lib
