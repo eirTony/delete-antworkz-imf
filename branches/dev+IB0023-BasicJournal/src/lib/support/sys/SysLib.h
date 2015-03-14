@@ -24,8 +24,8 @@ public:
 
 /*! @typedef Sys
  *
- * @brief Is the Singleton instance of SysLib
+ * @brief Is the StaticSingleton instance of SysLib
  */
-typedef Singleton<SysLib> Sys;
+typedef StaticSingleton<SysLib> Sys;
 
 #endif // SysLib_H

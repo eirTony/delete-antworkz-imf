@@ -24,8 +24,8 @@ public:
 
 /*! @typedef Data
  *
- * @brief Is the Singleton instance of DataLib
+ * @brief Is the StaticSingleton instance of DataLib
  */
-typedef Singleton<DataLib> Data;
+typedef StaticSingleton<DataLib> Data;
 
 #endif // DataLib_H

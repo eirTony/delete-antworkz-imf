@@ -23,8 +23,8 @@ public:
 
 /*! @typedef Log
  *
- * @brief Is the Singleton instance of LogLib
+ * @brief Is the StaticSingleton instance of LogLib
  */
-typedef Singleton<LogLib> Log;
+typedef StaticSingleton<LogLib> Log;
 
 #endif // LogLib_H

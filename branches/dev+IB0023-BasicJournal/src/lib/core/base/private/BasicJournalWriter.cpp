@@ -23,7 +23,7 @@ bool BasicJournalWriter::isWritable(void) const
     return false;
 }
 
-void BasicJournalWriter::write(const BasicJournalEntry & entry)
+void BasicJournalWriter::write(BasicJournalEntry entry)
 {
     switch (mFormat)
     {

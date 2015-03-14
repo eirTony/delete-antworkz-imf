@@ -1,5 +1,6 @@
 #ifndef BASICJOURNALQUEUE_H
 #define BASICJOURNALQUEUE_H
+#include "BaseLib.h"
 
 #include <QObject>
 
@@ -8,10 +9,12 @@
 class QFile;
 class QUrl;
 
+#include <core/Singleton.h>
+
 #include "BasicJournalInternal.h"
 class BasicJournalWriter;
 
-class BasicJournalQueue : public QObject // Singleton
+class BASESHARED_EXPORT BasicJournalQueue : public QObject // StaticSingleton
 {
     Q_OBJECT
 public:
@@ -45,9 +48,10 @@ public:
         sizeMacroName
     };
 
+public: // static
+    static BasicJournalQueue &instance(void);
+
 public:
-    explicit BasicJournalQueue(QObject * parent=0);
-    BasicJournalQueue(const QUrl & url, QObject * parent=0);
     void startup(const QUrl & url);
     bool isStartup(void) const;
     QFile * startupFile(void) const;
@@ -70,6 +74,10 @@ signals:
 
 public slots:
 
+private:
+    BasicJournalQueue(void);
+    ~BasicJournalQueue() {}
+
 private slots:
     void cleanStartupDir(void) {}
     void removeStartupFile(void) {}
@@ -78,6 +86,11 @@ private:
     BasicJournalWriter * mpWriter = 0;
     QQueue<BasicJournalEntry> mEntryQueue;
     QStringList mOldFileNameList; // or Queue?
+
+private: // static
+    static BasicJournalQueue * smpInstance;
 };
+
+//typedef PointerSingleton<BasicJournalQueue> BasicJournalInstance;
 
 #endif // BASICJOURNALQUEUE_H

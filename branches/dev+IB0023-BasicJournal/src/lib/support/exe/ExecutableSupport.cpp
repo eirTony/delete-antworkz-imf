@@ -2,6 +2,8 @@
 
 #include <QCoreApplication>
 
+#include <base/BasicJournalQueue.h>
+
 ExecutableSupport::ExecutableSupport(ApplicationClass appClass)
     : mApplicationClass(appClass)
 {
@@ -20,6 +22,8 @@ ExecutableSupport::ExecutableSupport(ApplicationClass appClass)
         //ASSERT("Bad ApplicationClass");
         break;
     }
+
+    _BJOURNAL.setParent(this);
 }
 
 const QFileInfo & ExecutableSupport::exeFileInfo(void) const

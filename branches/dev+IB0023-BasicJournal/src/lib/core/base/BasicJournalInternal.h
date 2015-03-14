@@ -1,16 +1,16 @@
 #ifndef BASICJOURNALINTERNAL_H
 #define BASICJOURNALINTERNAL_H
 
+#include "private/BasicJournalEntry.h"
+#include "private/BasicJournalItem.h"
 #include "BasicName.h"
 #include "BasicNameMap.h"
 
-typedef BasicName::VariantPair BasicJournalItem;
-typedef BasicName::VariantMap BasicJournalEntry;
-typedef QList<BasicJournalEntry> BasicJournalEntryList;
+#define _BJOURNAL (BasicJournalQueue::instance())
 
 #define _BJENTRY(mac, cat) BasicJournalEntry() \
             << BasicJournalItem("TimeStamp", QDateTime::currentDateTime()) \
-            << BasicJournalItem("ModuleName", _MODULE_) \
+            << BasicJournalItem("ModuleName", MODULE_NAME) \
             << BasicJournalItem("PrettyFunction", Q_FUNC_INFO) \
             << BasicJournalItem("SourceFileName", __FILE__) \
             << BasicJournalItem("SourceFileLine", __LINE__) \
