@@ -1,6 +1,8 @@
 #ifndef BASICJOURNALWRITER_H
 #define BASICJOURNALWRITER_H
 
+#include <QObject>
+
 #include <QUrl>
 #include <QUrlQuery>
 class QFile;
@@ -9,8 +11,9 @@ class QTextStream;
 #include "BasicJournalInternal.h"
 #include "BasicJournalQueue.h"
 
-class BasicJournalWriter
+class BasicJournalWriter : public QObject
 {
+    Q_OBJECT
 private:
     enum Format
     {
@@ -25,8 +28,10 @@ private:
 public:
     explicit BasicJournalWriter(const QUrl & url);
     bool isWritable(void) const;
-    void write(const BasicJournalEntry & entry);
     QFile * file(void) const;
+
+public slots:
+    void write(BasicJournalEntry entry);
 
 private:
     bool parseUrl(const QUrl & url);

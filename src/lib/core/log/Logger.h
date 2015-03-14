@@ -59,7 +59,7 @@ private:
  * @brief The Logger class provides the engine of the Logging Facility
  * @since Started in v2.03
  *
- * A Singleton instance of the Logger class provides the plumbing
+ * A StaticSingleton instance of the Logger class provides the plumbing
  * for the Logging Facility by creating, processing, and queueing
  * LogItem instances.
  *

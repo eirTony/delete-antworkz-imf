@@ -31,7 +31,9 @@ SOURCES += BaseLib.cpp \
     MetaName.cpp \
     BasicJournalQueue.cpp \
     private/BasicJournalWriter.cpp \
-    private/ParsedEntry.cpp
+    private/ParsedEntry.cpp \
+    private/BasicJournalEntry.cpp \
+    private/BasicJournalItem.cpp
 
 HEADERS += BaseLib.h\
         base_global.h \
@@ -40,7 +42,7 @@ HEADERS += BaseLib.h\
     Version.h \
     ../../../CommonVersion.h \
     ../type/CProperty.h \
-    ../type/Singleton.h \
+    ../type/StaticSingleton.h \
     BaseLog.h \
     BasicName.h \
     FunctionInfo.h \
@@ -56,7 +58,9 @@ HEADERS += BaseLib.h\
     private/BasicJournalWriter.h \
     BasicJournalInternal.h \
     private/ParsedEntry.h \
-    BasicJournal.h
+    BasicJournal.h \
+    private/BasicJournalEntry.h \
+    private/BasicJournalItem.h
 
 unix {
     target.path = /usr/lib

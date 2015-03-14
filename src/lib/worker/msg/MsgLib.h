@@ -26,8 +26,8 @@ public:
 
 /*! @typedef Msg
  *
- * @brief Is the Singleton instance of MsgLib
+ * @brief Is the StaticSingleton instance of MsgLib
  */
-typedef Singleton<MsgLib> Msg;
+typedef StaticSingleton<MsgLib> Msg;
 
 #endif // MsgLib_H

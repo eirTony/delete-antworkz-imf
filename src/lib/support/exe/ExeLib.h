@@ -24,8 +24,8 @@ public:
 
 /*! @typedef Exe
  *
- * @brief Is the Singleton instance of ExeLib
+ * @brief Is the StaticSingleton instance of ExeLib
  */
-typedef Singleton<ExeLib> Exe;
+typedef StaticSingleton<ExeLib> Exe;
 
 #endif // ExeLib_H

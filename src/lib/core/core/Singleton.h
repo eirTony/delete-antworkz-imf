@@ -3,7 +3,23 @@
 
 #include <QtDebug>
 
-template <class T> class Singleton
+#if 0
+template <class T> class PointerSingleton
+{
+public:
+    static T * instance(void)
+        { if (mpT) return mpT; return mpT = new T(); }
+
+protected:
+    PointerSingleton(void) {}
+    PointerSingleton(const T & rhs);
+
+private:
+    static T * mpT = 0;
+};
+#endif
+
+template <class T> class StaticSingleton
 {
 public:
     static T & instance(void)
@@ -14,8 +30,8 @@ public:
         { return instance(); }
 
 protected:
-    Singleton(void) {}
-    Singleton(const T & rhs);
+    StaticSingleton(void) {}
+    StaticSingleton(const T & rhs);
 };
 
 #endif // SINGLETON_H

@@ -19,8 +19,8 @@ public:
 
 /*! @typedef Type
  *
- * @brief Is the Singleton instance of TypeLib
+ * @brief Is the StaticSingleton instance of TypeLib
  */
-typedef Singleton<TypeLib> Type;
+typedef StaticSingleton<TypeLib> Type;
 
 #endif // TYPELIB_H

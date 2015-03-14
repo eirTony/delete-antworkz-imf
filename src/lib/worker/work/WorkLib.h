@@ -23,8 +23,8 @@ public:
 
 /*! @typedef Work
  *
- * @brief Is the Singleton instance of WorkLib
+ * @brief Is the StaticSingleton instance of WorkLib
  */
-typedef Singleton<WorkLib> Work;
+typedef StaticSingleton<WorkLib> Work;
 
 #endif // WORKLIB_H
