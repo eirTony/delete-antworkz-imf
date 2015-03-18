@@ -6,8 +6,8 @@
 
 #include <QList.h>
 #include <QQueue>
+#include <QUrl>
 class QFile;
-class QUrl;
 
 #include <core/Singleton.h>
 
@@ -52,7 +52,7 @@ public: // static
     static BasicJournalQueue &instance(void);
 
 public:
-    void startup(const QUrl & url);
+    void startup(const QUrl & url=QUrl());
     bool isStartup(void) const;
     QFile * startupFile(void) const;
     void endStartup(void);

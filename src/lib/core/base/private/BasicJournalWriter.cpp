@@ -48,7 +48,8 @@ bool BasicJournalWriter::parseUrl(const QUrl & url)
     if ( ! url.isValid())                   return false;
     mUrl = url;
     mQuery = QUrlQuery(mUrl);
-    if ("txtfile" != mUrl.scheme())         return false;
+    mScheme = mUrl.scheme().isEmpty() ? "txtfile" : mUrl.scheme();
+    if ("txtfile" != mScheme)               return false;
 
     mFormat         = parseFormat(mQuery.queryItemValue("Format"));
     mMinSeverity    = parseMinSev(mQuery.queryItemValue("MinSev"));
