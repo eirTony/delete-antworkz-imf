@@ -46,6 +46,7 @@ private:
 private:
     QUrl mUrl;
     QUrlQuery mQuery;
+    QString mScheme;
     Format mFormat;
     QString mFilePath;
     BasicJournalQueue::Category mMinSeverity;

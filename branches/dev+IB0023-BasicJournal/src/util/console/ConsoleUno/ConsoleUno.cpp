@@ -39,7 +39,7 @@ void ConsoleUno::doSetup(BasicId::VariantMap config)
 void ConsoleUno::doStart(void)
 {
     SerialExecutable::writeLine("Hello from ConsoleUno!");
-    // BTRACE("In ConsoleUno::doStart()");
+    BTRACE("In ConsoleUno::doStart()");
 
     EclipseMessage msg;
     msg.insert("Message", "This is a message.");

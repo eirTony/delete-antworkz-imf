@@ -24,6 +24,7 @@ ExecutableSupport::ExecutableSupport(ApplicationClass appClass)
     }
 
     _BJOURNAL.setParent(this);
+    _BJOURNAL.startup(QUrl("txtfile:////Temp/AntZ"));
 }
 
 const QFileInfo & ExecutableSupport::exeFileInfo(void) const
