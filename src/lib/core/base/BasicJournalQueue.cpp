@@ -27,9 +27,11 @@ BasicJournalQueue & BasicJournalQueue::instance(void) // static
 void BasicJournalQueue::startup(const QUrl & url)
 {
     if (isStartup())    endStartup();
-    mpWriter = new BasicJournalWriter(url);
-    if ( ! mpWriter->isWritable()) return;
+    BasicJournalWriter * writer = new BasicJournalWriter(url);
+    if ( ! writer->isWritable()) return;
 
+    // success
+    mpWriter = writer;
     connect(this, SIGNAL(enqueued(BasicJournalEntry)),
             mpWriter, SLOT(write(BasicJournalEntry)));
     QTimer::singleShot(60000, this, SLOT(cleanStartupDir()));

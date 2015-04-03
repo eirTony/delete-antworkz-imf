@@ -20,7 +20,7 @@ BasicJournalWriter::BasicJournalWriter(const QUrl & url)
 
 bool BasicJournalWriter::isWritable(void) const
 {
-    return false;
+    return mpFile && mpFile->isWritable() && mpStream;
 }
 
 void BasicJournalWriter::write(BasicJournalEntry entry)
@@ -45,11 +45,11 @@ QFile * BasicJournalWriter::file(void) const
 
 bool BasicJournalWriter::parseUrl(const QUrl & url)
 {
-    if ( ! url.isValid())                   return false;
+    if ( ! url.isValid() && ! url.isEmpty())    return false;
     mUrl = url;
     mQuery = QUrlQuery(mUrl);
     mScheme = mUrl.scheme().isEmpty() ? "txtfile" : mUrl.scheme();
-    if ("txtfile" != mScheme)               return false;
+    if ("txtfile" != mScheme)                   return false;
 
     mFormat         = parseFormat(mQuery.queryItemValue("Format"));
     mMinSeverity    = parseMinSev(mQuery.queryItemValue("MinSev"));
@@ -61,18 +61,12 @@ bool BasicJournalWriter::parseUrl(const QUrl & url)
 BasicJournalWriter::Format BasicJournalWriter::parseFormat(const BasicName s)
 {
     Format rtn = nullFormat;
-    if (false)
-        ;
-    else if (BasicName("Trace") == s)
-        rtn = Trace;
-    else if (BasicName("User") == s)
-        rtn = User;
-    else if (BasicName("Csv") == s)
-        rtn = Csv;
-    else if (BasicName("Tsv") == s)
-        rtn = Tsv;
-    else
-        rtn = Tsv;
+    if (false)                          {;}
+    else if (BasicName("Trace") == s)   rtn = Trace;
+    else if (BasicName("User") == s)    rtn = User;
+    else if (BasicName("Csv") == s)     rtn = Csv;
+    else if (BasicName("Tsv") == s)     rtn = Tsv;
+    else                                rtn = Tsv;
     return rtn;
 }
 
@@ -90,6 +84,36 @@ BasicJournalQueue::Category BasicJournalWriter::parseMinSev(const BasicName s)
 
 bool BasicJournalWriter::setFile(const QString path)
 {
+#if 1
+    // defaults
+    QString baseName(QDateTime::currentDateTime()
+                     .toString("DyyyyMMdd-Thhmmss"));
+    QString suffix(fileSuffix());
+    QDir fileDir("/Temp/EclipseIR");
+    QString orgName(qApp->organizationName());
+    QString appName(qApp->applicationName());
+
+    if (path.isEmpty())
+    {
+        setFileName(fileDir, orgName, appName, baseName, suffix);
+    }
+    else
+    {
+        QFileInfo urlFI(path);
+        if (urlFI.isDir())
+        {
+            fileDir = urlFI.dir();
+        }
+        else
+        {
+            baseName = urlFI.completeBaseName();
+            suffix = urlFI.suffix();
+            fileDir = urlFI.dir();
+        }
+        setFileName(fileDir, baseName, suffix);
+    }
+    return true;
+#else
     // collect information
     QDir dir(QTemporaryDir().path());
     QString org = qApp->organizationName();
@@ -133,18 +157,61 @@ bool BasicJournalWriter::setFile(const QString path)
 
     mFilePath = outFI.absoluteFilePath();
     return true;
+#endif
+}
+
+QString BasicJournalWriter::fileSuffix(void) const
+{
+    QString sfx;
+    switch (mFormat)
+    {
+    case User:      sfx = ".log";       break;
+    case Trace:     sfx = ".trace";     break;
+    case Csv:       sfx = ".csv";       break;
+    case Tsv:       sfx = ".tsv";       break;
+    case nullFormat:    case sizeFormat: ; // invalid values
+    }
+    return sfx;
+}
+
+void BasicJournalWriter::setFileName(const QDir & dir,
+                                     const QString & org,
+                                     const QString & app,
+                                     const QString & base,
+                                     const QString & suffix)
+{
+    QDir fileDir = dir;
+    fileDir.mkpath(".");
+    fileDir.mkpath(org);    fileDir.cd(org);
+    fileDir.mkpath(app);    fileDir.cd(app);
+    mFilePath = fileDir.absoluteFilePath(base + suffix);
+}
+
+void BasicJournalWriter::setFileName(const QDir & dir,
+                                     const QString & base,
+                                     const QString & suffix)
+{
+    mFilePath = dir.absoluteFilePath(base + "." + suffix);
 }
 
 bool BasicJournalWriter::openFile(void)
 {
+    mpFile = new QFile(mFilePath, this);
+    Q_ASSERT(mpFile);
+    mpFile->open(QIODevice::Text | QIODevice::WriteOnly);
 
-    return false;
+    mpStream = new QTextStream(mpFile);
+    Q_ASSERT(mpStream);
+    return mpFile->isWritable();
 }
 
 bool BasicJournalWriter::startFile(void)
 {
-
-    return false;
+    Q_ASSERT(mpStream);
+    *mpStream << "BasicJournal started "
+              << QDateTime::currentDateTime().toString()
+              << endl;
+    return true;
 }
 
 void BasicJournalWriter::writeTextFile(const BasicJournalEntry & entry)

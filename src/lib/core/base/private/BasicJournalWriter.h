@@ -5,6 +5,7 @@
 
 #include <QUrl>
 #include <QUrlQuery>
+class QDir;
 class QFile;
 class QTextStream;
 
@@ -38,6 +39,15 @@ private:
     Format parseFormat(const BasicName s);
     BasicJournalQueue::Category parseMinSev(const BasicName s);
     bool setFile(const QString path);
+    QString fileSuffix(void) const;
+    void setFileName(const QDir & dir,
+                     const QString & org,
+                     const QString & app,
+                     const QString & base,
+                     const QString & suffix);
+    void setFileName(const QDir & dir,
+                     const QString & base,
+                     const QString & suffix);
     bool openFile(void);
     bool startFile(void);
     void writeTextFile(const BasicJournalEntry & entry);
