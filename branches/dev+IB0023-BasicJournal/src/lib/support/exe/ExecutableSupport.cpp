@@ -24,7 +24,11 @@ ExecutableSupport::ExecutableSupport(ApplicationClass appClass)
     }
 
     _BJOURNAL.setParent(this);
-    _BJOURNAL.startup(QUrl("txtfile:////Temp/AntZ"));
+//  _BJOURNAL.startup(QUrl("txtfile:////Temp/AntZ"));
+    _BJOURNAL.startup();
+    Q_ASSERT(_BJOURNAL.startupFile());
+    qDebug(qPrintable(_BJOURNAL.startupFile()->fileName()));
+    qDebug(_BJOURNAL.startupFile()->isWritable() ? "writable" : "not open");
 }
 
 const QFileInfo & ExecutableSupport::exeFileInfo(void) const
