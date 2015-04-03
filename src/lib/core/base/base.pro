@@ -28,7 +28,12 @@ SOURCES += BaseLib.cpp \
     PluginObject.cpp \
     AbstractPlugin.cpp \
     BasicId.cpp \
-    MetaName.cpp
+    MetaName.cpp \
+    BasicJournalQueue.cpp \
+    private/BasicJournalWriter.cpp \
+    private/ParsedEntry.cpp \
+    private/BasicJournalEntry.cpp \
+    private/BasicJournalItem.cpp
 
 HEADERS += BaseLib.h\
         base_global.h \
@@ -37,7 +42,7 @@ HEADERS += BaseLib.h\
     Version.h \
     ../../../CommonVersion.h \
     ../type/CProperty.h \
-    ../type/Singleton.h \
+    ../type/StaticSingleton.h \
     BaseLog.h \
     BasicName.h \
     FunctionInfo.h \
@@ -48,7 +53,14 @@ HEADERS += BaseLib.h\
     PluginObject.h \
     AbstractPlugin.h \
     BasicId.h \
-    MetaName.h
+    MetaName.h \
+    BasicJournalQueue.h \
+    private/BasicJournalWriter.h \
+    BasicJournalInternal.h \
+    private/ParsedEntry.h \
+    BasicJournal.h \
+    private/BasicJournalEntry.h \
+    private/BasicJournalItem.h
 
 unix {
     target.path = /usr/lib

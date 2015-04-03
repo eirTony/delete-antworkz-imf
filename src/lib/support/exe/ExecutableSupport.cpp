@@ -2,6 +2,8 @@
 
 #include <QCoreApplication>
 
+#include <base/BasicJournalQueue.h>
+
 ExecutableSupport::ExecutableSupport(ApplicationClass appClass)
     : mApplicationClass(appClass)
 {
@@ -20,6 +22,13 @@ ExecutableSupport::ExecutableSupport(ApplicationClass appClass)
         //ASSERT("Bad ApplicationClass");
         break;
     }
+
+    _BJOURNAL.setParent(this);
+//  _BJOURNAL.startup(QUrl("txtfile:////Temp/AntZ"));
+    _BJOURNAL.startup();
+    Q_ASSERT(_BJOURNAL.startupFile());
+    qDebug(qPrintable(_BJOURNAL.startupFile()->fileName()));
+    qDebug(_BJOURNAL.startupFile()->isWritable() ? "writable" : "not open");
 }
 
 const QFileInfo & ExecutableSupport::exeFileInfo(void) const

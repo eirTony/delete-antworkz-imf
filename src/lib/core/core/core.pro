@@ -17,7 +17,7 @@ SOURCES += CoreLib.cpp
 HEADERS += CoreLib.h \
     Version.h \
     ../../../CommonVersion.h \
-    Singleton.h
+    StaticSingleton.h
 
 unix {
     target.path = /usr/lib

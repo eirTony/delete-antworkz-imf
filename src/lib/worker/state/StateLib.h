@@ -24,8 +24,8 @@ public:
 
 /*! @typedef State
  *
- * @brief Is the Singleton instance of StateLib
+ * @brief Is the StaticSingleton instance of StateLib
  */
-typedef Singleton<StateLib> State;
+typedef StaticSingleton<StateLib> State;
 
 #endif // StateLib_H
