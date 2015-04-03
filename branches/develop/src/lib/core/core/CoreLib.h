@@ -24,8 +24,8 @@ public:
 
 /*! @typedef Core
  *
- * @brief Is the Singleton instance of CoreLib
+ * @brief Is the StaticSingleton instance of CoreLib
  */
-typedef Singleton<CoreLib> Core;
+typedef StaticSingleton<CoreLib> Core;
 
 #endif // CoreLib_H

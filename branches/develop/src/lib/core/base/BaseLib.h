@@ -41,15 +41,15 @@ private:
  * @ingroup BaseLib
  * @since BaseLib was started in v2.02
  * @remark { Note: As with all library class files,
- * BaseLib is implemented as a singleton
+ * BaseLib is implemented as a staticSingleton
  * and is used to provide static constructors
  * needed for its classes. }
  */
 
-typedef Singleton<BaseLib> Base;
+typedef StaticSingleton<BaseLib> Base;
 /*! @typedef Base
  *
- * @brief Is the Singleton instance of BaseLib
+ * @brief Is the StaticSingleton instance of BaseLib
  */
 
 #endif // BASELIB_H

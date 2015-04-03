@@ -24,8 +24,8 @@ public:
 
 /*! @typedef Cfg
  *
- * @brief Is the Singleton instance of CfgLib
+ * @brief Is the StaticSingleton instance of CfgLib
  */
-typedef Singleton<CfgLib> Cfg;
+typedef StaticSingleton<CfgLib> Cfg;
 
 #endif // CfgLib_H

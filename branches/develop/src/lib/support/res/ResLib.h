@@ -24,8 +24,8 @@ public:
 
 /*! @typedef Res
  *
- * @brief Is the Singleton instance of ResLib
+ * @brief Is the StaticSingleton instance of ResLib
  */
-typedef Singleton<ResLib> Res;
+typedef StaticSingleton<ResLib> Res;
 
 #endif // ResLib_H

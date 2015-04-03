@@ -7,7 +7,7 @@
 #define CVER_BRANCH     0
 #define CVER_RELEASE    2
 #define CVER_BUILD      1003
-#define CVER_COPYRIGHT  "Copyright (c) 2003-2014, " \
+#define CVER_COPYRIGHT  "Copyright (c) 2003-2015, " \
                         "Eclipse Identity Recognition Corporation. " \
                         "All rights reserved worldwide."
 #define CVER_PRODNAME   "Eclipse FusionIR"

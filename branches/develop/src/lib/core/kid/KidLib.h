@@ -24,8 +24,8 @@ public:
 
 /*! @typedef Kid
  *
- * @brief Is the Singleton instance of KidLib
+ * @brief Is the StaticSingleton instance of KidLib
  */
-typedef Singleton<KidLib> Kid;
+typedef StaticSingleton<KidLib> Kid;
 
 #endif // KidLib_H

@@ -24,8 +24,8 @@ public:
 
 /*! @typedef Var
  *
- * @brief Is the Singleton instance of VarLib
+ * @brief Is the StaticSingleton instance of VarLib
  */
-typedef Singleton<VarLib> Var;
+typedef StaticSingleton<VarLib> Var;
 
 #endif // VarLib_H
