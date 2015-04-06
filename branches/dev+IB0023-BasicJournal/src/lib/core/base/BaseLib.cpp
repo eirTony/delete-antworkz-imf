@@ -6,7 +6,7 @@
 
 #include <QtDebug>
 
-#include "BaseLog.h"
+#include "BasicJournal.h"
 
 BaseLib * gpBase = &(Base::instance());
 
@@ -18,8 +18,8 @@ BaseLib::BaseLib(void)
     : ModuleInfo(MODULE_NAME)
     , mSystemEnvironment(QProcessEnvironment::systemEnvironment())
 {
-    BLOG_MIN(BaseLog::Minimum);
     setVersion();
+    BTRACE1("BaseLib ModuleName", ModuleInfo::name());
 }
 
 QProcessEnvironment BaseLib::systemEnvironment(void) const
