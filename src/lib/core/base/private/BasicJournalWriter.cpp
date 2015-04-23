@@ -1,3 +1,5 @@
+/*! @file   BasicJournalWriter.cpp   Eclipse BasicJournalWriter definition
+ */
 #include "BasicJournalWriter.h"
 
 #include <QCoreApplication>

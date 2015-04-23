@@ -1,3 +1,5 @@
+/*! @file   BaseBasicJournalEntry.h   Eclipse BasicJournalEntry declaration
+ */
 #ifndef BASICJOURNALENTRY_H
 #define BASICJOURNALENTRY_H
 #include "../BaseLib.h"

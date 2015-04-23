@@ -1,3 +1,5 @@
+/*! @file   BasicJournalItem.cpp   Eclipse BasicJournalItem definition
+ */
 #include "BasicJournalItem.h"
 
 BasicJournalItem::BasicJournalItem(const BasicName & name,
