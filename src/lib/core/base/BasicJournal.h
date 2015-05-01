@@ -36,4 +36,8 @@
             << BasicJournalItem("Expression", #expr) \
             << BasicJournalItem("Value", expr) \
 
+#define BWARNIF(expr, msg)  {if(!!expr) _BJOURNAL_BOOL(expr, msg, "BWARNIF", "Warning");}
+#define BERRORIF(expr, msg) {if(!!expr) _BJOURNAL_BOOL(expr, msg, "BERRORIF", "Error");}
+#define BFATALIF(expr, msg) {if(!!expr) _BJOURNAL_BOOL(expr, msg, "BFATALIF", "Fatal");}
+
 #endif // BASICJOURNAL_H

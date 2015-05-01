@@ -2,6 +2,7 @@
 
 #include <QTimer>
 
+#include "private/BasicJournalEntry.h"
 #include "private/BasicJournalWriter.h"
 
 BasicJournalQueue * BasicJournalQueue::smpInstance = 0;
@@ -75,9 +76,9 @@ BasicJournalEntry BasicJournalQueue::dequeue(void)
     return entry;
 }
 
-BasicJournalEntryList BasicJournalQueue::dequeue(const int count)
+BasicJournalEntry::List BasicJournalQueue::dequeue(const int count)
 {
-    BasicJournalEntryList list;
+    BasicJournalEntry::List list;
     if ( !! count)
     {
         list = mEntryQueue;
@@ -94,7 +95,7 @@ BasicJournalEntryList BasicJournalQueue::dequeue(const int count)
     return list;
 }
 
-BasicJournalEntryList BasicJournalQueue::dequeueAll(void)
+BasicJournalEntry::List BasicJournalQueue::dequeueAll(void)
 {
     return dequeue(0);
 }

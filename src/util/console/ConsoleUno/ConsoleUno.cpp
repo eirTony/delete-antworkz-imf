@@ -40,6 +40,7 @@ void ConsoleUno::doStart(void)
 {
     SerialExecutable::writeLine("Hello from ConsoleUno!");
     BTRACE("In ConsoleUno::doStart()");
+    BWARNIF(true, "This might be true");
 
     EclipseMessage msg;
     msg.insert("Message", "This is a message.");

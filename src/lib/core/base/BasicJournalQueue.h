@@ -11,7 +11,9 @@ class QFile;
 
 #include <core/Singleton.h>
 
-#include "BasicJournalInternal.h"
+//#include "BasicJournalInternal.h"
+#include "private/BasicJournalEntry.h"
+class BasicName;
 class BasicJournalWriter;
 
 class BASESHARED_EXPORT BasicJournalQueue : public QObject // StaticSingleton
@@ -59,8 +61,8 @@ public:
 
     void enqueue(const BasicJournalEntry & entry);
     BasicJournalEntry dequeue(void);
-    BasicJournalEntryList dequeue(const int count=0);
-    BasicJournalEntryList dequeueAll(void);
+    BasicJournalEntry::List dequeue(const int count=0);
+    BasicJournalEntry::List dequeueAll(void);
 
 public: // static
     static Category parseCategory(const BasicName & s);

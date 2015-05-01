@@ -3,6 +3,7 @@
 #include <QCoreApplication>
 
 #include <base/BasicJournalQueue.h>
+#include <base/BasicJournalInternal.h> // fix this someday
 
 ExecutableSupport::ExecutableSupport(ApplicationClass appClass)
     : mApplicationClass(appClass)

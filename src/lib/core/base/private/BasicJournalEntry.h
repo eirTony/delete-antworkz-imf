@@ -1,5 +1,3 @@
-/*! @file   BaseBasicJournalEntry.h   Eclipse BasicJournalEntry declaration
- */
 #ifndef BASICJOURNALENTRY_H
 #define BASICJOURNALENTRY_H
 #include "../BaseLib.h"
@@ -25,6 +23,6 @@ public:
 
 };
 
-typedef QList<BasicJournalEntry> BasicJournalEntryList;
+//typedef QList<BasicJournalEntry> BasicJournalEntryList;
 
 #endif // BASICJOURNALENTRY_H

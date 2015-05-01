@@ -1,5 +1,3 @@
-/*! @file   ParsedEntry.cpp   Eclipse ParsedEntry definition
- */
 #include "ParsedEntry.h"
 
 ParsedEntry::ParsedEntry(const BasicJournalEntry & entry)
