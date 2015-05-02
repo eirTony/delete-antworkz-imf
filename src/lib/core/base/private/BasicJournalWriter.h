@@ -58,6 +58,7 @@ private:
     QUrlQuery mQuery;
     QString mScheme;
     Format mFormat;
+    int mFormatWidth = 60;
     QString mFilePath;
     BasicJournalQueue::Category mMinSeverity;
     int mKeepFiles = 0;

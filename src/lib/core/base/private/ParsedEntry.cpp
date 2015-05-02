@@ -70,7 +70,7 @@ QString ParsedEntry::formatted(void) const
         break;
 
     case BasicJournalQueue::nullMacroName: // reserved values
-    case BasicJournalQueue::sizeMacroName: ;
+    case BasicJournalQueue::sizeMacroName: {;}
     }
 
     return rtn;

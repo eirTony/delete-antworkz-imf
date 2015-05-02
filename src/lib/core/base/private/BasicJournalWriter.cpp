@@ -237,9 +237,10 @@ void BasicJournalWriter::writeDelimited(const BasicJournalEntry & entry)
     static QString right(Tsv ? ""   : "\"");
     static QString delim(Tsv ? "\t" : ",");
     ParsedEntry pe(entry);
+    QString formattedAndPadded = QString("%1").arg(pe.formatted(), mFormatWidth);
 
     *mpStream << left << pe.timeStamp.toString() << right << delim
-              << left << pe.formatted()          << right << delim
+              << left << formattedAndPadded      << right << delim
               << left << pe.prettyFunction       << right << delim
               << left << pe.sourceFileName       << right << delim
               << left << pe.sourceFileLine       << right << delim
