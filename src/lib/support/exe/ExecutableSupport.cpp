@@ -3,7 +3,8 @@
 #include <QCoreApplication>
 
 #include <base/BasicJournalQueue.h>
-#include <base/BasicJournalInternal.h> // fix this someday
+//#include <base/BasicJournalInternal.h> // fix this someday
+#include <base/BasicJournal.h>
 
 ExecutableSupport::ExecutableSupport(ApplicationClass appClass)
     : mApplicationClass(appClass)
@@ -28,8 +29,9 @@ ExecutableSupport::ExecutableSupport(ApplicationClass appClass)
 //  _BJOURNAL.startup(QUrl("txtfile:////Temp/AntZ"));
     _BJOURNAL.startup();
     Q_ASSERT(_BJOURNAL.startupFile());
-    qDebug(qPrintable(_BJOURNAL.startupFile()->fileName()));
-    qDebug(_BJOURNAL.startupFile()->isWritable() ? "writable" : "not open");
+    if (_BJOURNAL.startupFile()->isWritable())
+        BTRACE1("Basic Journal started in %1",
+                _BJOURNAL.startupFile()->fileName());
 }
 
 const QFileInfo & ExecutableSupport::exeFileInfo(void) const
